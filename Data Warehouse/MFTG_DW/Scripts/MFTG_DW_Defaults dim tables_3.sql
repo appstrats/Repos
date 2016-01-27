@@ -1,6 +1,7 @@
 --To insert the default row in dimenstions 
 use [MFTG_DW]
 go
+
 if not exists(select * from [dbo].[Assembly_D] where [AssemblyKey] = -1)
 INSERT into [dbo].[Assembly_D] ([AssemblyNumber],[AssemblyKey]) values ('Unknown',-1);
 
@@ -8,6 +9,8 @@ insert into dbo.DataSource_D (DataSourceKey,DataSource,DataSourceDescription,Sup
 insert into dbo.[DataSource_D](DataSourceKey,DataSource,DataSourceDescription,Supplier)values(1,'MFGTESTC_FREMONT','Flash Fremont','Flash Fremont');
 insert into dbo.[DataSource_D](DataSourceKey,DataSource,DataSourceDescription,Supplier)values(2,'SENAO_MFGTESTC_TAIWAN','Senao Shopfloor','SENAO');
 insert into dbo.[DataSource_D](DataSourceKey,DataSource,DataSourceDescription,Supplier)values(3,'MFGTESTC_UK','Flash UK','Flash UK');
+insert into dbo.[DataSource_D](DataSourceKey,DataSource,DataSourceDescription,Supplier)values(4,'MES2_SERCOMM','Flash UK','Flash UK');
+
 insert into dbo.FirmwareVersion_D (FirmwareVersionKey,FirmwareVersion) values (-1,'Unknown');
 
 insert into [dbo].[IRV_D] ([IRVKey],[IRV]) values (-1,'Unknown');
@@ -25,6 +28,7 @@ insert into dbo.PartNumber_D(PartNumberKey,PartNumberCode,PartNumber,Revision,De
 insert into dbo.RegulatoryModel_D(RegulatoryModelKey,RegulatoryModel)values (-1,'Unknown');
 
 insert into dbo.ROMVersion_D(ROMVersionKey,ROMVersion)values(-1,'Unknown');
+
 insert into dbo.DateCode_D(DateCodeKey,DateCode)values(-1,'Unknown');
 
 insert into dbo.SafemodeVersion_D(SafemodeVersionKey,SafemodeVersion)values(-1,'Unknown');
@@ -36,7 +40,7 @@ insert into dbo.SKU_D(SKUKey,SKU,SKUDescription)values(-1,'Unknown','Unknown');
 insert into dbo.StepResultCode_D(StepResultCodeKey,StepResultValue,Description)values(-1,-1,'Unknown');
 
 insert into dbo.Station_D(StationKey,Station)values(-1,'Unknown');
-insert into dbo.StationType_D(StationTypeKey,StationType)values(-1,-1);
+insert into dbo.StationType_D(StationTypeKey,StationType)values(-1,'Unknown');
 
 
 insert into [dbo].[WorkOrder_D] ([WorkOrderKey],[WorkOrderNumber]) values (-1,'Unknown');

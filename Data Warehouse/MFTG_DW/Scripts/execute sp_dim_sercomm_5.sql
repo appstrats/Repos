@@ -1,0 +1,11 @@
+exec sp_pop_assembly_Sercomm 6
+exec sp_pop_serialnumber_Sercomm 6
+exec sp_pop_manufacturing_id_Sercomm 6
+exec sp_pop_regulatorymodel_Sercomm 6
+exec sp_pop_firmversion_Sercomm 6
+exec sp_pop_romversion_Sercomm 6
+exec sp_pop_safemodeversion_Sercomm 6
+exec sp_pop_regulatorymodel_Sercomm 6
+exec sp_pop_IRV_Sercomm 6
+exec sp_pop_station_Sercomm 6
+
