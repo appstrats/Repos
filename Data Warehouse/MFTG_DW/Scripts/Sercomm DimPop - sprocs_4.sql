@@ -12,14 +12,19 @@ declare @enddate	datetime
 select @startdate = StartDate, @enddate = EndDate  from etl_configuration.dbo.DataLoad_Log where loadid = @pLoadID
 if (@startdate is not null and @enddate is not null)
 begin
-with T_Label_Assem as
+with T_Assem as
 (select distinct data_value udv from MES2_SERCOMM.dbo.process_step_data sd
-where rtrim(data_attribute)like 'label field Assembly' and  (sd.datastamp between @startdate and @enddate )) 
+where rtrim(data_attribute)like 'label field Assembly'  and  (sd.datastamp between @startdate and @enddate )
+) 
+union
+(select distinct data_value udv from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
+where rtrim(data_attribute)like 'label field Assembly'  and  (sd.datastamp between @startdate and @enddate )
+) 
 
 insert into [MFTG_DW].[dbo].[Assembly_D]([AssemblyKey],[AssemblyNumber])
 select distinct isnull((select max([AssemblyKey]) from [MFTG_DW].[dbo].[Assembly_D] where [AssemblyKey]>-1),0) +
 ROW_NUMBER() over (ORDER BY s.udv ), s.udv 
-from T_Label_Assem s
+from T_Assem s
 left outer join [MFTG_DW].dbo.[Assembly_D] d on s.udv  = d.[AssemblyNumber]
 where d.[AssemblyNumber] is null
 end
@@ -56,6 +61,42 @@ end
 end;
 go
 
+Create PROC sp_pop_serialnumber_Sercomm_Label (@pLoadID int) as
+begin
+set nocount on
+
+declare @startdate  datetime
+declare @enddate	datetime
+
+select @startdate = StartDate, @enddate = EndDate  from etl_configuration.dbo.DataLoad_Log where loadid = @pLoadID
+if (@startdate is not null and @enddate is not null)
+begin
+
+with T_SN as
+(select distinct serial_number from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_result sr where 
+len(serial_number) = 12 and
+ (serial_number like '0006B1%' or serial_number like '0017C5%' or  serial_number like 'FFFFFF%'
+or serial_number like 'C0EAE4%' or serial_number like '18B169%' or serial_number like '004010%') and (sr.datestamp between @startdate and @enddate)),
+T_Label_Auth as
+(select serial_number, max(data_value) Authcode from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
+where data_attribute like 'label field AuthCode'  and (sd.datestamp between @startdate and @enddate)
+group by serial_number),
+sndata as
+(select sn.serial_number,A.Authcode
+from T_SN sn left outer join T_Label_Auth A on sn.serial_number = A.serial_number
+)
+
+insert into [MFTG_DW].[dbo].[SerialNumber_D]([SerialNumberKey],[SerialNumber],[AuthCode])
+select  isnull((select max([SerialNumberKey]) from [MFTG_DW].dbo.[SerialNumber_D] where [SerialNumberKey]>-1),0) +
+ROW_NUMBER() over (ORDER BY sn.serial_number), sn.serial_number,sn.Authcode
+from sndata sn 
+left outer join [MFTG_DW].dbo.[SerialNumber_D] d on sn.serial_number = d.[SerialNumber]
+where d.[SerialNumber] is null
+
+end
+end
+go
+
 --Manufacturing_ID
 --sp_pop_manufacturing_id_Sercomm 6
 alter PROC sp_pop_manufacturing_id_Sercomm (@pLoadID int) as
@@ -84,7 +125,34 @@ where d.[MID] is null
 end
 end;
 go
+Create PROC sp_pop_Manufacturing_ID_Sercomm_Label (@pLoadID int) as
+begin
+set nocount on
 
+declare @startdate  datetime
+declare @enddate	datetime
+
+select @startdate = StartDate, @enddate = EndDate  from etl_configuration.dbo.DataLoad_Log where loadid = @pLoadID
+if (@startdate is not null and @enddate is not null)
+begin
+with T_SN as
+(select distinct serial_number from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_result where 
+len(serial_number) = 12 and
+ (serial_number like '0006B1%' or serial_number like '0017C5%' or  serial_number like 'FFFFFF%'
+or serial_number like 'C0EAE4%' or serial_number like '18B169%' or serial_number like '004010%') ),
+M_ID as
+(select distinct  s.sn1
+from MFGTESTC_TAIWAN_SERCOMM.[dbo].sn_relation s
+inner join T_SN sn on s.sn2 = sn.serial_number)
+insert into [MFTG_DW].[dbo].[ManufacturingId_D]([MIDKey],[MID])
+select isnull((select max([MIDKey]) from [MFTG_DW].dbo.[ManufacturingId_D] where [MIDKey]>-1),0)+
+ROW_NUMBER() over (ORDER BY m.sn1), m.sn1
+from M_ID m
+left outer join [MFTG_DW].dbo.[ManufacturingId_D] d on m.sn1 = d.[MID]
+where d.[MID] is null
+end
+end
+go
 --Firmware version
 go
 
@@ -103,7 +171,11 @@ begin
 
 with T_FirmW as
 (select distinct Data_Value FW from MES2_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute) like 'FirmwareVersion' and Data_Value is not null and (sd.datastamp between @startdate and @enddate ))
+where rtrim(Data_Attribute) like 'FirmwareVersion' and Data_Value is not null and (sd.datastamp between @startdate and @enddate )
+union
+select distinct Data_Value FW from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
+where rtrim(Data_Attribute) like 'FirmwareVersion' and Data_Value is not null and (sd.datastamp between @startdate and @enddate )
+)
 
 insert into [MFTG_DW].[dbo].FirmwareVersion_D (FirmwareVersionKey,FirmwareVersion)
 select distinct isnull((select max(FirmwareVersionKey)from [MFTG_DW].dbo.[FirmwareVersion_D] where [FirmwareVersionKey]>-1),0)+
@@ -131,7 +203,11 @@ if (@startdate is not null and @enddate is not null)
 begin
 with T_ROMv as
 (select distinct Data_Value RV from MES2_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute) like 'ROMVersion'and (sd.datastamp between @startdate and @enddate ))
+where rtrim(Data_Attribute) like 'ROMVersion' and (sd.datastamp between @startdate and @enddate )
+union
+select distinct Data_Value RV from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
+where rtrim(Data_Attribute) like 'ROMVersion' and (sd.datastamp between @startdate and @enddate )
+)
 
 insert into [MFTG_DW].dbo.ROMVersion_D(ROMVersionKey,ROMVersion)
 select distinct isnull((select max([ROMVersionKey])from [MFTG_DW].dbo.[ROMVersion_D] where [ROMVersionKey]>-1),0)+
@@ -158,7 +234,12 @@ if (@startdate is not null and @enddate is not null)
 begin
 with T_SMV as
 (select distinct Data_Value SMV from MES2_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute )like 'SafeModeVersion'and (sd.datastamp between @startdate and @enddate ))
+where rtrim(Data_Attribute )like 'SafeModeVersion' and (sd.datastamp between @startdate and @enddate )
+union
+select distinct Data_Value SMV from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
+where rtrim(Data_Attribute )like 'SafeModeVersion' and (sd.datastamp between @startdate and @enddate )
+)
+
 insert into [MFTG_DW].[dbo].[SafemodeVersion_D]([SafemodeVersionKey],[SafemodeVersion])
 select  distinct isnull((select max([SafemodeVersionKey])from [MFTG_DW].dbo.[SafemodeVersion_D] where [SafemodeVersionKey]>-1),0)+
  ROW_NUMBER() over (ORDER BY s.SMV),s.SMV from T_SMV s
@@ -182,7 +263,11 @@ begin
 
 with T_IRV as
 (select distinct Data_Value IRV from MES2_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute) like 'IRV' and (sd.datastamp between @startdate and @enddate ))
+where rtrim(Data_Attribute) like 'IRV' and (sd.datastamp between @startdate and @enddate )
+union
+select distinct Data_Value IRV from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
+where rtrim(Data_Attribute) like 'IRV' and (sd.datastamp between @startdate and @enddate )
+)
 
 insert into [MFTG_DW].[dbo].[IRV_D]([IRVKey],[IRV])
 select distinct isnull((select max(IRVKey) 
@@ -211,7 +296,11 @@ if (@startdate is not null and @enddate is not null)
 begin
 with T_RM as
 (select distinct Data_Value RM from MES2_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute )like 'RegCode'and (sd.datastamp between @startdate and @enddate ))
+where rtrim(Data_Attribute )like 'RegCode' and (sd.datastamp between @startdate and @enddate )
+union
+select distinct Data_Value RM from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
+where rtrim(Data_Attribute )like 'RegCode' and (sd.datastamp between @startdate and @enddate )
+)
 insert into [MFTG_DW].[dbo].RegulatoryModel_D(RegulatoryModelKey,RegulatoryModel)
 select  distinct isnull((select max(RegulatoryModelKey)from [MFTG_DW].dbo.RegulatoryModel_D where RegulatoryModelKey>-1),0)+
  ROW_NUMBER() over (ORDER BY s.RM),s.RM from T_RM s
@@ -234,7 +323,10 @@ select @startdate = StartDate, @enddate = EndDate  from etl_configuration.dbo.Da
 if (@startdate is not null and @enddate is not null)
 begin
 with T_S as
-(select distinct(Station_id) STA from MES2_SERCOMM.dbo.process_step_result sr where (sr.datastamp between @startdate and @enddate ))
+(select distinct(Station_id) STA from MES2_SERCOMM.dbo.process_step_result sr where (sr.datastamp between @startdate and @enddate )
+union
+select distinct(Station_id) STA from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_result sr where (sr.datastamp between @startdate and @enddate )
+)
 
 insert into [MFTG_DW].[dbo].Station_D(StationKey,Station)
 select  isnull((select max(StationKey) from [MFTG_DW].[dbo].Station_D where 
