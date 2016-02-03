@@ -339,3 +339,97 @@ end;
 go
 
 go
+
+--Location
+--exec sp_Location_Sercomm 1
+create PROC sp_Location_Sercomm (@pLoadID int) as
+begin
+set nocount on
+declare @startdate  datetime
+declare @enddate  datetime
+
+select @startdate = StartDate, @enddate = EndDate  from etl_configuration.dbo.DataLoad_Log where loadid = @pLoadID
+if (@startdate is not null and @enddate is not null)
+begin
+insert into [MFTG_DW].dbo.Location_D(LocationKey,Location,Country)
+select distinct isnull((select max([LocationKey]) from [MFTG_DW].dbo.[Location_D] where [LocationKey]>-1),0) +
+ ROW_NUMBER() over (ORDER BY s.location_name), s.location_name, s.country 
+from MFGTESTC_TAIWAN_SERCOMM.[dbo].[mfg_location] s
+left outer join [MFTG_DW].dbo.Location_D d on s.location_name = d.Location
+where d.Location is null
+end
+end
+go
+
+--SKU
+--exec sp_pop_SKU_Sercomm 1
+Create PROC sp_pop_SKU_Sercomm (@pLoadID int) as
+begin
+set nocount on
+
+declare @startdate  datetime
+declare @enddate	datetime
+
+select @startdate = StartDate, @enddate = EndDate  from etl_configuration.dbo.DataLoad_Log where loadid = @pLoadID
+if (@startdate is not null and @enddate is not null)
+begin
+with T_SKU as
+(select distinct  data_value SKU from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
+where data_attribute like 'label field SKU'   and 
+data_value not like '01-SSC-4321%' and data_value not like '01-SSC-1234%'  and (sd.datestamp between @startdate and @enddate )
+union 
+select distinct '01-SSC-'+data_value SKU from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd 
+where  data_attribute like 'label field BaseSKU' and 
+data_value not like '01-SSC-4321%' and data_value not like '01-SSC-1234%'  and (sd.datestamp between @startdate and @enddate ))
+
+insert into [MFTG_DW].[dbo].[SKU_D]([SKUKey],[SKU],[SKUDescription])
+select distinct isnull((select max([SKUKey]) from [MFTG_DW].dbo.[SKU_D] where [SKUKey]>-1),0) +
+ROW_NUMBER() over (ORDER BY s.SKU), s.SKU,s.SKU
+from T_SKU s
+left outer join [MFTG_DW].dbo.[SKU_D] d on s.SKU = d.[SKU]
+where  d.[SKU] is null
+end
+end
+go 
+
+--Part number 
+--exec sp_pop_Partnum_Sercomm 1
+Create PROC sp_pop_Partnum_Sercomm (@pLoadID int) as
+begin
+set nocount on
+declare @startdate  datetime
+declare @enddate  datetime
+
+select @startdate = StartDate, @enddate = EndDate  from etl_configuration.dbo.DataLoad_Log where loadid = @pLoadID
+if (@startdate is not null and @enddate is not null)
+begin
+insert into [MFTG_DW] .[dbo].PartNumber_D(PartNumberKey,PartNumberCode,PartNumber,Revision,[Description])
+select distinct isnull((select max([PartNumberKey]) from [MFTG_DW].dbo.[PartNumber_D] where [PartNumberKey]>-1),0)+
+ ROW_NUMBER() over (ORDER BY s.pn_Code),s.pn_Code,s.part_number, s.revision, s.description
+from MFGTESTC_TAIWAN_SERCOMM.dbo.part_number s
+left outer join [MFTG_DW].dbo.PartNumber_D d on s.part_number = d.PartNumber
+where d.PartNumber is null
+end
+end
+go
+
+--Step result Code
+--exec sp_Stepresult_code_Sercomm 1
+Create PROC sp_Stepresult_code_Sercomm (@pLoadID int) as
+begin
+set nocount on
+declare @startdate  datetime
+declare @enddate  datetime
+
+select @startdate = StartDate, @enddate = EndDate  from etl_configuration.dbo.DataLoad_Log where loadid = @pLoadID
+if (@startdate is not null and @enddate is not null)
+begin
+insert into [MFTG_DW].[dbo].[StepResultCode_D]([StepResultCodeKey],[StepResultValue],[Description])
+select distinct isnull((select max([StepResultCodeKey]) from [MFTG_DW].dbo.[StepResultCode_D] where [StepResultCodeKey]>-1),0) +
+ROW_NUMBER() over (ORDER BY s.[step_result_code]), s.[step_result_code],s.[description] 
+from MFGTESTC_TAIWAN_SERCOMM.[dbo].[step_result_code] s
+left outer join [MFTG_DW].dbo.[StepResultCode_D] d on s.[description] = d.[Description]
+where d.[StepResultValue] is null
+end
+end
+go
