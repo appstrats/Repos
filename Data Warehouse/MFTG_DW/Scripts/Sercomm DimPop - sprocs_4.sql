@@ -1,8 +1,8 @@
 
---exec sp_pop_assembly_Sercomm 6
+--exec sp_pop_assembly_TAIWAN_SERCOMM 7
 use [MFTG_DW]
 go
-alter PROC sp_pop_assembly_Sercomm (@pLoadID int) as
+create PROC sp_pop_assembly_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
 
@@ -14,13 +14,11 @@ if (@startdate is not null and @enddate is not null)
 begin
 with T_Assem as
 (select distinct data_value udv from MES2_SERCOMM.dbo.process_step_data sd
-where rtrim(data_attribute)like 'label field Assembly'  and  (sd.datastamp between @startdate and @enddate )
-) 
+where rtrim(data_attribute)like 'label field Assembly'  and  (sd.DataStamp between @startdate and @enddate )
 union
 (select distinct data_value udv from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
-where rtrim(data_attribute)like 'label field Assembly'  and  (sd.datastamp between @startdate and @enddate )
-) 
-
+where rtrim(data_attribute)like 'label field Assembly' and  sd.dateStamp between @startdate and @enddate )
+)
 insert into [MFTG_DW].[dbo].[Assembly_D]([AssemblyKey],[AssemblyNumber])
 select distinct isnull((select max([AssemblyKey]) from [MFTG_DW].[dbo].[Assembly_D] where [AssemblyKey]>-1),0) +
 ROW_NUMBER() over (ORDER BY s.udv ), s.udv 
@@ -31,8 +29,8 @@ end
 end;
 
 go
---sp_pop_serialnumber_Sercomm 6
-alter PROC sp_pop_serialnumber_Sercomm (@pLoadID int) as
+--exec sp_pop_serialnumber_TAIWAN_SERCOMM 7
+create PROC sp_pop_serialnumber_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
 
@@ -49,7 +47,7 @@ left outer join MES2_SERCOMM.dbo.process_step_data sd on sd.Serial_Number=snta.M
  where 
 len(snta.Mac_Id) = 12 and
  (snta.Mac_Id like '0006B1%' or snta.Mac_Id like '0017C5%' or  snta.Mac_Id like 'FFFFFF%'
-or snta.Mac_Id like 'C0EAE4%' or snta.Mac_Id like '18B169%' or snta.Mac_Id like '004010%') and (sd.datastamp between @startdate and @enddate ) )
+or snta.Mac_Id like 'C0EAE4%' or snta.Mac_Id like '18B169%' or snta.Mac_Id like '004010%') and (sd.DataStamp between @startdate and @enddate ) )
 
 insert into [MFTG_DW].[dbo].[SerialNumber_D]([SerialNumberKey],[SerialNumber],[AuthCode])
 select  isnull((select max([SerialNumberKey]) from [MFTG_DW].dbo.[SerialNumber_D] where [SerialNumberKey]>-1),0) +
@@ -61,7 +59,7 @@ end
 end;
 go
 
-Create PROC sp_pop_serialnumber_Sercomm_Label (@pLoadID int) as
+create PROC sp_pop_serialnumber_Sercomm_Label (@pLoadID int) as
 begin
 set nocount on
 
@@ -98,8 +96,8 @@ end
 go
 
 --Manufacturing_ID
---sp_pop_manufacturing_id_Sercomm 6
-alter PROC sp_pop_manufacturing_id_Sercomm (@pLoadID int) as
+--exec sp_pop_manufacturing_id_TAIWAN_SERCOMM 7
+create PROC sp_pop_manufacturing_id_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
 
@@ -157,8 +155,8 @@ go
 go
 
 
--- exec sp_pop_firmversion_Sercomm 6
-alter PROC sp_pop_firmversion_Sercomm (@pLoadID int) as
+-- exec sp_pop_firmversion_TAIWAN_SERCOMM 7
+create PROC sp_pop_firmversion_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
 
@@ -171,10 +169,10 @@ begin
 
 with T_FirmW as
 (select distinct Data_Value FW from MES2_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute) like 'FirmwareVersion' and Data_Value is not null and (sd.datastamp between @startdate and @enddate )
+where rtrim(Data_Attribute) like 'FirmwareVersion' and Data_Value is not null and (sd.DataStamp between @startdate and @enddate) 
 union
 select distinct Data_Value FW from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute) like 'FirmwareVersion' and Data_Value is not null and (sd.datastamp between @startdate and @enddate )
+where rtrim(Data_Attribute) like 'FirmwareVersion' and Data_Value is not null and (sd.datestamp between @startdate and @enddate )
 )
 
 insert into [MFTG_DW].[dbo].FirmwareVersion_D (FirmwareVersionKey,FirmwareVersion)
@@ -190,8 +188,8 @@ go
 --ROM version
 
 go
--- exec sp_pop_romversion_Sercomm 6
-alter PROC sp_pop_romversion_Sercomm (@pLoadID int) as
+-- exec sp_pop_romversion_TAIWAN_SERCOMM 7
+create PROC sp_pop_romversion_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
 
@@ -203,10 +201,10 @@ if (@startdate is not null and @enddate is not null)
 begin
 with T_ROMv as
 (select distinct Data_Value RV from MES2_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute) like 'ROMVersion' and (sd.datastamp between @startdate and @enddate )
+where rtrim(Data_Attribute) like 'ROMVersion' and (sd.DataStamp between @startdate and @enddate )
 union
 select distinct Data_Value RV from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute) like 'ROMVersion' and (sd.datastamp between @startdate and @enddate )
+where rtrim(Data_Attribute) like 'ROMVersion' and (sd.datestamp between @startdate and @enddate )
 )
 
 insert into [MFTG_DW].dbo.ROMVersion_D(ROMVersionKey,ROMVersion)
@@ -221,8 +219,8 @@ go
 
 go
 --Safemode version
--- exec sp_pop_safemodeversion_Sercomm 6
-alter PROC sp_pop_safemodeversion_Sercomm (@pLoadID int) as
+-- exec sp_pop_safemodeversion_TAIWAN_SERCOMM 7
+create PROC sp_pop_safemodeversion_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
 
@@ -234,10 +232,10 @@ if (@startdate is not null and @enddate is not null)
 begin
 with T_SMV as
 (select distinct Data_Value SMV from MES2_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute )like 'SafeModeVersion' and (sd.datastamp between @startdate and @enddate )
+where rtrim(Data_Attribute )like 'SafeModeVersion' and (sd.DataStamp between @startdate and @enddate )
 union
 select distinct Data_Value SMV from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute )like 'SafeModeVersion' and (sd.datastamp between @startdate and @enddate )
+where rtrim(Data_Attribute )like 'SafeModeVersion' and (sd.dateStamp between @startdate and @enddate )
 )
 
 insert into [MFTG_DW].[dbo].[SafemodeVersion_D]([SafemodeVersionKey],[SafemodeVersion])
@@ -249,8 +247,8 @@ end
 end;
 go
 
--- exec sp_pop_IRV_Sercomm 6
-ALTER PROC sp_pop_IRV_Sercomm (@pLoadID int) as
+-- exec sp_pop_IRV_TAIWAN_SERCOMM 7
+create PROC sp_pop_IRV_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
 
@@ -263,10 +261,10 @@ begin
 
 with T_IRV as
 (select distinct Data_Value IRV from MES2_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute) like 'IRV' and (sd.datastamp between @startdate and @enddate )
+where rtrim(Data_Attribute) like 'IRV' and (sd.DataStamp between @startdate and @enddate )
 union
 select distinct Data_Value IRV from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute) like 'IRV' and (sd.datastamp between @startdate and @enddate )
+where rtrim(Data_Attribute) like 'IRV' and (sd.datestamp between @startdate and @enddate )
 )
 
 insert into [MFTG_DW].[dbo].[IRV_D]([IRVKey],[IRV])
@@ -283,8 +281,8 @@ go
 
 go
 --Regmode
--- exec sp_pop_regulatorymodel_Sercomm 6
-alter PROC sp_pop_regulatorymodel_Sercomm (@pLoadID int) as
+-- exec sp_pop_regulatorymodel_TAIWAN_SERCOMM 7
+create PROC sp_pop_regulatorymodel_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
 
@@ -296,10 +294,10 @@ if (@startdate is not null and @enddate is not null)
 begin
 with T_RM as
 (select distinct Data_Value RM from MES2_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute )like 'RegCode' and (sd.datastamp between @startdate and @enddate )
+where rtrim(Data_Attribute )like 'RegCode' and (sd.DataStamp between @startdate and @enddate )
 union
 select distinct Data_Value RM from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute )like 'RegCode' and (sd.datastamp between @startdate and @enddate )
+where rtrim(Data_Attribute )like 'RegCode' and (sd.dateStamp between @startdate and @enddate )
 )
 insert into [MFTG_DW].[dbo].RegulatoryModel_D(RegulatoryModelKey,RegulatoryModel)
 select  distinct isnull((select max(RegulatoryModelKey)from [MFTG_DW].dbo.RegulatoryModel_D where RegulatoryModelKey>-1),0)+
@@ -311,8 +309,8 @@ end;
 go
 
 go
--- exec sp_pop_station_Sercomm 6
-alter PROC sp_pop_station_Sercomm (@pLoadID int) as
+-- exec sp_pop_station_TAIWAN_SERCOMM 7 
+create PROC sp_pop_station_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
 
@@ -323,9 +321,9 @@ select @startdate = StartDate, @enddate = EndDate  from etl_configuration.dbo.Da
 if (@startdate is not null and @enddate is not null)
 begin
 with T_S as
-(select distinct(Station_id) STA from MES2_SERCOMM.dbo.process_step_result sr where (sr.datastamp between @startdate and @enddate )
+(select distinct(Station_id) STA from MES2_SERCOMM.dbo.process_step_result sr where (sr.DataStamp between @startdate and @enddate )
 union
-select distinct(Station_id) STA from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_result sr where (sr.datastamp between @startdate and @enddate )
+select distinct(Station_id) STA from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_result sr where (sr.dateStamp between @startdate and @enddate )
 )
 
 insert into [MFTG_DW].[dbo].Station_D(StationKey,Station)
@@ -341,8 +339,8 @@ go
 go
 
 --Location
---exec sp_Location_Sercomm 1
-create PROC sp_Location_Sercomm (@pLoadID int) as
+--exec sp_Location_TAIWAN_SERCOMM 7
+alter PROC sp_Location_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
 declare @startdate  datetime
@@ -351,9 +349,9 @@ declare @enddate  datetime
 select @startdate = StartDate, @enddate = EndDate  from etl_configuration.dbo.DataLoad_Log where loadid = @pLoadID
 if (@startdate is not null and @enddate is not null)
 begin
-insert into [MFTG_DW].dbo.Location_D(LocationKey,Location,Country)
+insert into [MFTG_DW].dbo.Location_D(LocationKey,LocationCode,Location,Country)
 select distinct isnull((select max([LocationKey]) from [MFTG_DW].dbo.[Location_D] where [LocationKey]>-1),0) +
- ROW_NUMBER() over (ORDER BY s.location_name), s.location_name, s.country 
+ ROW_NUMBER() over (ORDER BY s.location_name),-1, s.location_name, s.country 
 from MFGTESTC_TAIWAN_SERCOMM.[dbo].[mfg_location] s
 left outer join [MFTG_DW].dbo.Location_D d on s.location_name = d.Location
 where d.Location is null
@@ -362,8 +360,8 @@ end
 go
 
 --SKU
---exec sp_pop_SKU_Sercomm 1
-Create PROC sp_pop_SKU_Sercomm (@pLoadID int) as
+--exec sp_pop_SKU_TAIWAN_SERCOMM 7
+Create PROC sp_pop_SKU_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
 
@@ -393,8 +391,8 @@ end
 go 
 
 --Part number 
---exec sp_pop_Partnum_Sercomm 1
-Create PROC sp_pop_Partnum_Sercomm (@pLoadID int) as
+--exec sp_pop_Partnum_TAIWAN_SERCOMM 7
+Create PROC sp_pop_Partnum_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
 declare @startdate  datetime
@@ -414,8 +412,8 @@ end
 go
 
 --Step result Code
---exec sp_Stepresult_code_Sercomm 1
-Create PROC sp_Stepresult_code_Sercomm (@pLoadID int) as
+--exec sp_Stepresult_code_TAIWAN_SERCOMM 7
+Create PROC sp_Stepresult_code_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
 declare @startdate  datetime
