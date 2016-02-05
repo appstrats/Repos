@@ -1,5 +1,5 @@
 
---exec sp_pop_assembly_TAIWAN_SERCOMM 7
+--exec sp_pop_assembly_TAIWAN_SERCOMM 8
 use [MFTG_DW]
 go
 create PROC sp_pop_assembly_TAIWAN_SERCOMM (@pLoadID int) as
@@ -29,7 +29,7 @@ end
 end;
 
 go
---exec sp_pop_serialnumber_TAIWAN_SERCOMM 7
+--exec sp_pop_serialnumber_TAIWAN_SERCOMM 8
 create PROC sp_pop_serialnumber_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
@@ -96,7 +96,7 @@ end
 go
 
 --Manufacturing_ID
---exec sp_pop_manufacturing_id_TAIWAN_SERCOMM 7
+--exec sp_pop_manufacturing_id_TAIWAN_SERCOMM 8
 create PROC sp_pop_manufacturing_id_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
@@ -155,7 +155,7 @@ go
 go
 
 
--- exec sp_pop_firmversion_TAIWAN_SERCOMM 7
+-- exec sp_pop_firmversion_TAIWAN_SERCOMM 8
 create PROC sp_pop_firmversion_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
@@ -188,8 +188,8 @@ go
 --ROM version
 
 go
--- exec sp_pop_romversion_TAIWAN_SERCOMM 7
-create PROC sp_pop_romversion_TAIWAN_SERCOMM (@pLoadID int) as
+-- exec sp_pop_romversion_TAIWAN_SERCOMM 8
+alter PROC sp_pop_romversion_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
 
@@ -219,10 +219,10 @@ go
 
 go
 --Safemode version
--- exec sp_pop_safemodeversion_TAIWAN_SERCOMM 7
+-- exec sp_pop_safemodeversion_TAIWAN_SERCOMM 8
 create PROC sp_pop_safemodeversion_TAIWAN_SERCOMM (@pLoadID int) as
 begin
-set nocount on
+set nocount on 
 
 declare @startdate  datetime
 declare @enddate	datetime
@@ -247,7 +247,7 @@ end
 end;
 go
 
--- exec sp_pop_IRV_TAIWAN_SERCOMM 7
+-- exec sp_pop_IRV_TAIWAN_SERCOMM 8
 create PROC sp_pop_IRV_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
@@ -281,7 +281,7 @@ go
 
 go
 --Regmode
--- exec sp_pop_regulatorymodel_TAIWAN_SERCOMM 7
+-- exec sp_pop_regulatorymodel_TAIWAN_SERCOMM 8
 create PROC sp_pop_regulatorymodel_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
@@ -309,7 +309,7 @@ end;
 go
 
 go
--- exec sp_pop_station_TAIWAN_SERCOMM 7 
+-- exec sp_pop_station_TAIWAN_SERCOMM 8 
 create PROC sp_pop_station_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
@@ -339,7 +339,7 @@ go
 go
 
 --Location
---exec sp_Location_TAIWAN_SERCOMM 7
+--exec sp_Location_TAIWAN_SERCOMM 8
 alter PROC sp_Location_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
@@ -360,7 +360,7 @@ end
 go
 
 --SKU
---exec sp_pop_SKU_TAIWAN_SERCOMM 7
+--exec sp_pop_SKU_TAIWAN_SERCOMM 8
 Create PROC sp_pop_SKU_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
@@ -391,7 +391,7 @@ end
 go 
 
 --Part number 
---exec sp_pop_Partnum_TAIWAN_SERCOMM 7
+--exec sp_pop_Partnum_TAIWAN_SERCOMM 8
 Create PROC sp_pop_Partnum_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
@@ -412,7 +412,7 @@ end
 go
 
 --Step result Code
---exec sp_Stepresult_code_TAIWAN_SERCOMM 7
+--exec sp_Stepresult_code_TAIWAN_SERCOMM 8
 Create PROC sp_Stepresult_code_TAIWAN_SERCOMM (@pLoadID int) as
 begin
 set nocount on
