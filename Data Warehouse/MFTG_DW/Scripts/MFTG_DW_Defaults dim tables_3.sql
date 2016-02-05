@@ -1,6 +1,4 @@
 --To insert the default row in dimenstions 
-use [MFTG_DW]
-go
 
 if not exists(select * from [dbo].[Assembly_D] where [AssemblyKey] = -1)
 INSERT into [dbo].[Assembly_D] ([AssemblyNumber],[AssemblyKey]) values ('Unknown',-1);
@@ -9,7 +7,8 @@ insert into dbo.DataSource_D (DataSourceKey,DataSource,DataSourceDescription,Sup
 insert into dbo.[DataSource_D](DataSourceKey,DataSource,DataSourceDescription,Supplier)values(1,'MFGTESTC_FREMONT','Flash Fremont','Flash Fremont');
 insert into dbo.[DataSource_D](DataSourceKey,DataSource,DataSourceDescription,Supplier)values(2,'SENAO_MFGTESTC_TAIWAN','Senao Shopfloor','SENAO');
 insert into dbo.[DataSource_D](DataSourceKey,DataSource,DataSourceDescription,Supplier)values(3,'MFGTESTC_UK','Flash UK','Flash UK');
-insert into dbo.[DataSource_D](DataSourceKey,DataSource,DataSourceDescription,Supplier)values(4,'MES2_SERCOMM','Flash UK','Flash UK');
+insert into dbo.[DataSource_D](DataSourceKey,DataSource,DataSourceDescription,Supplier)values(4,'MES2_SERCOMM','Flash MES2_SERCOMM','Flash MES2_SERCOMM');
+insert into dbo.[DataSource_D](DataSourceKey,DataSource,DataSourceDescription,Supplier)values(8,'MFGTESTC_TAIWAN_SERCOMM','Flash MFGTESTC_TAIWAN_SERCOMM','Flash MFGTESTC_TAIWAN_SERCOMM');
 
 insert into dbo.FirmwareVersion_D (FirmwareVersionKey,FirmwareVersion) values (-1,'Unknown');
 
@@ -18,6 +17,7 @@ insert into [dbo].[IRV_D] ([IRVKey],[IRV]) values (-1,'Unknown');
 insert into [dbo].[IsRMA_D] ([IsRMAKey],[IsRMA]) values (-1,-1);
 insert into [dbo].IsRMA_D(IsRMAKey,IsRMA)values(1,1);
 insert into [dbo].IsRMA_D(IsRMAKey,IsRMA)values(2,0);
+
 
 insert into dbo.Location_D (LocationKey,LocationCode,Location,Country)values (-1,-1,'Unknown','Unknown');
 
@@ -139,7 +139,6 @@ insert into dbo.TransactionMinute_D(TransactionMinuteKey,TransactionMinute)value
 
 
 GO
-exec sp_populate_trandate 2006
 exec sp_populate_trandate 2007
 exec sp_populate_trandate 2008
 exec sp_populate_trandate 2009

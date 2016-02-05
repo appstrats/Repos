@@ -1,7 +1,7 @@
 use [MFTG_DW]
 go
--- sp_populate_trandate '2021'
-create PROC sp_populate_trandate (@pyear char(4)) as
+-- exec sp_populate_trandate '2016'
+alter PROC sp_populate_trandate (@pyear char(4)) as
 begin
 set nocount on
 declare @yyyy  char(4)
@@ -31,7 +31,6 @@ select format(@dtcur,'yyyyMMdd'),@dtcur ,format(@dtcur,'MMM dd, yyyy'),DATEPART(
 when DATEPART(MM,@dtcur) between 5 and 7 then 2 when DATEPART(MM,@dtcur) between 8 and 10 then 3 else 4 end , case when DATEPART(MM,@dtcur) between 2 and 4 then 'Q1'
 when DATEPART(MM,@dtcur) between 5 and 7 then 'Q2' when DATEPART(MM,@dtcur) between 8 and 10 then 'Q3' else 'Q4' end,DATEPART(YEAR,@dtcur),
 DATENAME(QUARTER,@dtcur) ,DATEPART(QUARTER,@dtcur),DATEPART(YEAR,@dtcur)+1 ;
-
 
 set @dtcur = DATEADD(D,1, @dtcur)
 end
@@ -67,7 +66,7 @@ end
 
 go
 --select dbo.fn_getdatavalue(2,'0006B12E7D3F',1) 
-Create function dbo.fn_getdatavalue(@pstep_idx as int, @psn as varchar(100),@pdatasource_id as int) returns varchar(4000) as
+create function dbo.fn_getdatavalue(@pstep_idx as int, @psn as varchar(100),@pdatasource_id as int) returns varchar(4000) as
 begin
 declare @data_att_val varchar(4000)
 set @data_att_val = ''
@@ -89,6 +88,19 @@ select @data_att_val = @data_att_val + sd.data_attribute + '¬' + sd.data_value +
 where sd.step_index = @pstep_idx 
 
 end
+if (@pdatasource_id = 4)
+begin 
+select @data_att_val = @data_att_val + sd.data_attribute + '¬' + sd.data_value + '¶' from MES2_SERCOMM.dbo.process_step_data sd
+where sd.step_index = @pstep_idx 
+
+end
+if (@pdatasource_id = 7)
+begin 
+select @data_att_val = @data_att_val + sd.data_attribute + '¬' + sd.data_value + '¶' from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
+where sd.step_index = @pstep_idx 
+
+end
+
 return @data_att_val
 end
 go
@@ -96,7 +108,7 @@ go
 use [ETL_Configuration]
 
 go
---exec sp_create_Load 'MFGTESTC_FREMONT'
+--exec sp_create_Load 'MFGTESTC_TAIWAN_SERCOMM'
 
 alter PROC sp_create_Load (@pDatasource varchar(50)) as
 begin
@@ -199,22 +211,85 @@ values
  end
  end
  end
+ if (@pDatasource ='MES2_SERCOMM')
+begin 
+if not exists(select * From [dbo].[DataLoad_Log] where datasource ='MES2_SERCOMM')
+begin
+
+select @startdate =min(datastamp), @enddate = max(datastamp) from MES2_SERCOMM.dbo.process_step_result
+
+Insert into [dbo].[DataLoad_Log](LoadDescription, DataSource, LoadID,StartDate,EndDate,Status)
+values
+('Initial Load', @pDatasource, isnull((select max(LoadID) from [dbo].[DataLoad_Log]
+ where LoadID>-1),0) + 1, @startdate, @enddate, null)
+
+end
+else
+begin
+select @maxLoadID = max(loadid) From [dbo].[DataLoad_Log] where datasource ='MES2_SERCOMM' and [status]=1
+
+select @enddate = EndDate from [dbo].[DataLoad_Log] where loadid = @maxLoadID
+
+select @startdate =min(datastamp), @enddate = max(datastamp) from MES2_SERCOMM.dbo.process_step_result
+where datastamp > @enddate
+ 
+ if @startdate is not null and @enddate is not null
+ begin
+ Insert into [dbo].[DataLoad_Log](LoadDescription, DataSource, LoadID,StartDate,EndDate,Status)
+values
+('Incremental Load', @pDatasource, isnull((select max(LoadID) from [dbo].[DataLoad_Log]
+ where LoadID>-1),0) + 1, @startdate, @enddate, null)
+ end
+ end
+ end
+ if (@pDatasource ='MFGTESTC_TAIWAN_SERCOMM')
+begin 
+if not exists(select * From [dbo].[DataLoad_Log] where datasource ='MFGTESTC_TAIWAN_SERCOMM')
+begin
+
+select @startdate =min(datestamp), @enddate = max(datestamp) from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_result
+
+Insert into [dbo].[DataLoad_Log](LoadDescription, DataSource, LoadID,StartDate,EndDate,Status)
+values
+('Initial Load', @pDatasource, isnull((select max(LoadID) from [dbo].[DataLoad_Log]
+ where LoadID>-1),0) + 1, @startdate, @enddate, null)
+
+end
+else
+begin
+select @maxLoadID = max(loadid) From [dbo].[DataLoad_Log] where datasource ='MFGTESTC_TAIWAN_SERCOMM' and [status]=1
+
+select @enddate = EndDate from [dbo].[DataLoad_Log] where loadid = @maxLoadID
+
+select @startdate =min(datastamp), @enddate = max(datastamp) from MES2_SERCOMM.dbo.process_step_result
+where datastamp > @enddate
+ 
+ if @startdate is not null and @enddate is not null
+ begin
+ Insert into [dbo].[DataLoad_Log](LoadDescription, DataSource, LoadID,StartDate,EndDate,Status)
+values
+('Incremental Load', @pDatasource, isnull((select max(LoadID) from [dbo].[DataLoad_Log]
+ where LoadID>-1),0) + 1, @startdate, @enddate, null)
+ end
+ end
+ end
+
 end
 go
 
-create  VIEW [MFTG_DW].[dbo].[MFTGSummary_MV]
+create  VIEW [dbo].[MFTGSummary_MV]
 WITH SCHEMABINDING
 AS
     SELECT TransactionHourKey,SerialNumberKey , MFTGSummaryKey , MFTGSummaryCount , SafemodeVersionKey , ROMVersionKey ,
 	FirmwareVersionKey,RegulatoryModelKey,TransactionDateKey,TransactionMinuteKey,DataSourceKey,SKUKey,StepIndex,ProcessStepData,
-	StepResultCodeKey,LocationKey,PartNumberKey,AssemblyKey,WorkOrderKey,IsRMAKey,IRVKey,StationTypeKey,StationKey,DateCodeKey,MIDGroupKey,ProcessDate
+	StepResultCodeKey,LocationKey,PartNumberKey,AssemblyKey,WorkOrderKey,IsRMAKey,IRVKey,StationTypeKey,StationKey,DateCodeKey,MIDGroupKey
 FROM (
  SELECT  TransactionHourKey,SerialNumberKey ,MFTGSummaryKey,MFTGSummaryCount,SafemodeVersionKey,
  ROMVersionKey,FirmwareVersionKey,	 RegulatoryModelKey,TransactionDateKey,TransactionMinuteKey,DataSourceKey,
- SKUKey,StepIndex,ProcessStepData,StepResultCodeKey,LocationKey,ProcessDate,
+ SKUKey,StepIndex,ProcessStepData,StepResultCodeKey,LocationKey,
 	  PartNumberKey,AssemblyKey,WorkOrderKey,IsRMAKey,IRVKey,StationTypeKey,StationKey,DateCodeKey,MIDGroupKey,
   ROW_NUMBER() OVER (PARTITION BY SerialNumberKey ORDER BY TransactionDateKey DESC) Fact_Row_Num
- FROM [MFTG_DW].dbo.MFTGSummary_F )
+ FROM dbo.MFTGSummary_F )
 tmp WHERE Fact_Row_Num = 1
 
 go

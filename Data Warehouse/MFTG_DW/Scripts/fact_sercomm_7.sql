@@ -1,5 +1,5 @@
---exec sp_populate_fact_Sercomm_Label 1
-Create PROC sp_populate_fact_Sercomm_Label (@pLoadID int) as
+--exec sp_populate_fact_Sercomm_Label 8
+alter PROC sp_populate_fact_Sercomm_Label (@pLoadID int) as
 begin
 set nocount on
 
@@ -61,31 +61,44 @@ where t.[MIDGroupKey] is null;
 
 
 with T_Label_Assem as
- (select  step_index, serial_number, data_value udv from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
-where data_attribute like 'label field Assembly' and (sd.datestamp between @startdate and @enddate) ),
+(select Step_Index,  Data_Value udv from MES2_SERCOMM.dbo.process_step_data sd
+where rtrim(data_attribute)like 'label field Assembly'  and  (sd.DataStamp between @startdate and @enddate )
+union
+(select step_index,  data_value udv from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
+where rtrim(data_attribute)like 'label field Assembly' and  sd.dateStamp between @startdate and @enddate )),
 T_SKU as
-(select  step_index, serial_number, data_value SKU from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
+(select  step_index,  data_value SKU from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
 where data_attribute ='label assembly part number' and  data_value like '01-SSC%'
 and step_index in
 (select step_index from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_result where station_type_code in(1,4))and (sd.datestamp between @startdate and @enddate)),
 T_RM as
-(select  step_index, serial_number, data_value RM from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
+(select  step_index,  data_value RM from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
 where data_attribute like 'label field RM'and (sd.datestamp between @startdate and @enddate)),
 T_FirmW as
-(select  step_index, serial_number, data_value FW from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd 
-where data_attribute like 'FirmwareVersion'and (sd.datestamp between @startdate and @enddate)),
+(select Step_Index,  Data_Value FW from MES2_SERCOMM.dbo.process_step_data sd
+where rtrim(Data_Attribute) like 'FirmwareVersion' and Data_Value is not null and (sd.DataStamp between @startdate and @enddate) 
+union
+select step_index,  data_value FW from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
+where rtrim(Data_Attribute) like 'FirmwareVersion' and Data_Value is not null and (sd.datestamp between @startdate and @enddate )),
 T_ROMv as
-(select  step_index, serial_number,data_value RV from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
-where data_attribute like 'ROMVersion'and (sd.datestamp between @startdate and @enddate)),
+(select Step_Index, Data_Value RV from MES2_SERCOMM.dbo.process_step_data sd
+where rtrim(Data_Attribute) like 'ROMVersion' and (sd.DataStamp between @startdate and @enddate )
+union
+select step_index, data_value RV from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
+where rtrim(Data_Attribute) like 'ROMVersion' and (sd.datestamp between @startdate and @enddate )),
 T_SMV as
-(select  step_index, serial_number, data_value SMV from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
-where data_attribute like 'SafeModeVersion'and (sd.datestamp between @startdate and @enddate)),
+(select Step_Index,  Data_Value SMV  from MES2_SERCOMM.dbo.process_step_data sd
+where rtrim(Data_Attribute )like 'SafeModeVersion' and (sd.DataStamp between @startdate and @enddate )
+union
+select step_index,  data_value  from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
+where rtrim(Data_Attribute )like 'SafeModeVersion' and (sd.dateStamp between @startdate and @enddate ))  ,
 T_RMA as
-(select  step_index, serial_number, 'yes' RMA from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd 
+(select  step_index,  'yes' RMA from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd 
 where data_attribute like 'label part number' and data_value like 'RMA%' and (sd.datestamp between @startdate and @enddate)
 union 
-select  step_index, serial_number, 'yes' RMA from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
+select  step_index,  'yes' RMA from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
 where data_attribute like 'label field assembly' and (data_value like '%R' or data_value like '%D' and (sd.datestamp between @startdate and @enddate))),
+
 T_fact as
 (select  sr.serial_number, 
  smv.SMV,
@@ -96,9 +109,9 @@ T_fact as
  format(sr.datestamp,'yyyyMMdd') T_datekey,
  datepart(MI,sr.datestamp) T_min,
  datepart(HH,sr.datestamp) T_hour,
- 7 datasourcekey, -- datasourcekey
+ 8 datasourcekey, -- datasourcekey
  sr.step_index,
- dbo.fn_getdatavalue(sr.step_index, sr.serial_number,3) psdata, 
+ dbo.fn_getdatavalue(sr.step_index, sr.serial_number,7) psdata, 
  sr.step_result_code,
  ml.location_name ,
  sr.pn_code,
@@ -112,13 +125,13 @@ T_fact as
  sr.Station_id STA
  
   from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_result sr 
-  left outer join T_SMV smv on sr.step_index = smv.step_index and sr.serial_number = smv.serial_number
-  left outer join T_ROMv romv on sr.step_index = romv.step_index and sr.serial_number = romv.serial_number
-  left outer join T_FirmW fwv on sr.step_index = fwv.step_index and sr.serial_number = fwv.serial_number
-  left outer join T_RM rm on sr.step_index = rm.step_index and sr.serial_number = rm.serial_number
-  left outer join T_SKU sku on sr.step_index = sku.step_index and sr.serial_number = sku.serial_number
-  left outer join T_Label_Assem ass on sr.step_index = ass.step_index and sr.serial_number = ass.serial_number
-  left outer join T_RMA rma on sr.step_index = rma.step_index and sr.serial_number = rma.serial_number
+  left outer join T_SMV smv on sr.step_index = smv.step_index --and sr.serial_number = smv.serial_number
+  left outer join T_ROMv romv on sr.step_index = romv.step_index --and sr.serial_number = romv.serial_number
+  left outer join T_FirmW fwv on sr.step_index = fwv.step_index --and sr.serial_number = fwv.serial_number
+  left outer join T_RM rm on sr.step_index = rm.step_index --and sr.serial_number = rm.serial_number
+  left outer join T_SKU sku on sr.step_index = sku.step_index --and sr.serial_number = sku.serial_number
+  left outer join T_Label_Assem ass on sr.step_index = ass.step_index --and sr.serial_number = ass.serial_number
+  left outer join T_RMA rma on sr.step_index = rma.step_index --and sr.serial_number = rma.serial_number
   left outer join PartNumber_D pn on sr.pn_code = pn.PartNumberCode 
   left outer join MFGTESTC_TAIWAN_SERCOMM.dbo.sn_relation r on sr.serial_number = r.sn2 and sr.station_id = r.station_id 
   left outer join MFGTESTC_TAIWAN_SERCOMM.dbo.mfg_location ml on sr.location_code = ml.location_code 
