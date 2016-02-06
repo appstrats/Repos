@@ -1,9 +1,10 @@
-exec sp_pop_assembly_TAIWAN_SERCOMM 8
-exec sp_pop_serialnumber_TAIWAN_SERCOMM 8
-exec sp_pop_manufacturing_id_TAIWAN_SERCOMM 8
-exec sp_pop_firmversion_TAIWAN_SERCOMM 8
-exec sp_pop_romversion_TAIWAN_SERCOMM 8
-exec sp_pop_safemodeversion_TAIWAN_SERCOMM 8
-exec sp_pop_IRV_TAIWAN_SERCOMM 8
-exec sp_pop_regulatorymodel_TAIWAN_SERCOMM 8
-exec sp_pop_station_TAIWAN_SERCOMM 8 
+exec sp_pop_assembly_TAIWAN_SERCOMM 4
+exec sp_pop_serialnumber_TAIWAN_SERCOMM 4
+exec sp_pop_manufacturing_id_TAIWAN_SERCOMM 4
+exec sp_pop_firmversion_TAIWAN_SERCOMM 4
+exec sp_pop_romversion_TAIWAN_SERCOMM 4
+exec sp_pop_safemodeversion_TAIWAN_SERCOMM 4
+exec sp_pop_IRV_TAIWAN_SERCOMM 4
+exec sp_pop_regulatorymodel_TAIWAN_SERCOMM 4
+exec sp_pop_station_TAIWAN_SERCOMM 4 
+

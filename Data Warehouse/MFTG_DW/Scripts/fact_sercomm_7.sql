@@ -1,5 +1,5 @@
---exec sp_populate_fact_Sercomm_Label 8
-alter PROC sp_populate_fact_Sercomm_Label (@pLoadID int) as
+--exec sp_populate_fact_Sercomm_Label 4
+create PROC sp_populate_fact_Sercomm_Label (@pLoadID int) as
 begin
 set nocount on
 
@@ -111,7 +111,7 @@ T_fact as
  datepart(HH,sr.datestamp) T_hour,
  8 datasourcekey, -- datasourcekey
  sr.step_index,
- dbo.fn_getdatavalue(sr.step_index, sr.serial_number,7) psdata, 
+ dbo.fn_getdatavalue(sr.step_index, sr.serial_number,8) psdata, 
  sr.step_result_code,
  ml.location_name ,
  sr.pn_code,
