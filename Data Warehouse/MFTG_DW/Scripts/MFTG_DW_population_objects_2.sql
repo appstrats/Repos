@@ -65,7 +65,7 @@ set nocount off
 end
 
 go
---select dbo.fn_getdatavalue(2,'0006B12E7D3F',1) 
+--select dbo.fn_getdatavalue(2,'0006B12E7D3F',8) 
 create function dbo.fn_getdatavalue(@pstep_idx as int, @psn as varchar(100),@pdatasource_id as int) returns varchar(4000) as
 begin
 declare @data_att_val varchar(4000)
