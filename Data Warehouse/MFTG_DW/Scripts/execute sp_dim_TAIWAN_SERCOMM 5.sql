@@ -7,4 +7,8 @@ exec sp_pop_safemodeversion_TAIWAN_SERCOMM 4
 exec sp_pop_IRV_TAIWAN_SERCOMM 4
 exec sp_pop_regulatorymodel_TAIWAN_SERCOMM 4
 exec sp_pop_station_TAIWAN_SERCOMM 4 
-
+exec sp_Location_TAIWAN_SERCOMM 4
+exec sp_pop_SKU_TAIWAN_SERCOMM 4
+exec sp_pop_Partnum_TAIWAN_SERCOMM 4
+exec sp_Stepresult_code_TAIWAN_SERCOMM 4
+exec sp_pop_Stationtype_TAIWAN_SERCOMM 4
