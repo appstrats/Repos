@@ -1,0 +1,15 @@
+exec sp_pop_assembly_sercomm_label 4
+exec sp_pop_serialnumber_sercomm_label 4
+exec sp_pop_manufacturing_id_sercomm_label 4
+exec sp_pop_firmversion_sercomm_label 4
+exec sp_pop_romversion_sercomm_label 4
+exec sp_pop_safemodeversion_sercomm_label 4
+exec sp_pop_IRV_sercomm_label 4
+exec sp_pop_regulatorymodel_sercomm_label 4
+exec sp_pop_station_sercomm_label 4 
+exec sp_pop_Location_sercomm_label 4
+exec sp_pop_SKU_sercomm_label 4
+exec sp_pop_Partnum_sercomm_label 4
+exec sp_pop_Stepresult_code_sercomm_label 4
+exec sp_pop_Stationtype_sercomm_label 4
+      
