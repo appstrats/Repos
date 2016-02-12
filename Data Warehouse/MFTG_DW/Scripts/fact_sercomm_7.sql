@@ -61,11 +61,8 @@ where t.[MIDGroupKey] is null;
 
 
 with T_Label_Assem as
-(select Step_Index, Data_Value udv from MES2_SERCOMM.dbo.process_step_data sd
-where rtrim(data_attribute)like 'label field Assembly'  and  (sd.DataStamp between @startdate and @enddate )
-union
-(select step_index, data_value udv from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
-where rtrim(data_attribute)like 'label field Assembly' and  sd.dateStamp between @startdate and @enddate )),
+(select Step_Index, Data_Value udv from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
+where rtrim(data_attribute)like 'label field Assembly'  and  (sd.datestamp between @startdate and @enddate )),
 T_SKU as
 (select  step_index,  data_value SKU from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
 where data_attribute ='label assembly part number' and  data_value like '01-SSC%'
@@ -75,29 +72,17 @@ T_RM as
 (select  step_index, data_value RM from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
 where data_attribute like 'label field RM'and (sd.datestamp between @startdate and @enddate)),
 T_FirmW as
-(select Step_Index,Data_Value FW from MES2_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute) like 'FirmwareVersion' and Data_Value is not null and (sd.DataStamp between @startdate and @enddate) 
-union
-select step_index,  data_value FW from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute) like 'FirmwareVersion' and Data_Value is not null and (sd.datestamp between @startdate and @enddate )),
+(select Step_Index,Data_Value FW from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
+where rtrim(Data_Attribute) like 'FirmwareVersion' and Data_Value is not null and (sd.datestamp between @startdate and @enddate)),
 T_ROMv as
-(select Step_Index,Data_Value RV from MES2_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute) like 'ROMVersion' and (sd.DataStamp between @startdate and @enddate )
-union
-select step_index, data_value RV from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
+(select Step_Index,Data_Value RV from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
 where rtrim(Data_Attribute) like 'ROMVersion' and (sd.datestamp between @startdate and @enddate )),
 T_SMV as
-(select Step_Index,Data_Value SMV  from MES2_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute )like 'SafeModeVersion' and (sd.DataStamp between @startdate and @enddate )
-union
-select step_index,  data_value  from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
+(select Step_Index,Data_Value SMV  from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
 where rtrim(Data_Attribute )like 'SafeModeVersion' and (sd.datestamp between @startdate and @enddate ))  ,
 T_RMA as
 (select  step_index,  'yes' RMA from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd 
-where data_attribute like 'label part number' and data_value like 'RMA%' and (sd.datestamp between @startdate and @enddate)
-union 
-select  step_index,  'yes' RMA from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
-where data_attribute like 'label field assembly' and (data_value like '%R' or data_value like '%D' and (sd.datestamp between @startdate and @enddate))),
+where data_attribute like 'label part number' and data_value like 'RMA%' and (sd.datestamp between @startdate and @enddate)),
 
 T_fact as
 (select  sr.serial_number, 

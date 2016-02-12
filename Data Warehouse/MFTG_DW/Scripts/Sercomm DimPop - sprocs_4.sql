@@ -2,7 +2,7 @@
 --exec sp_pop_assembly_Sercomm 5
 use [MFTG_DW]
 go
-alter PROC sp_pop_assembly_Sercomm (@pLoadID int) as
+create PROC sp_pop_assembly_Sercomm (@pLoadID int) as
 begin
 set nocount on
 
@@ -28,7 +28,7 @@ end;
 
 go
 --exec sp_pop_serialnumber_Sercomm 5
-alter PROC sp_pop_serialnumber_Sercomm (@pLoadID int) as
+create PROC sp_pop_serialnumber_Sercomm (@pLoadID int) as
 begin
 set nocount on
 
@@ -59,7 +59,7 @@ go
 
 --Manufacturing_ID
 --exec sp_pop_manufacturing_id_Sercomm 5
-alter PROC sp_pop_manufacturing_id_Sercomm (@pLoadID int) as
+create PROC sp_pop_manufacturing_id_Sercomm (@pLoadID int) as
 begin
 set nocount on
 
@@ -91,7 +91,7 @@ go
 
 
 -- exec sp_pop_firmversion_Sercomm 5
-alter PROC sp_pop_firmversion_Sercomm (@pLoadID int) as
+create PROC sp_pop_firmversion_Sercomm (@pLoadID int) as
 begin
 set nocount on
 
@@ -120,7 +120,7 @@ go
 
 go
 -- exec sp_pop_romversion_Sercomm 5
-alter PROC sp_pop_romversion_Sercomm (@pLoadID int) as
+create PROC sp_pop_romversion_Sercomm (@pLoadID int) as
 begin
 set nocount on
 
@@ -147,7 +147,7 @@ go
 go
 --Safemode version
 -- exec sp_pop_safemodeversion_Sercomm 5
-alter PROC sp_pop_safemodeversion_Sercomm (@pLoadID int) as
+create PROC sp_pop_safemodeversion_Sercomm (@pLoadID int) as
 begin
 set nocount on
 
@@ -171,7 +171,7 @@ end;
 go
 
 -- exec sp_pop_IRV_Sercomm 5
-alter PROC sp_pop_IRV_Sercomm (@pLoadID int) as
+create PROC sp_pop_IRV_Sercomm (@pLoadID int) as
 begin
 set nocount on
 
@@ -202,7 +202,7 @@ go
 go
 --Regmode
 -- exec sp_pop_regulatorymodel_Sercomm 5
-alter PROC sp_pop_regulatorymodel_Sercomm (@pLoadID int) as
+create PROC sp_pop_regulatorymodel_Sercomm (@pLoadID int) as
 begin
 set nocount on
 
@@ -227,7 +227,7 @@ go
 
 go
 -- exec sp_pop_station_Sercomm 5
-alter PROC sp_pop_station_Sercomm (@pLoadID int) as
+create PROC sp_pop_station_Sercomm (@pLoadID int) as
 begin
 set nocount on
 
@@ -257,7 +257,7 @@ go
 
 --SKU
 --exec sp_pop_SKU_Sercomm 5
-alter PROC sp_pop_SKU_Sercomm (@pLoadID int) as
+create PROC sp_pop_SKU_Sercomm (@pLoadID int) as
 begin
 set nocount on
 
@@ -285,7 +285,7 @@ go
 
 
 --exec sp_pop_Stationtype_Sercomm 5
-alter PROC sp_pop_Stationtype_Sercomm (@pLoadID int) as
+create PROC sp_pop_Stationtype_Sercomm (@pLoadID int) as
 begin
 set nocount on
 declare @startdate  datetime
@@ -307,7 +307,7 @@ end;
 go
 
 --exec sp_pop_StepResultCode_Sercomm 5
-alter PROC sp_pop_StepResultCode_Sercomm (@pLoadID int) as
+create PROC sp_pop_StepResultCode_Sercomm (@pLoadID int) as
 begin
 set nocount on
 declare @startdate  datetime
@@ -329,7 +329,7 @@ end;
 go
 
 --exec sp_pop_pn_Code_Sercomm 5
-alter PROC sp_pop_pn_Code_Sercomm (@pLoadID int) as
+create PROC sp_pop_pn_Code_Sercomm (@pLoadID int) as
 begin
 set nocount on
 declare @startdate  datetime
@@ -350,8 +350,8 @@ end
 end;
 go
 
---exec sp_pop_Location__Code_Sercomm 5
-alter PROC sp_pop_Location__Code_Sercomm (@pLoadID int) as
+--exec sp_pop_Location_Code_Sercomm 5
+create PROC sp_pop_Location_Code_Sercomm (@pLoadID int) as
 begin
 set nocount on
 declare @startdate  datetime

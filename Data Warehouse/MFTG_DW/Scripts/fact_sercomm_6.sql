@@ -1,5 +1,6 @@
---exec sp_populate_fact_Sercomm 5
-alter PROC sp_populate_fact_Sercomm (@pLoadID int) as
+--use MFTG_DW
+--exec sp_populate_fact_SERCOMM 5
+alter PROC sp_populate_fact_SERCOMM (@pLoadID int) as
 begin
 set nocount on
 
@@ -8,41 +9,28 @@ declare @enddate	datetime
 
 select @startdate = StartDate, @enddate = EndDate  from etl_configuration.dbo.DataLoad_Log where loadid = @pLoadID
 
-
 if (@startdate is not null and @enddate is not null)
 begin
 
 update etl_configuration.[dbo].[DataLoad_Log] set status =0 where loadid = @pLoadID;
-select distinct r.sn2,r.sn1 into #snr from MFGTESTC_TAIWAN_SERCOMM.dbo.sn_relation r;
+select Serial_Number into #snr from 
+(select distinct sr.Serial_Number from MES2_SERCOMM.dbo.process_step_result sr
+union 
+select distinct snta.Serial_Number from MES2_SERCOMM.dbo.sn_travel_assembly snta ) a
 
-with all_mid (sn, sn_1, lvl) as
-(select distinct serial_number , r.sn1 , 0 lvl
-from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_result sr
-inner join #snr r
-on sr.serial_number = r.sn2 
-where (sr.datestamp between @startdate and @enddate)  and
-len(sr.serial_number) = 12  and  
-(sr.serial_number like '0006B1%' or sr.serial_number like '0017C5%' or  sr.serial_number like 'FFFFFF%'
-or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.serial_number like '004010%')
-union all
-select all_mid.sn, l.sn1, all_mid.lvl +1 from #snr l
-inner join all_mid on all_mid.sn_1 = l.sn2  and all_mid.lvl < 5
-)
-select * into #t from all_mid
-
-select a.sn,a.sn_1, min(a.lvl) l_lvl into #t_l from #t a 
-group by a.sn, a.sn_1
-
-select sn, max(l_lvl) l_lvl into #t_f from #t_l group by sn
-
-select #t_l.sn serial_number, #t_l.sn_1 sn1 into #sn_mid from #t_l inner join #t_f on #t_l.sn = #t_f.sn and #t_l.l_lvl= #t_f.l_lvl 
+SELECT distinct snta.Mac_id ,r.Serial_Number into #snr1 FROM #snr r 
+inner join MES2_SERCOMM.dbo.sn_travel_assembly snta on r.Serial_Number = snta.Serial_Number
+where 
+len(snta.Mac_Id) = 12 and
+ (snta.Mac_Id like '0006B1%' or snta.Mac_Id like '0017C5%' or  snta.Mac_Id like 'FFFFFF%'
+or snta.Mac_Id like 'C0EAE4%' or snta.Mac_Id like '18B169%' or snta.Mac_Id like '004010%')  and (snta.Out_Process_Time between @startdate and @enddate ) 
 
 select sn.SerialNumberKey, isnull(mid.[MIDKey],-1) MIDKey into  #sl_mid
-from #sn_mid bt
+from #snr1 bt
 left outer join ManufacturingId_D mid
-on bt.sn1 = mid.MID
+on bt.Serial_Number = mid.MID
 left outer join SerialNumber_D sn 
-on bt.serial_number = sn.SerialNumber
+on bt.Mac_id = sn.SerialNumber
 
 select sr.SerialNumberKey, (select  convert(varchar,d.MIDKey) + ','  from  
 #sl_mid d 
@@ -50,139 +38,109 @@ select sr.SerialNumberKey, (select  convert(varchar,d.MIDKey) + ','  from
   from #sl_mid sr  
 group by sr.SerialNumberKey
 
-
-insert into BridgeMIDGroup ([MIDGroupKey],[MIDKey],[WeightFactor],[SerialNumberKey])
-select checksum(g.gmid) groupkey, f.MIDKey, 1.0/ (len(g.gmid) - len(replace(g.gmid,',',''))) wf, f.SerialNumberKey
-
+insert into BridgeMIDGroup ([MIDKey],[WeightFactor],[SerialNumberKey],[MIDGroupKey])
+select  f.MIDKey, 1.0/ (len(g.gmid) - len(replace(g.gmid,',',''))) wf, f.SerialNumberKey,checksum(g.gmid) groupkey
 from #sl_mid f
 inner join #grp g on f.SerialNumberKey = g.SerialNumberKey
 left outer join  [dbo].[BridgeMIDGroup] t on checksum(g.gmid) = t.[MIDGroupKey]
 where t.[MIDGroupKey] is null;
 
+select distinct Step_index, last_value(data_value) over (partition by step_index order by datastamp asc) SMV into #T_SMV from MES2_SERCOMM.dbo.process_step_data sd
+where rtrim(data_attribute )like 'SafeModeVersion' and (sd.datastamp between @startdate and @enddate) 
 
-with T_Label_Assem as
-(select Step_Index, Data_Value udv from MES2_SERCOMM.dbo.process_step_data sd
+select distinct Step_index, last_value(data_value) over (partition by step_index order by datastamp asc) RV into #T_ROMv from MES2_SERCOMM.dbo.process_step_data sd
+where rtrim(data_attribute )like 'ROMVersion'  and (sd.datastamp between @startdate and @enddate)
+
+select distinct Step_index, last_value(data_value) over (partition by step_index order by datastamp asc) FW into #T_FirmW from MES2_SERCOMM.dbo.process_step_data sd
+where rtrim(Data_Attribute) like 'FirmwareVersion' and (sd.datastamp between @startdate and @enddate) 
+
+-- select distinct step_index, last_value(data_value) over (partition by step_index order by datastamp asc) udv into #T_Label_Assem from MES2_SERCOMM.dbo.process_step_data sd 
+--where rtrim(data_attribute)like 'label field Assembly'  and (sd.datastamp between @startdate and @enddate)
+select distinct Step_index , data_value udv into #T_Label_Assem from MES2_SERCOMM.dbo.process_step_data sd 
 where rtrim(data_attribute)like 'label field Assembly'  and  (sd.DataStamp between @startdate and @enddate )
-union
-(select step_index, data_value udv from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
-where rtrim(data_attribute)like 'label field Assembly' and  sd.dateStamp between @startdate and @enddate )),
-T_SKU as
-(select  step_index,  data_value SKU from MES2_SERCOMM.dbo.process_step_data sd
-where data_attribute ='label assembly part number' and  data_value like '01-SSC%'
-and step_index in
-(select step_index from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_result where station_type_code in(1,4))and (sd.datastamp between @startdate and @enddate)),
-T_RM as
-(select  step_index, data_value RM from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
-where data_attribute like 'label field RM'and (sd.datestamp between @startdate and @enddate)),
-T_FirmW as
-(select Step_Index,Data_Value FW from MES2_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute) like 'FirmwareVersion' and Data_Value is not null and (sd.DataStamp between @startdate and @enddate) 
-union
-select step_index,  data_value FW from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute) like 'FirmwareVersion' and Data_Value is not null and (sd.datestamp between @startdate and @enddate )),
-T_ROMv as
-(select Step_Index,Data_Value RV from MES2_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute) like 'ROMVersion' and (sd.DataStamp between @startdate and @enddate )
-union
-select step_index, data_value RV from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute) like 'ROMVersion' and (sd.datestamp between @startdate and @enddate )),
-T_SMV as
-(select Step_Index,Data_Value SMV  from MES2_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute )like 'SafeModeVersion' and (sd.DataStamp between @startdate and @enddate )
-union
-select step_index,  data_value  from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
-where rtrim(Data_Attribute )like 'SafeModeVersion' and (sd.datestamp between @startdate and @enddate ))  ,
-T_RMA as
-(select  step_index,  'yes' RMA from MES2_SERCOMM.dbo.process_step_data sd 
-where data_attribute like 'label part number' and data_value like 'RMA%' and (sd.datastamp between @startdate and @enddate)
-union 
-select  step_index,  'yes' RMA from MFGTESTC_TAIWAN_SERCOMM.dbo.process_step_data sd
-where data_attribute like 'label field assembly' and (data_value like '%R' or data_value like '%D' and (sd.datestamp between @startdate and @enddate))),
 
-T_fact as
-(select  sr.serial_number, 
+select distinct step_index, last_value(data_value) over (partition by step_index order by datastamp asc) RM into #T_RegM from MES2_SERCOMM.dbo.process_step_data sd
+where rtrim(Data_Attribute )like 'RegCode'and (sd.datastamp between @startdate and @enddate)
+
+select distinct Serial_Number, last_value(Mac_Id) over (partition by Serial_Number order by snta.Out_Process_Time asc) Mac_Id into #T_ASS from MES2_SERCOMM.dbo.sn_travel_assembly snta
+   where len(snta.Mac_Id) = 12 and
+ (snta.Mac_Id like '0006B1%' or snta.Mac_Id like '0017C5%' or  snta.Mac_Id like 'FFFFFF%'
+or snta.Mac_Id like 'C0EAE4%' or snta.Mac_Id like '18B169%' or snta.Mac_Id like '004010%') and snta.Mac_Id <> 'N/A';
+
+ with psr as
+(select format(datastamp,'yyyyMMdd') datastampf, step_index, datastamp, station_type_code, Station_id, Serial_Number,[PN_Code],[Step_Result_Code],[Location_Code]
+from MES2_SERCOMM.dbo.process_step_result ) --where datastamp between @sdtae and @edate)
+
+select ts.Mac_Id SRNUM, 
  smv.SMV,
- sku.SKU,
  romv.RV,
  fwv.FW,
  rm.RM,
  format(sr.datastamp,'yyyyMMdd') T_datekey,
  datepart(MI,sr.datastamp) T_min,
  datepart(HH,sr.datastamp) T_hour,
-  4 datasourcekey, -- datasourcekey
  sr.step_index,
- dbo.fn_getdatavalue(sr.step_index, sr.serial_number,4) psdata, 
- sr.step_result_code,
- ml.location_name ,
- sr.pn_code,
+ --dbo.fn_getdatavalue(sr.step_index, snta.Mac_Id,4) psdata, 
+ '' psdata, 
+ sr.PN_Code PartNumber,
+ sr.Location_Code LC,
+ sr.Step_Result_Code SRC,  
  ass.udv assem,
- -1 Workorder, -- Workorder
- case when (rma.RMA is not null) then 1 else 2 end IsRMA,
- -1 IRV, -- IRV,
  sr.datastamp processdate,
  convert (varchar ,sr.station_type_code) STC,
- --sr.Station_type_code STC,
  sr.Station_id STA
  
-  from MES2_SERCOMM.dbo.process_step_result sr 
-  left outer join T_SMV smv on sr.step_index = smv.step_index --and sr.serial_number = smv.serial_number
-  left outer join T_ROMv romv on sr.step_index = romv.step_index --and sr.serial_number = romv.serial_number
-  left outer join T_FirmW fwv on sr.step_index = fwv.step_index --and sr.serial_number = fwv.serial_number
-  left outer join T_RM rm on sr.step_index = rm.step_index --and sr.serial_number = rm.serial_number
-  left outer join T_SKU sku on sr.step_index = sku.step_index --and sr.serial_number = sku.serial_number
-  left outer join T_Label_Assem ass on sr.step_index = ass.step_index --and sr.serial_number = ass.serial_number
-  left outer join T_RMA rma on sr.step_index = rma.step_index --and sr.serial_number = rma.serial_number
-  left outer join PartNumber_D pn on sr.pn_code = pn.PartNumberCode 
-  left outer join MFGTESTC_TAIWAN_SERCOMM.dbo.sn_relation r on sr.serial_number = r.sn2 and sr.station_id = r.station_id 
-  left outer join MFGTESTC_TAIWAN_SERCOMM.dbo.mfg_location ml on sr.location_code = ml.location_code 
-  where (sr.datastamp between @startdate and @enddate) and len(sr.serial_number) = 12 and
- (sr.serial_number like '0006B1%' or sr.serial_number like '0017C5%' or  sr.serial_number like 'FFFFFF%'
-or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.serial_number like '004010%'))
-  
+ into #T_fact
+  from psr sr 
+  inner join #T_ASS ts on sr.Serial_Number = ts.Serial_Number 
+  left outer join #T_SMV smv on sr.step_index = smv.step_index 
+  left outer join #T_ROMv romv on sr.step_index = romv.step_index 
+  left outer join #T_RegM rm on sr.step_index = rm.step_index 
+  left outer join #T_FirmW fwv on sr.step_index = fwv.step_index
+  left outer join #T_Label_Assem ass on sr.step_index = ass.step_index 
+  where 
+ (sr.datastamp between @startdate and @enddate ) 
 
   select isnull((select max(MFTGSummaryKey) from [MFTG_DW].dbo.MFTGSummary_F),0) + 
   ROW_NUMBER() over (ORDER BY T_fact.step_index) [MFTGSummaryKey],
   1 MFTGSummaryCount,
   isnull(sn.SerialNumberKey, -1) SerialNumberKey,
   isnull(smv.SafemodeVersionKey, -1) SafemodeVersionKey,
-  isnull(rv.ROMVersionKey,-1) ROMVersionKey,
+  isnull (rv.ROMVersionKey,-1) [ROMVersionKey],
   isnull(fwv.FirmwareVersionKey, -1) FirmwareVersionKey,
-  isnull(rd.RegulatoryModelKey, -1) RegulatoryModelKey,
+  -1 RegulatoryModelKey,
   T_fact.T_datekey TransactionDateKey,
   T_fact.T_min TransactionMinuteKey,
   T_fact.T_hour TransactionHourKey,
-  T_fact.datasourcekey,
-  isnull(sku.SKUKey, -1) SKUKey,
-   T_fact.step_index StepIndex,
+  4 datasourcekey,
+   -1 [SKUKey],
+    T_fact.step_index StepIndex,
   T_fact.psdata ProcessStepData,
-  isnull(src.StepResultCodeKey, -1) StepResultCodeKey,
-  isnull(l.LocationKey, -1) LocationKey,
-  isnull(pn.PartNumberKey, -1) PartNumberKey,
+   isnull(srcd.[StepResultCodeKey], -1) [StepResultCodeKey],
+   isnull(l.[LocationKey], -1) [LocationKey],
+   isnull(pnc.[PartNumberKey], -1) [PartNumberKey],   
   isnull(a.AssemblyKey, -1) AssemblyKey,
-  T_fact.Workorder WorkOrderKey,
-  T_fact.IsRMA IsRMAKey,
-  T_fact.IRV IRVKey,
+  -1 [WorkOrderKey],
+  -1 [IsRMAKey],
+  -1 [IRVKey],
   T_fact.processdate,
-  isnull(stc.StationTypeKey,-1) StationTypeKey,
-  isnull(sta.StationKey,-1) StationKey,
-  -1 DateCodeKey
+   isnull(stc.StationTypeKey,-1) StationTypeKey,
+   isnull(sta.StationKey,-1) StationKey,
+   -1 DateCodeKey
  
-
+ 
   into #MFTGSummary_F
-  from T_fact 
-  left outer join SerialNumber_D sn on T_fact.serial_number = sn.SerialNumber
+  from #T_fact T_fact 
+  left outer join SerialNumber_D sn on T_fact.SRNUM = sn.SerialNumber
   left outer join SafemodeVersion_D smv on T_fact.SMV = smv.SafemodeVersion
   left outer join ROMVersion_D rv on T_fact.RV = rv.ROMVersion 
   left outer join FirmwareVersion_D fwv on T_fact.FW = fwv.FirmwareVersion
-  left outer join RegulatoryModel_D rd on T_fact.RM = rd.RegulatoryModel 
-  left outer join SKU_D sku on T_fact.SKU = sku.SKUDescription
-  left outer join StepResultCode_D src on T_fact.step_result_code = src.StepResultValue 
-  left outer join Location_D l on T_fact.location_name = l.location 
-  left outer join PartNumber_D pn on T_fact.pn_code = pn.PartNumberCode
   left outer join Assembly_D a on T_fact.assem = a.AssemblyNumber
+  left outer join [Location_D] l on T_fact.LC= l.LocationCode
+  left outer join [PartNumber_D] pnc on T_fact.PartNumber = pnc.PartNumberCode
+  left outer join [StepResultCode_D] srcd on T_fact.SRC= srcd.[StepResultValue]
   left outer join Station_D sta on T_fact.STA = sta.Station
-  left outer join StationType_D stc on T_fact.STC = stc.StationType
-  
+  left outer join StationType_D stc on T_fact.STC = stc.StationType;
 
    insert into MFTG_DW.dbo.MFTGSummary_F(
 	[MFTGSummaryKey],
@@ -233,9 +191,9 @@ or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.seri
 	[WorkOrderKey],
 	[IsRMAKey],
 	[IRVKey],
-	[ProcessDate],
-	[StationTypeKey],
-	[StationKey],
+	processdate,
+	StationTypeKey,
+	StationKey,
 	[DateCodeKey],
 	checksum(g.gmid) [MIDGroupKey]
 	from #MFTGSummary_F tf

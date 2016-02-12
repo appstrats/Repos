@@ -28,7 +28,7 @@ end;
 go
 
 --exec sp_pop_serialnumber_sercomm_label 4
-alter PROC sp_pop_serialnumber_sercomm_label (@pLoadID int) as
+create PROC sp_pop_serialnumber_sercomm_label (@pLoadID int) as
 begin
 set nocount on
 
@@ -66,7 +66,7 @@ go
 
 --Manufacturing_ID
 --exec sp_pop_manufacturing_id_sercomm_label 4
-alter PROC sp_pop_manufacturing_id_sercomm_label (@pLoadID int) as
+create PROC sp_pop_manufacturing_id_sercomm_label (@pLoadID int) as
 begin
 set nocount on
 
@@ -335,7 +335,7 @@ go
 
 --Step result Code
 --exec sp_pop_Stepresult_code_sercomm_label 4
-create PROC sp_pop_Stepresult_code_sercomm_label (@pLoadID int) as
+alter PROC sp_pop_Stepresult_code_sercomm_label (@pLoadID int) as
 begin
 set nocount on
 declare @startdate  datetime
@@ -346,9 +346,9 @@ if (@startdate is not null and @enddate is not null)
 begin
 insert into [MFTG_DW].[dbo].[StepResultCode_D]([StepResultCodeKey],[StepResultValue],[Description])
 select distinct isnull((select max([StepResultCodeKey]) from [MFTG_DW].dbo.[StepResultCode_D] where [StepResultCodeKey]>-1),0) +
-ROW_NUMBER() over (ORDER BY s.[step_result_code]), s.[step_result_code],s.[description] 
+ROW_NUMBER() over (ORDER BY s.step_result_code), s.step_result_code,s.[description] 
 from MFGTESTC_TAIWAN_SERCOMM.[dbo].[step_result_code] s
-left outer join [MFTG_DW].dbo.[StepResultCode_D] d on s.[description] = d.[Description]
+left outer join [MFTG_DW].dbo.StepResultCode_D d on s.step_result_code = d.StepResultValue
 where d.[StepResultValue] is null
 end
 end
