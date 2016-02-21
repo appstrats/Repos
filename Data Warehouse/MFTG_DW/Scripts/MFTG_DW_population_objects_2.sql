@@ -100,6 +100,18 @@ select @data_att_val = @data_att_val + sd.data_attribute + '¬' + sd.data_value +
 where sd.step_index = @pstep_idx 
 
 end
+if (@pdatasource_id = 9)
+begin 
+select @data_att_val = @data_att_val + sd.data_attribute + '¬' + sd.data_value + '¶' from MFGTESTC_ADVANTECH.dbo.process_step_data sd
+where sd.step_index = @pstep_idx 
+
+end
+if (@pdatasource_id = 10)
+begin 
+select @data_att_val = @data_att_val + sd.data_attribute + '¬' + sd.data_value + '¶' from SHOPFLOOR_ADVANTECH.dbo.process_step_data sd
+where sd.step_index = @pstep_idx 
+
+end
 
 return @data_att_val
 end
@@ -108,7 +120,7 @@ go
 use [ETL_Configuration]
 
 go
---exec sp_create_Load 'MES2_SERCOMM'
+--exec sp_create_Load 'SHOPFLOOR_ADVANTECH'
 
 alter PROC sp_create_Load (@pDatasource varchar(50)) as
 begin
@@ -264,6 +276,68 @@ select @enddate = EndDate from [dbo].[DataLoad_Log] where loadid = @maxLoadID
 
 select @startdate =min(datastamp), @enddate = max(datastamp) from MES2_SERCOMM.dbo.process_step_result
 where datastamp > @enddate
+ 
+ if @startdate is not null and @enddate is not null
+ begin
+ Insert into [dbo].[DataLoad_Log](LoadDescription, DataSource, LoadID,StartDate,EndDate,Status)
+values
+('Incremental Load', @pDatasource, isnull((select max(LoadID) from [dbo].[DataLoad_Log]
+ where LoadID>-1),0) + 1, @startdate, @enddate, null)
+ end
+ end
+ end
+ if (@pDatasource ='MFGTESTC_ADVANTECH')
+begin 
+if not exists(select * From [dbo].[DataLoad_Log] where datasource ='MFGTESTC_ADVANTECH')
+begin
+
+select @startdate =min(datestamp), @enddate = max(datestamp) from MFGTESTC_ADVANTECH.dbo.process_step_result
+
+Insert into [dbo].[DataLoad_Log](LoadDescription, DataSource, LoadID,StartDate,EndDate,Status)
+values
+('Initial Load', @pDatasource, isnull((select max(LoadID) from [dbo].[DataLoad_Log]
+ where LoadID>-1),0) + 1, @startdate, @enddate, null)
+
+end
+else
+begin
+select @maxLoadID = max(loadid) From [dbo].[DataLoad_Log] where datasource ='MFGTESTC_ADVANTECH' and [status]=1
+
+select @enddate = EndDate from [dbo].[DataLoad_Log] where loadid = @maxLoadID
+
+select @startdate =min(datestamp), @enddate = max(datestamp) from MFGTESTC_ADVANTECH.dbo.process_step_result
+where datestamp > @enddate
+ 
+ if @startdate is not null and @enddate is not null
+ begin
+ Insert into [dbo].[DataLoad_Log](LoadDescription, DataSource, LoadID,StartDate,EndDate,Status)
+values
+('Incremental Load', @pDatasource, isnull((select max(LoadID) from [dbo].[DataLoad_Log]
+ where LoadID>-1),0) + 1, @startdate, @enddate, null)
+ end
+ end
+ end
+if (@pDatasource ='SHOPFLOOR_ADVANTECH')
+begin 
+if not exists(select * From [dbo].[DataLoad_Log] where datasource ='SHOPFLOOR_ADVANTECH')
+begin
+
+select @startdate =min(datestamp), @enddate = max(datestamp) from SHOPFLOOR_ADVANTECH.dbo.process_step_result
+
+Insert into [dbo].[DataLoad_Log](LoadDescription, DataSource, LoadID,StartDate,EndDate,Status)
+values
+('Initial Load', @pDatasource, isnull((select max(LoadID) from [dbo].[DataLoad_Log]
+ where LoadID>-1),0) + 1, @startdate, @enddate, null)
+
+end
+else
+begin
+select @maxLoadID = max(loadid) From [dbo].[DataLoad_Log] where datasource ='SHOPFLOOR_ADVANTECH' and [status]=1
+
+select @enddate = EndDate from [dbo].[DataLoad_Log] where loadid = @maxLoadID
+
+select @startdate =min(datestamp), @enddate = max(datestamp) from SHOPFLOOR_ADVANTECH.dbo.process_step_result
+where datestamp > @enddate
  
  if @startdate is not null and @enddate is not null
  begin

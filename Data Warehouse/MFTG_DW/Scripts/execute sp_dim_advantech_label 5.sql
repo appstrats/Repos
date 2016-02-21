@@ -1,0 +1,15 @@
+exec sp_pop_assembly_advantech 7
+exec sp_pop_serialnumber_advantech 7
+exec sp_pop_manufacturing_id_advantech 7
+exec sp_pop_firmversion_advantech 7
+exec sp_pop_romversion_advantech 7
+exec sp_pop_safemodeversion_advantech 7
+exec sp_pop_IRV_advantech 7
+exec sp_pop_regulatorymodel_advantech 7
+exec sp_pop_station_advantech 7 
+exec sp_pop_Location_Code_advantech 7
+exec sp_pop_SKU_advantech 7
+exec sp_pop_pn_Code_advantech 7
+exec sp_pop_StepResultCode_advantech 7
+exec sp_pop_Stationtype_advantech 7
+      
