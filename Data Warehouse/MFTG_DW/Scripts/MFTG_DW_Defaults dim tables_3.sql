@@ -11,6 +11,7 @@ insert into dbo.[DataSource_D](DataSourceKey,DataSource,DataSourceDescription,Su
 insert into dbo.[DataSource_D](DataSourceKey,DataSource,DataSourceDescription,Supplier)values(8,'MFGTESTC_TAIWAN_SERCOMM','Flash MFGTESTC_TAIWAN_SERCOMM','Flash MFGTESTC_TAIWAN_SERCOMM');
 insert into dbo.[DataSource_D](DataSourceKey,DataSource,DataSourceDescription,Supplier)values(9,'MFGTESTC_ADVANTECH','Flash MFGTESTC_ADVANTECH','Flash MFGTESTC_ADVANTECH');
 insert into dbo.[DataSource_D](DataSourceKey,DataSource,DataSourceDescription,Supplier)values(10,'SHOPFLOOR_ADVANTECH','Flash SHOPFLOOR_ADVANTECH','Flash SHOPFLOOR_ADVANTECH');
+insert into dbo.[DataSource_D](DataSourceKey,DataSource,DataSourceDescription,Supplier)values(11,'MFGTESTC_TAIWAN','Flash MFGTESTC_TAIWAN','Flash MFGTESTC_TAIWAN');
 
 insert into dbo.FirmwareVersion_D (FirmwareVersionKey,FirmwareVersion) values (-1,'Unknown');
 
