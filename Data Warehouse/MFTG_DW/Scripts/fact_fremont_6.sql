@@ -1,5 +1,5 @@
 --exec sp_populate_fact 1
-Alter PROC sp_populate_fact (@pLoadID int) as
+create PROC sp_populate_fact (@pLoadID int) as
 begin
 set nocount on
 

@@ -54,7 +54,7 @@ end;
 go
 
 --Manufacturing_ID
--- exec sp_pop_Manufacturing_ID_Senao 5
+-- exec sp_pop_SENAO_ManufacturingID_D 5
 create PROC sp_pop_SENAO_ManufacturingID_D (@pLoadID int) as
 begin
 set nocount on

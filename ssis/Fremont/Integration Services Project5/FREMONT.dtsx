@@ -1,0 +1,659 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/6/2016 9:56:53 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="MIL"
+  DTS:CreatorName="mil\milton"
+  DTS:DTSID="{92061A59-9765-40E2-81F9-D4534D08C002}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.5583.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="FREMONT"
+  DTS:PackageType="5"
+  DTS:VersionBuild="40"
+  DTS:VersionGUID="{809119FA-1E00-4092-A089-0B230EE5E766}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[appstrats.dynu.net,1450.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{8EC8648D-60B8-41E8-9E13-216BD2ED45A8}"
+      DTS:ObjectName="appstrats.dynu.net,1450.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=appstrats.dynu.net,1450;User ID=sa;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAnoN7B+GUH0GdNlbNDnuSWwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABajtNygWZjmMODDDUBa+1QwpzT4CsabC6oigEPB87+sAAAAAAOgAAAAAIAACAAAAB02ROKhVhEUs0ZwHRahpjqF+Sw9MaPuYmP/6UR1zer5RAAAADNCItci+1pGqdcNhHJeGQgQAAAAKuGQx8me3z/+O/yZD8ud8xi1/utuHvCLDsIkjqELUc8SCIGo0uD1dvSPy5mfIHyYF7d0hK5iRB8z0/lr/RyiIE</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[appstrats.dynu.net,1450.sa 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F676B242-4D23-405F-B9FE-44A5738DF599}"
+      DTS:ObjectName="appstrats.dynu.net,1450.sa 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=appstrats.dynu.net,1450;User ID=sa;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAnoN7B+GUH0GdNlbNDnuSWwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADusMVupPG1SyuMyyBHjZhyORgKj5bE8MD/sks9uOU3jwAAAAAOgAAAAAIAACAAAABPfv7eVwVEdJbexISJ2Lv1heV3ZGgsyv47Jy/robZe1RAAAAAeR5X5a2ffdKLetbe65VNzQAAAAJJIVl9HTkFxhoxLupWHqI3O/Zx0/lxsx5LouCgMwjnHo7AoCadG8L3GWd/ICsVyNAwMewGu0qygtLtM76toin8</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[appstrats.dynu.net,1450.sa 2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9BAD40BE-947F-4394-BCE0-E46A07C548CE}"
+      DTS:ObjectName="appstrats.dynu.net,1450.sa 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=appstrats.dynu.net,1450;User ID=sa;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAnoN7B+GUH0GdNlbNDnuSWwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABfUyGw/y+Kvu+joXkNp/Bjjy60obqljVGLHVqca/dyyAAAAAAOgAAAAAIAACAAAACZbdNr+mAaWRyOqc77zJt4MeHjbYzsyeA/A/237ncyRBAAAABvS6kqZfDNLRsHsvvgebHwQAAAADOHhJrl83J2+ryUil1r+Yy26XVAbznFkUJUmQ0mEmzsusnsu3LxAE8K+59EFlhgmMsjocZ3Kte+QES3hBaHXbY</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[appstrats.dynu.net,1450.sa 3]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{563B9A3B-507E-4EEB-9334-1057A0EEE2C5}"
+      DTS:ObjectName="appstrats.dynu.net,1450.sa 3">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=appstrats.dynu.net,1450;User ID=sa;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAnoN7B+GUH0GdNlbNDnuSWwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABvOuAhvvoxyEaTV9IhiUQS9Gc6TE4VrH5CsdkriOSVqwAAAAAOgAAAAAIAACAAAAC501YCLMqkuNMK+ClT6hF7s4O65ymk4gGChfDza1/JqRAAAAAif7esPKWHeCmvGAYp3uk2QAAAAMdX2Amz7iqX9lXstnY/UEbv9HSpBRT1m2h/sfayaSS8hUryo83BU/Cmnq3gYGDvQ7ItL7ask5Tzjb5QUzWJCU4</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[appstrats.dynu.net,1450.sa 4]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9FAD4CF4-929B-46C5-9F93-752E3DB27B91}"
+      DTS:ObjectName="appstrats.dynu.net,1450.sa 4">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=appstrats.dynu.net,1450;User ID=sa;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAnoN7B+GUH0GdNlbNDnuSWwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACvfEW338X84JmCfRBndbtUYiv+lc339hnAiaUD4iDkwAAAAAAOgAAAAAIAACAAAADUOjRB0K+VHQN5G/Uk2eqhdncGFWNGqbwLgxMZm2D86RAAAAC5RaX++Ref/bt/jfRiTdLxQAAAAIwP4PLtoeT2Kr8D9SQuieQxnruQPap53/+gSD7QWE/hJ+D2pBP9EbYgwcmMs9uqr5CjTeH++3+ZpzLOrOaDBBY</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{87322D89-FFA6-465D-8879-E0CBAB505913}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Loadid">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Create Load id"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{C80BA363-9483-4F4B-873E-FC96FC3296CF}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create Load id"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8EC8648D-60B8-41E8-9E13-216BD2ED45A8}"
+          SQLTask:SqlStatementSource="exec ETL_Configuration.dbo.sp_create_Load 'MFGTESTC_FREMONT'"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="Loadid"
+            SQLTask:DtsVariableName="User::Loadid" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Populate fact table"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="populate the fact table "
+      DTS:DTSID="{9369ff29-70af-43c5-ac8e-f38d2064e13c}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Populate fact table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:Property
+        DTS:Name="ExecValueVariable">Loadid</DTS:Property>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8EC8648D-60B8-41E8-9E13-216BD2ED45A8}"
+          SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_populate_fact ?&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@pLoadID"
+            SQLTask:DtsVariableName="User::Loadid"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="2"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{87ACFEDC-4B1D-45FF-B59D-CD7E49E9185F}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Populate Dim_Assembly"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="populate assembly table_ fremont"
+          DTS:DTSID="{7556C198-5A92-487D-AA09-72650A614327}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Populate Dim_Assembly"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:Property
+            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{9FAD4CF4-929B-46C5-9F93-752E3DB27B91}"
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_assembly_FREMONT ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@pLoadID"
+                SQLTask:DtsVariableName="User::Loadid"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="2"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Populate Dim_Firmware"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="populate the dim table of Firmware"
+          DTS:DTSID="{e4ae4e2f-29e4-4d3d-b238-c6a4968d44ab}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Populate Dim_Firmware"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:Property
+            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{8EC8648D-60B8-41E8-9E13-216BD2ED45A8}"
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_Firmware_FREMONT ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@pLoadID"
+                SQLTask:DtsVariableName="User::Loadid"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="2"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Populate Dim_Location"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="populate the dim table of Location"
+          DTS:Disabled="True"
+          DTS:DTSID="{b71b5343-d8ec-4a31-968e-c9170cfea102}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Populate Dim_Location"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:Property
+            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{8EC8648D-60B8-41E8-9E13-216BD2ED45A8}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_Location_FREMONT ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@pLoadID"
+                SQLTask:DtsVariableName="User::Loadid"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="2"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Populate Dim_Manufacturing_ID"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="populate the dim table of manufaturing_id"
+          DTS:DTSID="{a8a7ef75-8795-4794-840b-af8f31b4d42f}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Populate Dim_Manufacturing_ID"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="4">
+          <DTS:Variables />
+          <DTS:Property
+            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{8EC8648D-60B8-41E8-9E13-216BD2ED45A8}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_Manufacturing_ID_FREMONT ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@pLoadID"
+                SQLTask:DtsVariableName="User::Loadid"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="2"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Populate Dim_Partnum"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="populate the dim table of Partnum"
+          DTS:DTSID="{778116f4-ef07-48e5-9dbf-50b91271238b}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Populate Dim_Partnum"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:Property
+            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{8EC8648D-60B8-41E8-9E13-216BD2ED45A8}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_Partnum_FREMONT ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@pLoadID"
+                SQLTask:DtsVariableName="User::Loadid"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="2"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Populate Dim_Regulatory_Model"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="populate the dim table of Regulatory_Model"
+          DTS:DTSID="{bd0a269d-6117-4d7a-bd33-582b4b43d9f2}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Populate Dim_Regulatory_Model"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="10">
+          <DTS:Variables />
+          <DTS:Property
+            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{8EC8648D-60B8-41E8-9E13-216BD2ED45A8}"
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_Regulatory_Model_FREMONT ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@pLoadID"
+                SQLTask:DtsVariableName="User::Loadid"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="2"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Populate Dim_ROMV"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="populate the dim table of ROMV"
+          DTS:DTSID="{26c9ceed-f037-44ea-abf6-2552941696b7}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Populate Dim_ROMV"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="7">
+          <DTS:Variables />
+          <DTS:Property
+            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{8EC8648D-60B8-41E8-9E13-216BD2ED45A8}"
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_ROMV_FREMONT ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@pLoadID"
+                SQLTask:DtsVariableName="User::Loadid"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="2"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Populate Dim_safemodever"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="populate the dim table of safemodever"
+          DTS:DTSID="{2bcf0c58-6608-445e-af25-7bf74137907d}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Populate Dim_safemodever"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="12">
+          <DTS:Variables />
+          <DTS:Property
+            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{8EC8648D-60B8-41E8-9E13-216BD2ED45A8}"
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_safemodever_FREMONT ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@pLoadID"
+                SQLTask:DtsVariableName="User::Loadid"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="2"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Populate Dim_Serial Number"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="populate the dim table of serial number"
+          DTS:DTSID="{e512a4d1-cde1-47d8-ac5d-add7f2974e23}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Populate Dim_Serial Number"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="11">
+          <DTS:Variables />
+          <DTS:Property
+            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{8EC8648D-60B8-41E8-9E13-216BD2ED45A8}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_serialnum_FREMONT ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@pLoadID"
+                SQLTask:DtsVariableName="User::Loadid"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="2"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Populate Dim_SKU"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="populate the dim table of SKU"
+          DTS:DTSID="{76c6e5e4-5f17-41e7-90f3-5a73ff1fcc0a}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Populate Dim_SKU"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="5">
+          <DTS:Variables />
+          <DTS:Property
+            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{8EC8648D-60B8-41E8-9E13-216BD2ED45A8}"
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_SKU_FREMONT ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@pLoadID"
+                SQLTask:DtsVariableName="User::Loadid"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="2"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Populate Dim_Station"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="populate the dim table of Station"
+          DTS:DTSID="{4e72b4a3-4d63-4a1d-9a79-dfe38902e18f}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Populate Dim_Station"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="6">
+          <DTS:Variables />
+          <DTS:Property
+            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{8EC8648D-60B8-41E8-9E13-216BD2ED45A8}"
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_Station_FREMONT ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@pLoadID"
+                SQLTask:DtsVariableName="User::Loadid"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="2"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Populate Dim_Stationtype"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="populate the dim table of Stationtype"
+          DTS:Disabled="True"
+          DTS:DTSID="{ef1a62b2-5336-42b2-bc25-73ef2ab5e7e5}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Populate Dim_Stationtype"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="9">
+          <DTS:Variables />
+          <DTS:Property
+            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{8EC8648D-60B8-41E8-9E13-216BD2ED45A8}"
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_Stationtype_FREMONT ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@pLoadID"
+                SQLTask:DtsVariableName="User::Loadid"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="2"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Populate Dim_Stepresult_code"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="populate the dim table of Stepresult_code"
+          DTS:Disabled="True"
+          DTS:DTSID="{d748d90d-34e4-407a-a4b0-e92ef2eb4979}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Populate Dim_Stepresult_code"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="8">
+          <DTS:Variables />
+          <DTS:Property
+            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{8EC8648D-60B8-41E8-9E13-216BD2ED45A8}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_Stepresult_code_FREMONT ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@pLoadID"
+                SQLTask:DtsVariableName="User::Loadid"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="2"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{A53CF62B-67D6-4DC7-893F-E44E0F1D7B17}"
+      DTS:From="Package\Create Load id"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Sequence Container" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{53512B1C-C99A-43D1-96A8-735B6B7B1759}"
+      DTS:From="Package\Sequence Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Populate fact table" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="147,42"
+          Id="Package\Create Load id"
+          TopLeft="493.333333333334,299.555555555555" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Populate fact table"
+          TopLeft="482.222222222222,716.777777777777" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\Sequence Container\Populate Dim_Assembly"
+          TopLeft="14.888888888889,6.66666666666663" />
+        <NodeLayout
+          Size="191,42"
+          Id="Package\Sequence Container\Populate Dim_Firmware"
+          TopLeft="37.6666666666668,108.555555555556" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Sequence Container\Populate Dim_Location"
+          TopLeft="469,53.7777777777778" />
+        <NodeLayout
+          Size="244,42"
+          Id="Package\Sequence Container\Populate Dim_Manufacturing_ID"
+          TopLeft="442,9" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Sequence Container\Populate Dim_Partnum"
+          TopLeft="270,52.7777777777777" />
+        <NodeLayout
+          Size="232,42"
+          Id="Package\Sequence Container\Populate Dim_Regulatory_Model"
+          TopLeft="23.4444444444444,56.8888888888889" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\Sequence Container\Populate Dim_ROMV"
+          TopLeft="249.777777777778,108" />
+        <NodeLayout
+          Size="208,42"
+          Id="Package\Sequence Container\Populate Dim_safemodever"
+          TopLeft="444.777777777778,110.333333333333" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Sequence Container\Populate Dim_Serial Number"
+          TopLeft="216.333333333333,8.5" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Sequence Container\Populate Dim_SKU"
+          TopLeft="703.222222222222,6.77777777777771" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Sequence Container\Populate Dim_Station"
+          TopLeft="685.111111111111,104.111111111111" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\Sequence Container\Populate Dim_Stationtype"
+          TopLeft="305.777777777778,165.222222222222" />
+        <NodeLayout
+          Size="232,42"
+          Id="Package\Sequence Container\Populate Dim_Stepresult_code"
+          TopLeft="661.666666666667,55.3333333333333" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="899,218"
+          Size="899,261"
+          Id="Package\Sequence Container"
+          TopLeft="116.944444444445,402.277777777778" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="566.638888888889,341.555555555555">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.7222222222221"
+              Start="0,0"
+              End="0,53.2222222222221">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.2222222222221" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="566.083333333333,663.277777777778">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53.4999999999995"
+              Start="0,0"
+              End="0,45.9999999999995">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.9999999999995" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

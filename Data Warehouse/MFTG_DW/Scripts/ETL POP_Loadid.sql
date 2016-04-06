@@ -1,10 +1,14 @@
 --exec sp_create_Load 'MFGTESTC_TAIWAN'
+declare @loadid as int
+exec @loadid = sp_create_Load 'MFGTESTC_FREMONT'
+print @loadid
 
 alter PROC sp_create_Load (@pDatasource varchar(50)) as
 begin
 set nocount on
 declare @startdate  datetime
 declare @enddate	datetime
+declare @loadid as int
 declare @maxLoadID	int
 if (@pDatasource ='MFGTESTC_FREMONT')
 begin 
@@ -257,5 +261,6 @@ values
  end
  end
  end
+ select max(LoadID) LoadID from [dbo].[DataLoad_Log]  where datasource = @pDatasource
 end
 go
