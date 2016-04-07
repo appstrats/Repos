@@ -1,6 +1,6 @@
 --use MFTG_DW
 --exec sp_populate_fact_SERCOMM 5
-alter PROC sp_populate_fact_SERCOMM (@pLoadID int) as
+create PROC sp_populate_fact_SERCOMM (@pLoadID int) as
 begin
 set nocount on
 

@@ -1,5 +1,5 @@
 --exec sp_populate_fact_Sercomm_Label 4
-alter PROC sp_populate_fact_Sercomm_Label (@pLoadID int) as
+create PROC sp_populate_fact_Sercomm_Label (@pLoadID int) as
 begin
 set nocount on
 

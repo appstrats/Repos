@@ -2,7 +2,7 @@
 --exec sp_pop_assembly_advantech 7
 use [MFTG_DW]
 go
-alter PROC sp_pop_assembly_advantech (@pLoadID int) as
+create PROC sp_pop_assembly_advantech (@pLoadID int) as
 begin
 set nocount on
 
@@ -28,7 +28,7 @@ end;
 
 go
 --exec sp_pop_serialnumber_advantech 7
-alter PROC sp_pop_serialnumber_advantech (@pLoadID int) as
+create PROC sp_pop_serialnumber_advantech (@pLoadID int) as
 begin
 set nocount on
 
@@ -66,7 +66,7 @@ go
 
 --Manufacturing_ID
 --exec sp_pop_manufacturing_id_advantech 7
-alter PROC sp_pop_manufacturing_id_advantech (@pLoadID int) as
+create PROC sp_pop_manufacturing_id_advantech (@pLoadID int) as
 begin
 set nocount on
 
@@ -100,7 +100,7 @@ go
 
 
 -- exec sp_pop_firmversion_advantech 7
-alter PROC sp_pop_firmversion_advantech (@pLoadID int) as
+create PROC sp_pop_firmversion_advantech (@pLoadID int) as
 begin
 set nocount on
 
@@ -129,7 +129,7 @@ go
 
 go
 -- exec sp_pop_romversion_advantech 7
-alter PROC sp_pop_romversion_advantech (@pLoadID int) as
+create PROC sp_pop_romversion_advantech (@pLoadID int) as
 begin
 set nocount on
 
@@ -156,7 +156,7 @@ go
 go
 --Safemode version
 -- exec sp_pop_safemodeversion_advantech 7
-alter PROC sp_pop_safemodeversion_advantech (@pLoadID int) as
+create PROC sp_pop_safemodeversion_advantech (@pLoadID int) as
 begin
 set nocount on
 
@@ -180,7 +180,7 @@ end;
 go
 
 -- exec sp_pop_IRV_advantech 7
-alter PROC sp_pop_IRV_advantech (@pLoadID int) as
+create PROC sp_pop_IRV_advantech (@pLoadID int) as
 begin
 set nocount on
 
@@ -211,7 +211,7 @@ go
 go
 --Regmode
 -- exec sp_pop_regulatorymodel_advantech 7
-alter PROC sp_pop_regulatorymodel_advantech (@pLoadID int) as
+create PROC sp_pop_regulatorymodel_advantech (@pLoadID int) as
 begin
 set nocount on
 
@@ -236,7 +236,7 @@ go
 
 go
 -- exec sp_pop_station_advantech 7
-alter PROC sp_pop_station_advantech (@pLoadID int) as
+create PROC sp_pop_station_advantech (@pLoadID int) as
 begin
 set nocount on
 
@@ -266,7 +266,7 @@ go
 
 --SKU
 --exec sp_pop_SKU_advantech 7
-alter PROC sp_pop_SKU_advantech (@pLoadID int) as
+create PROC sp_pop_SKU_advantech (@pLoadID int) as
 begin
 set nocount on
 
@@ -294,7 +294,7 @@ go
 
 
 --exec sp_pop_Stationtype_advantech 7
-alter PROC sp_pop_Stationtype_advantech (@pLoadID int) as
+create PROC sp_pop_Stationtype_advantech (@pLoadID int) as
 begin
 set nocount on
 declare @startdate  datetime
@@ -316,7 +316,7 @@ end;
 go
 
 --exec sp_pop_StepResultCode_advantech 7
-alter PROC sp_pop_StepResultCode_advantech (@pLoadID int) as
+create PROC sp_pop_StepResultCode_advantech (@pLoadID int) as
 begin
 set nocount on
 declare @startdate  datetime
@@ -338,7 +338,7 @@ end;
 go
 
 --exec sp_pop_pn_Code_advantech 7
-alter PROC sp_pop_pn_Code_advantech (@pLoadID int) as
+create PROC sp_pop_pn_Code_advantech (@pLoadID int) as
 begin
 set nocount on
 declare @startdate  datetime
@@ -360,7 +360,7 @@ end;
 go
 
 --exec sp_pop_Location_Code_advantech 7
-alter PROC sp_pop_Location_Code_advantech (@pLoadID int) as
+create PROC sp_pop_Location_Code_advantech (@pLoadID int) as
 begin
 set nocount on
 declare @startdate  datetime

@@ -1,5 +1,5 @@
 --exec sp_populate_fact_ADVANTECH 7
-alter PROC sp_populate_fact_ADVANTECH (@pLoadID int) as
+create PROC sp_populate_fact_ADVANTECH (@pLoadID int) as
 begin
 set nocount on
 
