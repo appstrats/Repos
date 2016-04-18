@@ -71,7 +71,7 @@ select
 --ELSE year(ShipDateAct) END AS varchar(4))
 CAST(CASE WHEN  month(soh.OrdDate) IN (1, 2, 3) THEN year(soh.OrdDate) - 1 ELSE year(soh.OrdDate) END ASvarchar(4))
 + '-' +
-CAST(CASE WHEN  month(soh.OrdDate) IN (4, 5, 6, 7, 8, 9, 10, 11, 12) THEN year(soh.OrdDate) + 1 ELSEyear(soh.OrdDate) End AS varchar(4))
+CAST(CASE WHEN  month(soh.OrdDate) IN (4, 5, 6, 7, 8, 9, 10, 11, 12) THEN year(soh.OrdDate) + 1 ELSE year(soh.OrdDate) End AS varchar(4))
 AS [Fiscal Year],
 Case when soh.User4='' or soh.user4='unknown' then 'Unknown' else soh.user4 end as Funding,
 soh.User3 as ORDER_METHOD,
@@ -122,6 +122,4 @@ Cancelled=0
  
  
 ORDER BY SHIPPEDDATE DESC , SHIPPERID
-Attachments area
-	
-Click here to 
+
