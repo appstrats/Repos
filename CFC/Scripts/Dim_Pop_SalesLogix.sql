@@ -25,7 +25,7 @@ DROP PROC [dbo].sp_pop_region_SalesLogix
 go
 Create PROC sp_pop_region_SalesLogix as
 begin
-set nocount on
+set nocount on;
 
 with T_Label_region as
 (select distinct(REGION) rg  from SalesLogix.sysdba.ACCOUNT )
@@ -69,7 +69,7 @@ DROP PROC [dbo].sp_pop_ordertype_SalesLogix
 go
 Create PROC sp_pop_ordertype_SalesLogix  as
 begin
-set nocount on
+set nocount on;
 
 with T_Label_Order_Type as
 (select distinct(ORDERTYPE) ot from SalesLogix.sysdba.SALESORDER  ) 
@@ -92,7 +92,7 @@ DROP PROC [dbo].sp_pop_Order_Method_SalesLogix
 go
 Create PROC sp_pop_Order_Method_SalesLogix  as
 begin
-set nocount on
+set nocount on;
 
 with T_Label_Order_Method as
 (select distinct(ORDER_METHOD) om from SalesLogix.sysdba.salesorder_ext  ) 
@@ -114,7 +114,7 @@ DROP PROC [dbo].sp_pop_MDR_file_Type_SalesLogix
 go
 Create  PROC sp_pop_MDR_file_Type_SalesLogix  as
 begin
-set nocount on
+set nocount on;
 
 with T_Label_MDR_file_Type as
 (select distinct(MDR_FILETYPE) mf from SalesLogix.sysdba.ACCOUNTFFEXT ) 
@@ -138,11 +138,11 @@ Create PROC sp_pop_User_SalesLogix as
 begin
 set nocount on
 
-insert into [User](Name_key,Name,User2)
-select distinct isnull((select max(Name_key) from [User] where Name_key>-1),0) +
-ROW_NUMBER() over (ORDER BY s.USERFIELD1 ),s.USERFIELD1, s.USERFIELD2
+insert into [User](User_key,Name,User2)
+select distinct isnull((select max(User_key) from [User] where User_key>-1),0) +
+ROW_NUMBER() over (ORDER BY s.USERNAME ),s.USERNAME, s.USERID
 from SalesLogix.sysdba.USERINFO s
-left outer join [User] d on s.USERFIELD1  = d.Name
+left outer join [User] d on s.USERNAME  = d.Name
 where d.Name is null
 
 end;
@@ -155,7 +155,7 @@ DROP PROC [dbo].sp_pop_Funding_SalesLogix
 go
 Create  PROC sp_pop_Funding_SalesLogix  as
 begin
-set nocount on
+set nocount on;
 
 with T_Label_Funding as
 (select distinct(FUNDING) fd from SalesLogix.sysdba.salesorder_ext ) 
@@ -177,7 +177,7 @@ DROP PROC [dbo].sp_pop_address_SalesLogix
 go
 Create PROC sp_pop_address_SalesLogix  as
 begin
-set nocount on
+set nocount on;
 
 with T_Label_address as
 (select distinct(ADDRESS1) ad from SalesLogix.sysdba.ADDRESS ) 
@@ -198,7 +198,7 @@ DROP PROC [dbo].sp_pop_location_SalesLogix
 go
 Create PROC sp_pop_location_SalesLogix  as
 begin
-set nocount on
+set nocount on;
 
 with T_Label_Location as
 (select distinct(POSTALCODE) pc from SalesLogix.sysdba.ADDRESS ) 
