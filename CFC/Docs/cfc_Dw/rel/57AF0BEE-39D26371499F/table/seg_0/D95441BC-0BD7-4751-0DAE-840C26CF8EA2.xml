@@ -1,0 +1,43 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D95441BC-0BD7-4751-0DAE-840C26CF8EA2" name="Fiscal_Year">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:25:15 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Fiscal_Year_Key" id="E616B435-7802-C9EC-AD51-C036595D58A4">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:26:43 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Fiscal_Year" id="C02BD742-88ED-CFB2-E5EB-47FCFEC0A958">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:26:43 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A33EF456-D7E8-F6FD-3630-7C36A67DC68D" name="Fiscal year_PK">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:26:43 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E616B435-7802-C9EC-AD51-C036595D58A4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

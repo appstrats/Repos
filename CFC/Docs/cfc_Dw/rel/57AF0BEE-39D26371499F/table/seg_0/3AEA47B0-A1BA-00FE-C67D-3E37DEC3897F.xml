@@ -1,0 +1,54 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3AEA47B0-A1BA-00FE-C67D-3E37DEC3897F" name="Shipper">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:21:01 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="SHIPPER_Key" id="28052CA1-365A-90D3-300C-6928390F60FB">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:22:24 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ShipName" id="ED9123C7-2019-8434-6B1D-1AB06F0FB388">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:22:24 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SHIPPERID" id="BDBA4AD2-B669-2CE1-B862-1AED86EFEF2A">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:22:24 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3C6A72F9-2178-1A6C-72BC-92E610DB2BF2" name="Shipper_PK">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:22:24 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="28052CA1-365A-90D3-300C-6928390F60FB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

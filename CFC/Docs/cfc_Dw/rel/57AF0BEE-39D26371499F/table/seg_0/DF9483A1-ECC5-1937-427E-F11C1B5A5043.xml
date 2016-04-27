@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DF9483A1-ECC5-1937-427E-F11C1B5A5043" name="Location">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 14:55:13 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Location_key" id="CA23D64D-66F7-AE2D-AF7E-6F3E64369DA1">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 14:57:10 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Postcode" id="54E5A791-D38E-0F10-BD80-C5AA4514D8F3">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 14:59:49 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="City" id="B06EE974-DA89-03F9-11D6-9B2BCBE52299">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 14:59:49 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>150</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="State" id="B49C3AEB-C0A0-276D-0F22-3CC033CD1CC6">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 16:12:28 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Country" id="40646579-E2AC-5F99-530A-2FACF8529112">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 14:59:49 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>150</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1A144EFC-C372-00EE-DD09-190C60C59F57" name="Location_PK">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 14:57:10 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CA23D64D-66F7-AE2D-AF7E-6F3E64369DA1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

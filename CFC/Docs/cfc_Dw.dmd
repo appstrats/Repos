@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="cfc_Dw" id="978273BB-605B-D9FC-3DE6-3733DA2F2DBE" version="3.5">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 14:40:24 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>978273BB-605B-D9FC-3DE6-3733DA2F2DBE</designId>
+</OSDM_Design>

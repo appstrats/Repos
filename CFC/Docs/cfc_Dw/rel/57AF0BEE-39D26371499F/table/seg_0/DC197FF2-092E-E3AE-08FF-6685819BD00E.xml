@@ -1,0 +1,54 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DC197FF2-092E-E3AE-08FF-6685819BD00E" name="Account">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 14:51:23 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="AccountID_key" id="C25D6020-7312-5B52-6FEE-D0B3731FDC45">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 14:53:01 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ACCOUNTID" id="C241AF2E-BB39-C9A6-B513-E68B3EB0B8AF">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:04:37 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ACCOUNT" id="736381C4-0C48-256D-4657-A6C90499CAF2">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:04:37 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E1D3B427-E298-0877-35CA-5D837CE764E7" name="Account_PK">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 14:53:01 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C25D6020-7312-5B52-6FEE-D0B3731FDC45"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

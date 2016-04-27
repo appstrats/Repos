@@ -1,0 +1,43 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="4ACDBCA5-0074-E435-C134-A3034B3B997F" name="Region">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:22:29 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Region_Key" id="A4432EAF-7ED8-00D0-ABE6-42DA8229E225">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:23:36 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Region" id="A7072D28-4301-2D2A-114A-F8EC300467C1">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:23:36 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="BB2DEA4E-616C-5444-2711-045A4B0DBC95" name="Ship Region_PK">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:23:36 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A4432EAF-7ED8-00D0-ABE6-42DA8229E225"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

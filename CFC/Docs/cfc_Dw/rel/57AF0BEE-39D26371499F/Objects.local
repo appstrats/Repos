@@ -1,0 +1,34 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.relational.RelationalDesign>
+   <object objectType="Table" objectID="DC197FF2-092E-E3AE-08FF-6685819BD00E" name="Account" seqName="seg_0"/>
+   <object objectType="Table" objectID="74FD5853-EE0F-91B7-1DD1-7F7C11D40127" name="Address" seqName="seg_0"/>
+   <object objectType="Table" objectID="3AF0BB6B-96AC-D011-AE98-DBFC955D796F" name="CFC_fact" seqName="seg_0"/>
+   <object objectType="Table" objectID="390E2574-B373-2D82-AE84-DE4E82CF6B8B" name="Dim_Date" seqName="seg_0"/>
+   <object objectType="Table" objectID="D95441BC-0BD7-4751-0DAE-840C26CF8EA2" name="Fiscal_Year" seqName="seg_0"/>
+   <object objectType="Table" objectID="5561DE0A-4DD3-7469-E0CF-99B46EA42DDA" name="Funding" seqName="seg_0"/>
+   <object objectType="Table" objectID="DF9483A1-ECC5-1937-427E-F11C1B5A5043" name="Location" seqName="seg_0"/>
+   <object objectType="Table" objectID="03E28962-7B6D-BD5F-6494-3C61D0ECE6FF" name="MDR_File_Type" seqName="seg_0"/>
+   <object objectType="Table" objectID="6F4383D0-87AB-B611-C404-549083DADC6B" name="Order_Method" seqName="seg_0"/>
+   <object objectType="Table" objectID="446ACF3B-A518-44A0-F8DE-3E3552BDA76F" name="Order_Type" seqName="seg_0"/>
+   <object objectType="Table" objectID="34C3D69C-DAD4-4A4C-0DE7-08DDD7A1253C" name="Product" seqName="seg_0"/>
+   <object objectType="Table" objectID="4ACDBCA5-0074-E435-C134-A3034B3B997F" name="Region" seqName="seg_0"/>
+   <object objectType="Table" objectID="3AEA47B0-A1BA-00FE-C67D-3E37DEC3897F" name="Shipper" seqName="seg_0"/>
+   <object objectType="Table" objectID="8A369826-D883-657C-468D-3B81978E287D" name="User" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="C2B9A7D9-7891-EB77-6A97-ABD39CF0C2E9" name="CFC_fact_Account_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="872203BD-5EC8-88BA-0E2E-90434C610E5E" name="CFC_fact_Address_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="B2419847-D2AC-2699-A88D-613B6294A53E" name="CFC_fact_Address_FKv1" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="4D9FDE5E-00C9-9ABD-4CDB-9D49FBC14BCF" name="CFC_fact_Dim_Date_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="CD17B4F6-ECEF-D693-2A12-8AFA436A4942" name="CFC_fact_Dim_Date_FKv1" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="543331D6-0A1F-B918-5810-9018136A10F5" name="CFC_fact_Dim_Date_FKv2" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="33F49507-DC45-D14A-CF4E-728E3E927532" name="CFC_fact_Fiscal_Year_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="0E21239D-0198-7032-7B69-E5D734C1B41B" name="CFC_fact_Funding_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="80460651-6296-3F10-C4A2-621AA3E90BF4" name="CFC_fact_Location_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="214BD2FE-A152-A260-7BD8-0DA43A528E7F" name="CFC_fact_Location_FKv1" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="E2B2CF05-210E-1657-0831-D359684C9502" name="CFC_fact_MDR_File_Type_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="C98B0E77-FC5E-9EC4-A168-EF6DCB004D92" name="CFC_fact_Order_Method_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="93C90BC2-3F43-91ED-38CC-B8E4248DA1C9" name="CFC_fact_Order_Type_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="4827D70D-7F1B-D763-4DAE-A00BB769AE50" name="CFC_fact_Product_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="C8216D2A-7F3B-6D03-2633-B34120DB700F" name="CFC_fact_Region_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="DF4F3462-AFDA-03AE-9E8D-B7179CC38615" name="CFC_fact_Shipper_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="11C85FCD-5B49-6F6B-FCB3-5CCC680E2D31" name="CFC_fact_User_FK" seqName="seg_0"/>
+</oracle.dbtools.crest.model.design.relational.RelationalDesign>
