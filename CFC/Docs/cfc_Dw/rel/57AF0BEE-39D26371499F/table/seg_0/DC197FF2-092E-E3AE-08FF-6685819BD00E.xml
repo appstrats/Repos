@@ -6,7 +6,7 @@
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="AccountID_key" id="C25D6020-7312-5B52-6FEE-D0B3731FDC45">
+<Column name="Account_key" id="C25D6020-7312-5B52-6FEE-D0B3731FDC45">
 <createdBy>LA00347536</createdBy>
 <createdTime>2016-04-18 14:53:01 UTC</createdTime>
 <ownerDesignName>cfc_Dw</ownerDesignName>
@@ -23,7 +23,7 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>10</dataTypeSize>
+<dataTypeSize>25</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="ACCOUNT" id="736381C4-0C48-256D-4657-A6C90499CAF2">
@@ -34,7 +34,7 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
+<dataTypeSize>250</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
