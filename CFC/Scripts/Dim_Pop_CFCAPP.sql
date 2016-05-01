@@ -23,7 +23,7 @@ DROP PROC [dbo].sp_pop_region_CFCAPP
 go
 --Region
 -- exec sp_pop_region_CFCAPP 
-alter PROC sp_pop_region_CFCAPP as
+Create PROC sp_pop_region_CFCAPP as
 begin
 set nocount on;
 
@@ -71,7 +71,7 @@ DROP PROC [dbo].sp_pop_ordertype_CFCAPP
 go
 --Order type
 -- exec sp_pop_ordertype_CFCAPP 
-alter PROC sp_pop_ordertype_CFCAPP  as
+Create PROC sp_pop_ordertype_CFCAPP  as
 begin
 set nocount on;
 
@@ -94,7 +94,7 @@ DROP PROC [dbo].sp_pop_Order_Method_CFCAPP
 go
 --Order_Method
 -- exec sp_pop_Order_Method_CFCAPP 
-alter PROC sp_pop_Order_Method_CFCAPP  as
+create PROC sp_pop_Order_Method_CFCAPP  as
 begin
 set nocount on;
 
@@ -134,7 +134,7 @@ DROP PROC [dbo].sp_pop_Funding_CFCAPP
 go
 --Funding
 -- exec sp_pop_Funding_CFCAPP 
-alter PROC sp_pop_Funding_CFCAPP  as
+create PROC sp_pop_Funding_CFCAPP  as
 begin
 set nocount on;
 
@@ -156,7 +156,7 @@ DROP PROC [dbo].sp_pop_address_CFCAPP
 go
 --address
 -- exec sp_pop_address_CFCAPP 
-alter PROC sp_pop_address_CFCAPP  as
+create PROC sp_pop_address_CFCAPP  as
 begin
 set nocount on;
 
@@ -178,7 +178,7 @@ DROP PROC [dbo].sp_pop_location_CFCAPP
 go
 --location
 -- exec sp_pop_location_CFCAPP 
-alter PROC sp_pop_location_CFCAPP  as
+create PROC sp_pop_location_CFCAPP  as
 begin
 set nocount on;
 
@@ -199,7 +199,7 @@ DROP PROC [dbo].sp_pop_Shipper_CFCAPP
 go
 --Shipper
 -- exec sp_pop_Shipper_CFCAPP 
-alter PROC sp_pop_Shipper_CFCAPP as
+create PROC sp_pop_Shipper_CFCAPP as
 begin
 set nocount on ;
 with T_Label_Shipper1 as

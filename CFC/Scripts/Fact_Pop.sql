@@ -1,3 +1,5 @@
+use CFC_DW
+go
 --exec sp_populate_fact 
 --drop proc sp_populate_fact  
 create PROC sp_populate_fact  as
