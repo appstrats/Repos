@@ -1,7 +1,9 @@
 use CFC_DW
 go
 --exec sp_populate_fact 
---drop proc sp_populate_fact  
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].sp_populate_fact'))
+DROP PROC [dbo].sp_populate_fact
+go
 create PROC sp_populate_fact  as
 begin
 set nocount on

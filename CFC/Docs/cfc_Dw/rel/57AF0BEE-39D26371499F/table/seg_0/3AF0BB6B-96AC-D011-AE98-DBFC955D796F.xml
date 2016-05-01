@@ -132,7 +132,7 @@
 <colAssociation fkAssociation="DF4F3462-AFDA-03AE-9E8D-B7179CC38615" referredColumn="28052CA1-365A-90D3-300C-6928390F60FB"/>
 </associations>
 </Column>
-<Column name="Funding Key" id="997EAD4D-3736-B34A-EDBB-D5611099CB5E">
+<Column name="Funding_Key" id="997EAD4D-3736-B34A-EDBB-D5611099CB5E">
 <createdBy>LA00347536</createdBy>
 <createdTime>2016-04-18 15:36:02 UTC</createdTime>
 <ownerDesignName>cfc_Dw</ownerDesignName>

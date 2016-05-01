@@ -53,7 +53,7 @@ begin
 set nocount on;
 
 with T_Label_Product as
-(select distinct(InvtID) ivt from CFCAPP.sysdba.SOShipLine  ) 
+(select distinct InvtID ivt, ItemGLClassID, Descr from CFCAPP.dbo.SOShipLine  ) 
 
 
 insert into Product(PRODUCT_NUMBER_key,PRODUCT_Family,PRODUCT_NUMBER,PRODUCT_NAME)
@@ -205,7 +205,7 @@ set nocount on ;
 with T_Label_Shipper1 as
 (select distinct(SHIPPERID),ShipName from CFCAPP.dbo.SOShipHeader) 
 
-insert into Shipper(SHIPPER_key,ShipName,SHIPPERID)
+insert into Shipper(SHIPPER_key,SHIPPERID, ShipName)
 select distinct isnull((select max(SHIPPER_key) from Shipper where SHIPPER_key>-1),0) +
 ROW_NUMBER() over (ORDER BY s.SHIPPERID ),s.SHIPPERID, s.ShipName
 from T_Label_Shipper1 s

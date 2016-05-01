@@ -1,3 +1,5 @@
+USE CFC_DW
+go
 if not exists(select * from [dbo].Account where Account_key = -1)
 INSERT into [dbo].Account (Account_key, ACCOUNTID, ACCOUNT) values (-1, 'Unknown','Unknown');
 go
@@ -5,7 +7,8 @@ if not exists(select * from [dbo].[Address] where ADDRESS_Key = -1)
 INSERT INTO [dbo].[Address] ([ADDRESS_Key] ,[Addr1] ,[Addr2]) VALUES (-1, 'Unknown','Unknown')
 GO
 if not exists(select * from [dbo].[Dim_Date] where [Date_Key] = -1)
-INSERT INTO [dbo].[Dim_Date] ([Date_Key]) VALUES (-1)
+INSERT INTO [dbo].[Dim_Date] ([Date_Key],DateVal, DateDesc, CalenderMonth, CalenderMonthDesc, CalenderQuarter, CalenderQuarterDesc, CalenderYear)
+ VALUES (-1,'19000101','19000101',1, '01',1,'Q1',1900)
 GO
 if not exists(select * from [dbo].[Fiscal_Year] where [Fiscal_Year_Key] = -1)
 INSERT INTO [dbo].[Fiscal_Year] ([Fiscal_Year_Key] ,[Fiscal_Year])  VALUES (-1, 'Unknown')

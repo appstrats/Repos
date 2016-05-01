@@ -15,6 +15,80 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="DateVal" id="17492D8F-9971-DFA8-DBDE-BA3ED86A001D">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-05-01 08:11:36 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DateDesc" id="2E942318-E911-5A7C-9BBF-950658ABE71E">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-05-01 08:11:36 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CalenderMonth" id="1D080F16-13AA-9A67-E6C2-E9AD9ECA2043">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-05-01 08:13:08 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CalenderMonthDesc" id="E0CC7D05-B3A1-3689-A55F-2F7560A14020">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-05-01 08:13:08 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CalenderQuarter" id="C9140396-2F6A-6EAE-3B08-A2B970331962">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-05-01 08:13:08 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CalenderQuarterDesc" id="E6E9522C-BD84-8247-38DD-52EF0FE88CDC">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-05-01 08:13:08 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CalenderYear" id="263AE97F-48FF-8E33-0A0C-7B87B9AFD3A8">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-05-01 08:13:08 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="314A3C1C-C294-4F16-CF13-34318E241702" name="Dim_Date_PK">
