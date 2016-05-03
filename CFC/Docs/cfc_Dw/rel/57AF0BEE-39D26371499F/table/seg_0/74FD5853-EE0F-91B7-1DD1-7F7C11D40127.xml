@@ -1,0 +1,54 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="74FD5853-EE0F-91B7-1DD1-7F7C11D40127" name="Address">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:12:45 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ADDRESS_Key" id="E4204B64-78D4-5406-4549-0765A34D1CCC">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:14:36 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Addr1" id="E945AB60-AAC3-C79B-1642-897F2A4972EF">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:14:36 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>150</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Addr2" id="EFE967C0-B39C-82BE-8366-8B0C4030191E">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:14:36 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>150</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="28D4F150-27F8-5FCF-744A-A25F6A641B2A" name="Address_PK">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:14:36 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E4204B64-78D4-5406-4549-0765A34D1CCC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

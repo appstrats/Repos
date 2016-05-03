@@ -1,0 +1,446 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3AF0BB6B-96AC-D011-AE98-DBFC955D796F" name="CFC_fact">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:31:57 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="cfc_key" id="2C127866-F52F-FC53-D604-C3C4CE94983D">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 16:19:03 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Ship_Location_Key" id="031046E5-A77D-DAE4-130C-EB49156EBF77">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:36:02 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>CA23D64D-66F7-AE2D-AF7E-6F3E64369DA1</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="80460651-6296-3F10-C4A2-621AA3E90BF4" referredColumn="CA23D64D-66F7-AE2D-AF7E-6F3E64369DA1"/>
+</associations>
+</Column>
+<Column name="Ship_Address_Key" id="50C6E200-FF55-18B2-AD2E-808FA4CE2569">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:36:02 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>E4204B64-78D4-5406-4549-0765A34D1CCC</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B2419847-D2AC-2699-A88D-613B6294A53E" referredColumn="E4204B64-78D4-5406-4549-0765A34D1CCC"/>
+</associations>
+</Column>
+<Column name="Order_Type_Key" id="848C0F2E-C876-77FC-10EF-9808A03F6D5E">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:36:02 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>442C461C-7157-8661-094E-598EFF1B0B3A</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="93C90BC2-3F43-91ED-38CC-B8E4248DA1C9" referredColumn="442C461C-7157-8661-094E-598EFF1B0B3A"/>
+</associations>
+</Column>
+<Column name="Order_Method_Key" id="A78DCC37-B3B2-117A-6497-F9305D556386">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:36:02 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>D35BAF73-4631-DE0D-B797-EE461416C05B</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C98B0E77-FC5E-9EC4-A168-EF6DCB004D92" referredColumn="D35BAF73-4631-DE0D-B797-EE461416C05B"/>
+</associations>
+</Column>
+<Column name="User_Key" id="4B911CC0-2837-6931-8A31-D9F190C68F5C">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:36:02 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>BF6FF6F5-08AE-84C4-0A0E-3377E3B64239</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="11C85FCD-5B49-6F6B-FCB3-5CCC680E2D31" referredColumn="BF6FF6F5-08AE-84C4-0A0E-3377E3B64239"/>
+</associations>
+</Column>
+<Column name="Ship_Region_Key" id="90804D21-DC7F-E195-2290-C88E9D480359">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:36:02 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>A4432EAF-7ED8-00D0-ABE6-42DA8229E225</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C8216D2A-7F3B-6D03-2633-B34120DB700F" referredColumn="A4432EAF-7ED8-00D0-ABE6-42DA8229E225"/>
+</associations>
+</Column>
+<Column name="Fiscal_Year_Key" id="BA93BE52-1298-B267-D90D-00C3A07AE893">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:36:02 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>E616B435-7802-C9EC-AD51-C036595D58A4</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="33F49507-DC45-D14A-CF4E-728E3E927532" referredColumn="E616B435-7802-C9EC-AD51-C036595D58A4"/>
+</associations>
+</Column>
+<Column name="MDR_File_Type_Key" id="48EDF87E-AE91-BA60-3629-F2A4036E0A60">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:36:02 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>8E4279D2-4B1C-103D-50CD-1848D1591AD5</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E2B2CF05-210E-1657-0831-D359684C9502" referredColumn="8E4279D2-4B1C-103D-50CD-1848D1591AD5"/>
+</associations>
+</Column>
+<Column name="Shipper_Key" id="2E71E73C-5A94-250C-3CCE-C1D1D331C6D8">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:36:02 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>28052CA1-365A-90D3-300C-6928390F60FB</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DF4F3462-AFDA-03AE-9E8D-B7179CC38615" referredColumn="28052CA1-365A-90D3-300C-6928390F60FB"/>
+</associations>
+</Column>
+<Column name="Funding_Key" id="997EAD4D-3736-B34A-EDBB-D5611099CB5E">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:36:02 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>D4BD5E8B-9321-943F-BA19-76BAB2606D9C</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0E21239D-0198-7032-7B69-E5D734C1B41B" referredColumn="D4BD5E8B-9321-943F-BA19-76BAB2606D9C"/>
+</associations>
+</Column>
+<Column name="Product_Number_Key" id="EC48DCB7-CDEE-9B1F-53C1-87A96800503B">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:36:02 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>06A21FB9-2707-9CF8-7067-0C0D33E16B30</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4827D70D-7F1B-D763-4DAE-A00BB769AE50" referredColumn="06A21FB9-2707-9CF8-7067-0C0D33E16B30"/>
+</associations>
+</Column>
+<Column name="Account_Key" id="EED4798D-6EBD-E825-CD59-72F316C62D26">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 16:20:03 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>C25D6020-7312-5B52-6FEE-D0B3731FDC45</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C2B9A7D9-7891-EB77-6A97-ABD39CF0C2E9" referredColumn="C25D6020-7312-5B52-6FEE-D0B3731FDC45"/>
+</associations>
+</Column>
+<Column name="Bill_Address_Key" id="03956B7C-2DC4-60C4-6DC4-E5B1A633216E">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-25 16:38:24 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>E4204B64-78D4-5406-4549-0765A34D1CCC</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="872203BD-5EC8-88BA-0E2E-90434C610E5E" referredColumn="E4204B64-78D4-5406-4549-0765A34D1CCC"/>
+</associations>
+</Column>
+<Column name="Bill_Location_Key" id="F5CD33B4-04CD-F56D-72EE-8FD2E1BC1541">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-25 16:40:53 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>CA23D64D-66F7-AE2D-AF7E-6F3E64369DA1</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="214BD2FE-A152-A260-7BD8-0DA43A528E7F" referredColumn="CA23D64D-66F7-AE2D-AF7E-6F3E64369DA1"/>
+</associations>
+</Column>
+<Column name="Ship_Date_Key" id="CBE8F37A-2F11-7268-589E-CF60F2B7DB04">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-25 16:43:54 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>FC1F65B5-2872-ED6B-B6B7-626B1F4AC294</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4D9FDE5E-00C9-9ABD-4CDB-9D49FBC14BCF" referredColumn="FC1F65B5-2872-ED6B-B6B7-626B1F4AC294"/>
+</associations>
+</Column>
+<Column name="Bill_Date_Key" id="49B5F6E3-6B29-7EAB-2951-CBD6B7DEE680">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-25 16:44:11 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>FC1F65B5-2872-ED6B-B6B7-626B1F4AC294</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CD17B4F6-ECEF-D693-2A12-8AFA436A4942" referredColumn="FC1F65B5-2872-ED6B-B6B7-626B1F4AC294"/>
+</associations>
+</Column>
+<Column name="Order_Date_Key" id="89264E2B-0D26-B797-A392-F6E5C13446E1">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-25 16:46:30 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<delegate>FC1F65B5-2872-ED6B-B6B7-626B1F4AC294</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="543331D6-0A1F-B918-5810-9018136A10F5" referredColumn="FC1F65B5-2872-ED6B-B6B7-626B1F4AC294"/>
+</associations>
+</Column>
+<Column name="Qty_Shiped" id="2D0D4E87-5803-CBA4-92F9-DF3AED0C51C2">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-25 16:47:39 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Extended_Price" id="CF4AABE0-7F57-39C6-918C-F8C039A96710">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-25 16:48:40 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<dataTypeScale>3</dataTypeScale>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0B20907C-635F-89E9-2FAA-F8454C55F949" name="CFC_fact_PK">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 16:19:10 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2C127866-F52F-FC53-D604-C3C4CE94983D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6BE36D2B-5266-2C14-CA25-9C4677EFA21F" name="CFC_fact_Account_FK">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 16:20:03 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EED4798D-6EBD-E825-CD59-72F316C62D26"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="737EF5C5-6F3A-D395-7596-EF0D0BDDB6B3" name="CFC_fact_Location_FK">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 16:22:17 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="031046E5-A77D-DAE4-130C-EB49156EBF77"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="306928AB-9DB2-E8D1-E6FF-1C9F13E9EB0B" name="CFC_fact_Product_FK">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 16:24:36 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EC48DCB7-CDEE-9B1F-53C1-87A96800503B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F1B9B44D-1153-88F2-93A9-E2995904B44A" name="CFC_fact_Funding_FK">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-25 16:29:57 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="997EAD4D-3736-B34A-EDBB-D5611099CB5E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="89664D43-FCDD-CB97-53BE-C698762C4B23" name="CFC_fact_Region_FK">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-25 16:32:12 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="90804D21-DC7F-E195-2290-C88E9D480359"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="541B9955-0C6A-BC3B-45D9-939C4E915B7D" name="CFC_fact_User_FK">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-25 16:32:38 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4B911CC0-2837-6931-8A31-D9F190C68F5C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1DAF495B-DA3F-D2C1-A2C2-26637B93060F" name="CFC_fact_Order_Method_FK">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-25 16:33:37 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A78DCC37-B3B2-117A-6497-F9305D556386"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="98BF8E50-7FCF-57A2-F811-ADB270179884" name="CFC_fact_MDR_File_Type_FK">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-25 16:34:23 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="48EDF87E-AE91-BA60-3629-F2A4036E0A60"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9A40F69D-4972-A606-760E-505D52F7B5D8" name="CFC_fact_Fiscal_Year_FK">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-25 16:35:04 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BA93BE52-1298-B267-D90D-00C3A07AE893"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8CB7E726-DC33-E8FA-8339-63F3471C67F1" name="CFC_fact_Shipper_FK">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-25 16:36:10 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2E71E73C-5A94-250C-3CCE-C1D1D331C6D8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5F7B433A-B784-100A-B521-7523296985FA" name="CFC_fact_Address_FK">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-25 16:38:31 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="03956B7C-2DC4-60C4-6DC4-E5B1A633216E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="87966C57-3286-A663-1509-04CF99A2ED25" name="CFC_fact_Address_FKv1">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-25 16:38:48 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="50C6E200-FF55-18B2-AD2E-808FA4CE2569"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="EA6622B2-F14D-A8CE-EDB4-FD5114E9BD03" name="CFC_fact_Order_Type_FK">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-25 16:39:26 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="848C0F2E-C876-77FC-10EF-9808A03F6D5E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FD15A4AE-EE3F-D91A-00EC-318A09ACA7E0" name="CFC_fact_Location_FKv1">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-25 16:41:03 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F5CD33B4-04CD-F56D-72EE-8FD2E1BC1541"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8BC8D779-AEFA-E639-EFE9-1C4FC384A94D" name="CFC_fact_Dim_Date_FK">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-25 16:44:53 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CBE8F37A-2F11-7268-589E-CF60F2B7DB04"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FD8608A4-49E9-7D20-34E0-291CDFF0A4A0" name="CFC_fact_Dim_Date_FKv1">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-25 16:45:07 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="49B5F6E3-6B29-7EAB-2951-CBD6B7DEE680"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6221C799-93F3-3BFB-C74A-162DCEE49D32" name="CFC_fact_Dim_Date_FKv2">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-25 16:46:38 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="89264E2B-0D26-B797-A392-F6E5C13446E1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

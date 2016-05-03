@@ -1,0 +1,43 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="446ACF3B-A518-44A0-F8DE-3E3552BDA76F" name="Order_Type">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:17:17 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Order_Type_Key" id="442C461C-7157-8661-094E-598EFF1B0B3A">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:18:56 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Order_Type" id="D4E4D4C8-E7EF-19B4-5D39-1C5A95669AF7">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:18:56 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3B81513B-B703-6F7F-CD45-F09534779273" name="Order type_PK">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-04-18 15:18:56 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="442C461C-7157-8661-094E-598EFF1B0B3A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
