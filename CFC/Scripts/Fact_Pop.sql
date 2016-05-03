@@ -50,10 +50,12 @@ ACCOUNT.REGION,
 ADDRESS.CITY,
 ADDRESS.STATE,
 ADDRESS.COUNTRY,
-ADDRESS.POSTALCODE
---ACCOUNTFFEXT.MDR_FILETYPE, 
+ADDRESS.POSTALCODE,
+ACCOUNTFFEXT.MDR_FILETYPE, 
 --ACCOUNTFFEXT.MDR_ENROLLMENT,
 --ACCOUNTFFEXT.R_RANK_ENROLL
+SALESORDER.FFShipto_Zip shippostcode
+
 into #sl_fact
 FROM           
 SalesLogix.sysdba.SALESORDER
@@ -73,14 +75,14 @@ and SALESORDER.SHIPPEDDATE >= DATEADD(year, - 5, GETDATE())
 
 select isnull((select max(cfc_key) from [CFC_DW].dbo.CFC_fact),0) + 
 ROW_NUMBER() over (ORDER BY f.CFCID) cfc_key,
--1 Ship_Location_Key,
+isnull (Location_key,-1) Ship_Location_Key,
 -1 Ship_Address_Key,
--1 Order_Type_Key,
+isnull (Order_Type_Key,-1) Order_Type_Key,
 isnull(ORM.Order_Method_Key, -1) Order_Method_Key,
 -1 User_Key,
 -1 Ship_Region_Key,
 isnull(fy.Fiscal_Year_Key, -1) Fiscal_Year_Key,
--1 MDR_File_Type_Key,
+isnull(mdrft.MDR_File_Type_Key,-1) MDR_File_Type_Key,
 isnull(s.SHIPPER_Key, -1) Shipper_Key,
 isnull(FND.Funding_Key, -1) Funding_Key,
 isnull(p.Product_Number_Key, -1) Product_Number_Key,
@@ -103,7 +105,9 @@ f.QTY Qty_Shiped,
   left join Account ACT on f.ACCOUNT = ACT.ACCOUNT
   left join Dim_Date ship_d on f.SHIPPEDDATE = ship_d.date_key
   left join Dim_Date ord_d on f.ORDERDATE = ord_d.date_key    
-  
+  left join [Order_Type] odr_t on f.ORDERTYPE = odr_t.Order_Type
+  left join [Location] sloc on f.shippostcode = sloc.Postcode
+  left join [MDR_File_Type] mdrft on f.MDR_FILETYPE = mdrft.MDR_File_Type
 
   truncate table cfc_fact;
 

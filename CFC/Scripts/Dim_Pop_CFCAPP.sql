@@ -183,7 +183,7 @@ begin
 set nocount on;
 
 with T_Label_Location1 as
-(select distinct(ShipZip),ShipCity,ShipState,ShipCountry from CFCAPP.dbo.SOShipHeader) 
+(select distinct ShipZip,ShipCity,ShipState,ShipCountry from CFCAPP.dbo.SOShipHeader where shipzip is not null) 
 
 insert into [CFC_DW].dbo.[Location](Location_key,Postcode,City,State,Country)
 select distinct isnull((select max([Location_Key]) from [CFC_DW].dbo.[Location] where [Location_Key]>-1),0) +

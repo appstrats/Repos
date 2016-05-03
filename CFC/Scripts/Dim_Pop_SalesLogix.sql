@@ -72,7 +72,7 @@ begin
 set nocount on;
 
 with T_Label_Order_Type as
-(select distinct(ORDERTYPE) ot from SalesLogix.sysdba.SALESORDER  ) 
+(select distinct(ORDERTYPE) ot from SalesLogix.sysdba.SALESORDER where ORDERTYPE is not null ) 
 
 insert into [CFC_DW].dbo.[Order_Type]([Order_Type_Key],[Order_Type])
 select distinct isnull((select max([Order_Type_Key]) from [CFC_DW].dbo.[Order_Type] where [Order_Type_Key]>-1),0) +
@@ -201,7 +201,7 @@ begin
 set nocount on;
 
 with T_Label_Location as
-(select distinct(POSTALCODE),CITY,STATE,COUNTRY from SalesLogix.sysdba.ADDRESS ) 
+(select distinct POSTALCODE,CITY,STATE,COUNTRY from SalesLogix.sysdba.ADDRESS where postalcode is not null ) 
 
 insert into [CFC_DW].dbo.[Location](Location_key,Postcode,City,State,Country)
 select distinct isnull((select max([Location_Key]) from [CFC_DW].dbo.[Location] where [Location_Key]>-1),0) +
