@@ -11,6 +11,8 @@ begin
 set nocount on
 
 -- SalesLogx Data
+select * into #sl_fact from 
+(
 SELECT       
 CAST(CASE WHEN month(Salesorder.shippeddate) IN (1, 2, 3) THEN year(Salesorder.shippeddate) - 1
 ELSE year(Salesorder.shippeddate) END AS varchar(4))
@@ -57,6 +59,19 @@ ACCOUNTFFEXT.MDR_FILETYPE,
 --ACCOUNTFFEXT.MDR_ENROLLMENT,
 --ACCOUNTFFEXT.R_RANK_ENROLL
 SALESORDER.FFShipto_Zip shippostcode
+FROM           
+SalesLogix.sysdba.SALESORDER
+Left JOIN  SalesLogix.sysdba.SALESORDER_EXT ON SALESORDER.SALESORDERID = SALESORDER_EXT.SALESORDERID
+Left JOIN SalesLogix.sysdba.SALESORDERDETAIL ON SALESORDER.SALESORDERID = SALESORDERDETAIL.SALESORDERID
+left JOIN SalesLogix.sysdba.PRODUCT ON SALESORDERDETAIL.PRODUCTID = PRODUCT.PRODUCTID
+Left join SalesLogix.sysdba.ACCOUNT ON SALESORDER.ACCOUNTID = ACCOUNT.ACCOUNTID
+INNER JOIN SalesLogix.sysdba.ADDRESS ON ACCOUNT.ADDRESSID = ADDRESS.ADDRESSID
+inner JOIN SalesLogix.sysdba.ACCOUNTFFEXT ON ACCOUNT.ACCOUNTID = ACCOUNTFFEXT.ACCOUNTID
+left join SalesLogix.sysdba.ACCOUNT AS ACCOUNT_1 ON ACCOUNT.PARENTID = ACCOUNT_1.ACCOUNTID
+WHERE       
+(SALESORDERDETAIL.EXTENDEDPRICEINVOICED <> '0') AND
+(SALESORDERDETAIL.QUANTITYSHIPPED <> 0)
+and SALESORDER.SHIPPEDDATE >= DATEADD(year, - 5, GETDATE())
 
 UNION
  
@@ -96,7 +111,7 @@ SOL.Descr,
 case when a.parentid is null then a.ACCOUNT else ACCOUNT_1.Account end as DistrictOrNoParent
 --ACCOUNT_1.account
 FROM SalesLogix.SYSDBA.ACCOUNT AS A
-left join sysdba.ACCOUNT AS ACCOUNT_1 ON A.PARENTID = ACCOUNT_1.ACCOUNTID
+left join SalesLogix.sysdba.ACCOUNT AS ACCOUNT_1 ON A.PARENTID = ACCOUNT_1.ACCOUNTID
 WHERE A.EXTERNALACCOUNTNO=SOH.CustID
 ) AS DistrictOrNoParent,
 (select cu.Name from [CFCAPP].dbo.[Customer] as cu where cu.custid=soh.custid) as ACCOUNT,
@@ -106,36 +121,24 @@ SOH.ShipState,
 SOH.ShipCountry,
 SOH.ShipZip,
 '' mdrfiletype,
-'' shipzip
+'' shippostcode
  
 --orddate, ShipDateAct, soh.ShipperID, SOTypeID, ARDocType, Cancelled,*
 from
 CFCAPP.dbo.SOShipHeader as soh
-left join sysdba.SALESORDER_EXT as so_ext on so_ext.shipperid=soh.ShipperID
+--left join CFCAPP.dbo.SALESORDER_EXT as so_ext on so_ext.shipperid=soh.ShipperID
 inner join CFCAPP.dbo.SOShipLine as sol on sol.ShipperID=soh.ShipperID 
 where --soh.shipperid='366312' 
-so_ext.SHIPPERID is null and Cancelled = 0 
+--so_ext.SHIPPERID is null and 
+Cancelled = 0 
+) src
 
-into #sl_fact
-FROM           
-SalesLogix.sysdba.SALESORDER
-Left JOIN  SalesLogix.sysdba.SALESORDER_EXT ON SALESORDER.SALESORDERID = SALESORDER_EXT.SALESORDERID
-Left JOIN SalesLogix.sysdba.SALESORDERDETAIL ON SALESORDER.SALESORDERID = SALESORDERDETAIL.SALESORDERID
-left JOIN SalesLogix.sysdba.PRODUCT ON SALESORDERDETAIL.PRODUCTID = PRODUCT.PRODUCTID
-Left join SalesLogix.sysdba.ACCOUNT ON SALESORDER.ACCOUNTID = ACCOUNT.ACCOUNTID
-INNER JOIN SalesLogix.sysdba.ADDRESS ON ACCOUNT.ADDRESSID = ADDRESS.ADDRESSID
-inner JOIN SalesLogix.sysdba.ACCOUNTFFEXT ON ACCOUNT.ACCOUNTID = ACCOUNTFFEXT.ACCOUNTID
-left join SalesLogix.sysdba.ACCOUNT AS ACCOUNT_1 ON ACCOUNT.PARENTID = ACCOUNT_1.ACCOUNTID
-WHERE       
-(SALESORDERDETAIL.EXTENDEDPRICEINVOICED <> '0') AND
-(SALESORDERDETAIL.QUANTITYSHIPPED <> 0)
-and SALESORDER.SHIPPEDDATE >= DATEADD(year, - 5, GETDATE())
 
 
 
 select isnull((select max(cfc_key) from [CFC_DW].dbo.CFC_fact),0) + 
 ROW_NUMBER() over (ORDER BY f.CFCID) cfc_key,
-isnull (Location_key,-1) Ship_Location_Key,
+isnull (sloc.Location_key,-1) Ship_Location_Key,
 -1 Ship_Address_Key,
 isnull (Order_Type_Key,-1) Order_Type_Key,
 isnull(ORM.Order_Method_Key, -1) Order_Method_Key,
@@ -148,7 +151,7 @@ isnull(FND.Funding_Key, -1) Funding_Key,
 isnull(p.Product_Number_Key, -1) Product_Number_Key,
 isnull(Account_key, -1) Account_Key,
 -1 Bill_Address_Key,
-isnull (Location_key,-1) Bill_Location_Key,
+isnull (bloc.Location_key,-1) Bill_Location_Key,
 isnull(ship_d.date_key,-1) Ship_Date_Key,
 -1 Bill_Date_Key,
 isnull(ord_d.date_key,-1) Order_Date_Key,
@@ -163,13 +166,14 @@ f.PRODUCT_EXTENDEDPRICEINVOICED Extended_Price
   left join Shipper s on f.SHIPPERID = s.SHIPPERID
   left join Product p on f.PRODUCT_NUMBER = p.PRODUCT_NUMBER
   left join Account ACT on f.ACCOUNT = ACT.ACCOUNT
-  left join Dim_Date ship_d on f.SHIPPEDDATE = ship_d.date_key
-  left join Dim_Date ord_d on f.ORDERDATE = ord_d.date_key    
+  left join Dim_Date ship_d on convert(varchar(8),f.SHIPPEDDATE,112) = ship_d.date_key
+  left join Dim_Date ord_d on convert(varchar(8),f.ORDERDATE,112) = ord_d.date_key    
   left join [Order_Type] odr_t on f.ORDERTYPE = odr_t.Order_Type
   left join [Location] sloc on f.shippostcode = sloc.Postcode
-  left join [Location] bloc on f.ShipZip = bloc.Postcode
+  left join [Location] bloc on f.shippostcode = bloc.Postcode
   left join [MDR_File_Type] mdrft on f.MDR_FILETYPE = mdrft.MDR_File_Type
-  left join Region rgn on f.REGION = s.Region
+  left join Region rgn on f.REGION = rgn.Region
+
 
   truncate table cfc_fact;
 

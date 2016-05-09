@@ -201,7 +201,8 @@ begin
 set nocount on;
 
 with T_Label_Location as
-(select distinct POSTALCODE,CITY,STATE,COUNTRY from SalesLogix.sysdba.ADDRESS where postalcode is not null ) 
+(select  POSTALCODE,max(CITY) CITY,max(STATE) STATE,max(COUNTRY) COUNTRY  from SalesLogix.sysdba.ADDRESS where postalcode is not null
+group by POSTALCODE ) 
 
 insert into [CFC_DW].dbo.[Location](Location_key,Postcode,City,State,Country)
 select distinct isnull((select max([Location_Key]) from [CFC_DW].dbo.[Location] where [Location_Key]>-1),0) +
