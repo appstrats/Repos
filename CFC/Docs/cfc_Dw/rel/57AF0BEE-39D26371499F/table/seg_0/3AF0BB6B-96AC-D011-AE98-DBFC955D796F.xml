@@ -237,6 +237,17 @@
 <colAssociation fkAssociation="543331D6-0A1F-B918-5810-9018136A10F5" referredColumn="FC1F65B5-2872-ED6B-B6B7-626B1F4AC294"/>
 </associations>
 </Column>
+<Column name="SalesOrderID" id="A5FC66FC-3240-4663-F071-2E31581B7D35">
+<createdBy>LA00347536</createdBy>
+<createdTime>2016-05-12 15:49:43 UTC</createdTime>
+<ownerDesignName>cfc_Dw</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 <Column name="Qty_Shiped" id="2D0D4E87-5803-CBA4-92F9-DF3AED0C51C2">
 <createdBy>LA00347536</createdBy>
 <createdTime>2016-04-25 16:47:39 UTC</createdTime>

@@ -58,7 +58,14 @@ ADDRESS.POSTALCODE,
 ACCOUNTFFEXT.MDR_FILETYPE, 
 --ACCOUNTFFEXT.MDR_ENROLLMENT,
 --ACCOUNTFFEXT.R_RANK_ENROLL
-SALESORDER.FFShipto_Zip shippostcode
+SALESORDER.FFShipto_Zip shippostcode,
+SALESORDER.SALESORDERID,
+SALESORDER.USERID as username,
+SALESORDER.SHIPTONAME shipname,
+SALESORDER.FFShipto_Addr1 shipaddr1,
+SALESORDER.FFShipto_Addr2 shipaddr2,
+'' billaddr1,
+'' billaddr2
 FROM           
 SalesLogix.sysdba.SALESORDER
 Left JOIN  SalesLogix.sysdba.SALESORDER_EXT ON SALESORDER.SALESORDERID = SALESORDER_EXT.SALESORDERID
@@ -121,8 +128,14 @@ SOH.ShipState,
 SOH.ShipCountry,
 SOH.ShipZip,
 '' mdrfiletype,
-'' shippostcode
- 
+SOH.ShipZip shippostcode,
+soh.OrdNbr SALESORDERID,
+soh.user2 username,
+soh.shipname,
+soh.ShipAddr1 shipaddr1,
+soh.ShipAddr2 shipaddr2,
+soh.BillAddr1 billaddr1,
+soh.BillAddr2 billaddr2
 --orddate, ShipDateAct, soh.ShipperID, SOTypeID, ARDocType, Cancelled,*
 from
 CFCAPP.dbo.SOShipHeader as soh
@@ -139,7 +152,7 @@ Cancelled = 0
 select isnull((select max(cfc_key) from [CFC_DW].dbo.CFC_fact),0) + 
 ROW_NUMBER() over (ORDER BY f.CFCID) cfc_key,
 isnull (sloc.Location_key,-1) Ship_Location_Key,
--1 Ship_Address_Key,
+isnull (saddr.address_key,-1) Ship_Address_Key,
 isnull (Order_Type_Key,-1) Order_Type_Key,
 isnull(ORM.Order_Method_Key, -1) Order_Method_Key,
 -1 User_Key,
@@ -150,11 +163,12 @@ isnull(s.SHIPPER_Key, -1) Shipper_Key,
 isnull(FND.Funding_Key, -1) Funding_Key,
 isnull(p.Product_Number_Key, -1) Product_Number_Key,
 isnull(Account_key, -1) Account_Key,
--1 Bill_Address_Key,
+isnull(baddr.address_key,-1) Bill_Address_Key,
 isnull (bloc.Location_key,-1) Bill_Location_Key,
 isnull(ship_d.date_key,-1) Ship_Date_Key,
 -1 Bill_Date_Key,
 isnull(ord_d.date_key,-1) Order_Date_Key,
+SALESORDERID,
 f.QTY Qty_Shiped,
 f.PRODUCT_EXTENDEDPRICEINVOICED Extended_Price
 
@@ -173,7 +187,8 @@ f.PRODUCT_EXTENDEDPRICEINVOICED Extended_Price
   left join [Location] bloc on f.shippostcode = bloc.Postcode
   left join [MDR_File_Type] mdrft on f.MDR_FILETYPE = mdrft.MDR_File_Type
   left join Region rgn on f.REGION = rgn.Region
-
+  left join [address] saddr on f.shipaddr1 = saddr.addr1 and f.shipaddr2 = saddr.addr2
+  left join [address] baddr on f.billaddr1 = baddr.addr1 and f.billaddr2 = baddr.addr2
 
   truncate table cfc_fact;
 
@@ -196,6 +211,7 @@ f.PRODUCT_EXTENDEDPRICEINVOICED Extended_Price
 	Ship_Date_Key,
 	Bill_Date_Key,
 	Order_Date_Key,
+	SALESORDERID,
 	Qty_Shiped,
 	Extended_Price
 	)
@@ -218,6 +234,7 @@ f.PRODUCT_EXTENDEDPRICEINVOICED Extended_Price
 	Ship_Date_Key,
 	Bill_Date_Key,
 	Order_Date_Key,
+	SALESORDERID,
 	Qty_Shiped,
 	Extended_Price
 
@@ -227,3 +244,49 @@ f.PRODUCT_EXTENDEDPRICEINVOICED Extended_Price
 
 	
   end;
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].vw_cfc_fact'))
+DROP view [dbo].vw_cfc_fact
+go
+
+create view dbo.vw_cfc_fact as 
+select 
+sloc.Postcode Ship_Postcode,
+sadd.addr1 shipaddress,
+odr_t. Order_Type,
+ORM.Order_Method,
+u.[name] username,
+r.region shipregion,
+fy.Fiscal_Year,
+mdrft.MDR_File_Type,
+s.ShipName,
+FND.Funding,
+p.PRODUCT_NAME,
+act.ACCOUNT,
+badd.addr1 billaddress,
+bloc.Postcode bill_Postcode,
+ship_d.DateVal shipdate,
+bill_d.DateVal billdate,
+ord_d.DateVal orderdate,
+SALESORDERID,
+Qty_Shiped,
+Extended_Price
+
+  from cfc_fact f
+  left join [Address] sadd on f.Ship_Address_Key = sadd.Address_Key
+  left join [User] u on f.User_Key = u.User_Key
+  left join Region r on f.Ship_Region_Key = r.Region_key
+  left join [Fiscal_Year] fy on f.Fiscal_Year_Key = fy.Fiscal_Year_Key
+  left join Funding FND on f.Funding_Key = FND.Funding_Key
+  left join Order_Method ORM on f.Order_Method_Key = ORM.Order_Method_Key
+  left join Shipper s on f.Shipper_Key = s.Shipper_Key
+  left join Product p on f.Product_Number_Key = p.Product_Number_Key
+  left join [Address] badd on f.Bill_Address_Key = badd.Address_Key
+  left join Account ACT on f.Account_Key = ACT.Account_Key
+  left join Dim_Date ship_d on f.Ship_Date_Key = ship_d.date_key
+  left join Dim_Date ord_d on f.Order_Date_Key = ord_d.date_key    
+  left join Dim_Date bill_d on f.Bill_Date_Key = bill_d.date_key
+  left join [Order_Type] odr_t on f.Order_Type_Key = odr_t.Order_Type_Key
+  left join [Location] sloc on f.Ship_Location_Key = sloc.Location_Key
+  left join [Location] bloc on f.Bill_Location_Key = bloc.Location_Key
+  left join [MDR_File_Type] mdrft on f.MDR_File_Type_Key = mdrft.MDR_File_Type_Key

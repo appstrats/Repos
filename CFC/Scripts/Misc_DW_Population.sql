@@ -72,3 +72,26 @@ select [DateKey],
 end
 set nocount off
 end
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].sp_populate_FY_dim'))
+DROP PROC [dbo].sp_populate_FY_dim
+go
+create PROC sp_populate_FY_dim (@pyear char(4)) as
+begin
+declare @intnextyear as int
+declare @strfyval as varchar(10)
+
+set @intnextyear = cast(@pyear as int) +1
+set @strfyval = @pyear + '-' + cast(@intnextyear as varchar)
+IF not EXISTS (SELECT * FROM [Fiscal_Year] WHERE [Fiscal_Year]=@strfyval)
+begin
+INSERT INTO [dbo].[Fiscal_Year]
+           ([Fiscal_Year_Key]
+           ,[Fiscal_Year])
+select isnull((select max([Fiscal_Year_Key]) from [Fiscal_Year] where [Fiscal_Year_Key]>-1),0) +1, @strfyval
+end
+end
+GO
+
+
+end

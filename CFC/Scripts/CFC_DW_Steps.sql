@@ -8,6 +8,8 @@
 6. Create fact population procedure using Fact_pop.sql
 7. Run the below steps
 */
+use cfc_dw
+go
 
 -- Populate Date dimenion values
 exec sp_populate_date_dim 2007;
@@ -20,6 +22,18 @@ exec sp_populate_date_dim 2013;
 exec sp_populate_date_dim 2014;
 exec sp_populate_date_dim 2015;
 exec sp_populate_date_dim 2016;
+
+-- Populate FY dimenion values
+exec sp_populate_FY_dim 2007;
+exec sp_populate_FY_dim 2008;
+exec sp_populate_FY_dim 2009;
+exec sp_populate_FY_dim 2010;
+exec sp_populate_FY_dim 2011;
+exec sp_populate_FY_dim 2012;
+exec sp_populate_FY_dim 2013;
+exec sp_populate_FY_dim 2014;
+exec sp_populate_FY_dim 2015;
+exec sp_populate_FY_dim 2016;
 
 -- Populate Dimension from SalesLogix
 exec sp_pop_account_SalesLogix;
@@ -48,3 +62,6 @@ exec sp_pop_Shipper_CFCAPP;
 
 --Populate fact from SalesLogix and CFCAPP
 exec sp_populate_fact
+
+--select sample data
+select top 10 * from vw_cfc_fact
