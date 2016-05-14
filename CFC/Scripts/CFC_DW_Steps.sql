@@ -51,7 +51,7 @@ exec sp_pop_Shipper_SalesLogix;
 -- Populate Dimension from CFCAPP
 exec sp_pop_account_CFCAPP;
 exec sp_pop_region_CFCAPP;
-exec sp_pop_procuct_CFCAPP;
+exec sp_pop_product_CFCAPP;
 exec sp_pop_ordertype_CFCAPP;
 exec sp_pop_Order_Method_CFCAPP;
 exec sp_pop_User_CFCAPP;

@@ -72,7 +72,7 @@ select [DateKey],
 end
 set nocount off
 end
-
+go
 IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].sp_populate_FY_dim'))
 DROP PROC [dbo].sp_populate_FY_dim
 go
@@ -93,5 +93,3 @@ end
 end
 GO
 
-
-end

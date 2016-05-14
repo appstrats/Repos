@@ -14,7 +14,7 @@ select distinct isnull((select max(Account_key) from ACCOUNT where Account_key>-
 ROW_NUMBER() over (ORDER BY s.CustID ), s.CustID, s.Name 
 from CFCAPP.dbo.[Customer] s
 left outer join Account d on s.CustID  = d.ACCOUNTID
-where d.ACCOUNTID is null
+where d.ACCOUNTID is null and s.CustID is not null
 end;
 
 go
@@ -28,7 +28,7 @@ begin
 set nocount on;
 
 with T_Label_region as
-(select distinct(CustID) CID  from CFCAPP.dbo.SOShipHeader )
+(select distinct(CustID) CID  from CFCAPP.dbo.SOShipHeader where CustID is not null)
 
 insert into Region(Region_key,Region)
 select distinct isnull((select max(Region_key) from Region where Region_key>-1),0) +
@@ -43,25 +43,25 @@ go
 
 use [CFC_DW]
 GO
-IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[sp_pop_procuct_CFCAPP]'))
-DROP PROC [dbo].sp_pop_procuct_CFCAPP
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[sp_pop_product_CFCAPP]'))
+DROP PROC [dbo].sp_pop_product_CFCAPP
 go
 --Product
 -- exec sp_pop_procuct_CFCAPP 
-Create PROC sp_pop_procuct_CFCAPP as
+Create PROC sp_pop_product_CFCAPP as
 begin
 set nocount on;
 
 with T_Label_Product as
-(select distinct InvtID ivt, ItemGLClassID, Descr from CFCAPP.dbo.SOShipLine  ) 
-
+(select InvtID ivt, max(ItemGLClassID) ItemGLClassID, Descr from CFCAPP.dbo.SOShipLine  where Descr is not null and InvtID is not null
+group by InvtID, Descr) 
 
 insert into Product(PRODUCT_NUMBER_key,PRODUCT_Family,PRODUCT_NUMBER,PRODUCT_NAME)
 select distinct isnull((select max(PRODUCT_NUMBER_key) from Product where PRODUCT_NUMBER_key>-1),0) +
-ROW_NUMBER() over (ORDER BY s.ivt ),s.ItemGLClassID, s.ivt ,s.Descr
+ROW_NUMBER() over (ORDER BY s.Descr ),s.ItemGLClassID, s.ivt ,s.Descr
 from T_Label_Product s
-left outer join PRODUCT d on s.ivt  = d.PRODUCT_NUMBER
-where d.PRODUCT_NUMBER is null
+left outer join PRODUCT d on s.Descr  = d.PRODUCT_NAME and s.ivt = d.PRODUCT_NUMBER
+where d.PRODUCT_NAME is null
 
 end;
 
@@ -76,7 +76,7 @@ begin
 set nocount on;
 
 with T_Label_Order_Type as
-(select distinct(SOTYPEID) ot from CFCAPP.dbo.SOShipHeader) 
+(select distinct(SOTYPEID) ot from CFCAPP.dbo.SOShipHeader where SOTYPEID is not null) 
 
 insert into [CFC_DW].dbo.[Order_Type]([Order_Type_Key],[Order_Type])
 select distinct isnull((select max([Order_Type_Key]) from [CFC_DW].dbo.[Order_Type] where [Order_Type_Key]>-1),0) +
@@ -99,7 +99,7 @@ begin
 set nocount on;
 
 with T_Label_Order_Method as
-(select distinct(User3) om from CFCAPP.dbo.SOShipHeader ) 
+(select distinct(User3) om from CFCAPP.dbo.SOShipHeader where User3 is not null) 
 
 insert into [CFC_DW].dbo.[Order_Method]([Order_Method_Key],[Order_Method])
 select distinct isnull((select max([Order_Method_Key]) from [CFC_DW].dbo.[Order_Method] where [Order_Method_Key]>-1),0) +
@@ -125,7 +125,7 @@ select distinct isnull((select max(User_key) from [User] where User_key>-1),0) +
 ROW_NUMBER() over (ORDER BY s.User1 ),s.User1, s.User2
 from CFCAPP.dbo.BCUsers s
 left outer join [User] d on s.User1  = d.Name
-where d.Name is null
+where d.Name is null and s.User2 is not null
 end
 
 GO
@@ -139,7 +139,7 @@ begin
 set nocount on;
 
 with T_Label_Funding1 as
-(select distinct(user4) fd from CFCAPP.dbo.SOShipHeader ) 
+(select distinct(user4) fd from CFCAPP.dbo.SOShipHeader where user4 is not null) 
 
 insert into [CFC_DW].dbo.[Funding]([Funding_Key],[Funding])
 select distinct isnull((select max([Funding_Key]) from [CFC_DW].dbo.[Funding] where [Funding_Key]>-1),0) +
@@ -161,7 +161,7 @@ begin
 set nocount on;
 
 with T_Label_address1 as
-(select distinct(BillAddr1),BillAddr2  from CFCAPP.dbo.SOShipHeader ) 
+(select distinct(BillAddr1),BillAddr2  from CFCAPP.dbo.SOShipHeader where BillAddr1 is not null) 
 
 insert into [CFC_DW].dbo.[Address](ADDRESS_Key,[Addr1],[Addr2])
 select distinct isnull((select max(ADDRESS_Key) from [CFC_DW].dbo.Address where ADDRESS_Key>-1),0) +
@@ -204,7 +204,7 @@ create PROC sp_pop_Shipper_CFCAPP as
 begin
 set nocount on ;
 with T_Label_Shipper1 as
-(select distinct(SHIPPERID),ShipName from CFCAPP.dbo.SOShipHeader) 
+(select distinct(SHIPPERID),ShipName from CFCAPP.dbo.SOShipHeader where SHIPPERID is not null) 
 
 insert into Shipper(SHIPPER_key,SHIPPERID, ShipName)
 select distinct isnull((select max(SHIPPER_key) from Shipper where SHIPPER_key>-1),0) +

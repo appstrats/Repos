@@ -65,7 +65,8 @@ SALESORDER.SHIPTONAME shipname,
 SALESORDER.FFShipto_Addr1 shipaddr1,
 SALESORDER.FFShipto_Addr2 shipaddr2,
 '' billaddr1,
-'' billaddr2
+'' billaddr2,
+'sl' datasource
 FROM           
 SalesLogix.sysdba.SALESORDER
 Left JOIN  SalesLogix.sysdba.SALESORDER_EXT ON SALESORDER.SALESORDERID = SALESORDER_EXT.SALESORDERID
@@ -113,7 +114,7 @@ when sol.ItemGLClassID  like 'SR%' then 'Steps To Respect'
 else sol.ItemGLClassID
 end AS PRODUCT_FAMILY,
 SOL.InvtID AS PRODUCT_NUMBER,
-SOL.Descr,
+SOL.Descr as PRODUCT_NAME,
 (SELECT
 case when a.parentid is null then a.ACCOUNT else ACCOUNT_1.Account end as DistrictOrNoParent
 --ACCOUNT_1.account
@@ -135,7 +136,8 @@ soh.shipname,
 soh.ShipAddr1 shipaddr1,
 soh.ShipAddr2 shipaddr2,
 soh.BillAddr1 billaddr1,
-soh.BillAddr2 billaddr2
+soh.BillAddr2 billaddr2,
+'ca' datasource
 --orddate, ShipDateAct, soh.ShipperID, SOTypeID, ARDocType, Cancelled,*
 from
 CFCAPP.dbo.SOShipHeader as soh
@@ -168,7 +170,7 @@ isnull (bloc.Location_key,-1) Bill_Location_Key,
 isnull(ship_d.date_key,-1) Ship_Date_Key,
 -1 Bill_Date_Key,
 isnull(ord_d.date_key,-1) Order_Date_Key,
-SALESORDERID,
+f.SALESORDERID,
 f.QTY Qty_Shiped,
 f.PRODUCT_EXTENDEDPRICEINVOICED Extended_Price
 
@@ -178,8 +180,8 @@ f.PRODUCT_EXTENDEDPRICEINVOICED Extended_Price
   left join Funding FND on f.Funding = FND.Funding
   left join Order_Method ORM on f.ORDER_METHOD = ORM.Order_Method
   left join Shipper s on f.SHIPPERID = s.SHIPPERID
-  left join Product p on f.PRODUCT_NUMBER = p.PRODUCT_NUMBER
-  left join Account ACT on f.ACCOUNT = ACT.ACCOUNT
+  left join Product p on f.PRODUCT_NUMBER = p.PRODUCT_NUMBER and f.PRODUCT_NAME = p.PRODUCT_NAME
+  left join Account ACT on f.ACCOUNTID = ACT.ACCOUNTID
   left join Dim_Date ship_d on convert(varchar(8),f.SHIPPEDDATE,112) = ship_d.date_key
   left join Dim_Date ord_d on convert(varchar(8),f.ORDERDATE,112) = ord_d.date_key    
   left join [Order_Type] odr_t on f.ORDERTYPE = odr_t.Order_Type
@@ -245,6 +247,7 @@ f.PRODUCT_EXTENDEDPRICEINVOICED Extended_Price
 	
   end;
 
+  go
 IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].vw_cfc_fact'))
 DROP view [dbo].vw_cfc_fact
 go
@@ -268,7 +271,7 @@ bloc.Postcode bill_Postcode,
 ship_d.DateVal shipdate,
 bill_d.DateVal billdate,
 ord_d.DateVal orderdate,
-SALESORDERID,
+f.SALESORDERID,
 Qty_Shiped,
 Extended_Price
 
