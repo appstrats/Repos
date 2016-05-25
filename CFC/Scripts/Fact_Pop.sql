@@ -32,6 +32,7 @@ ACCOUNT.PARENTID,
 right(ACCOUNT.ACCOUNTID,8) as CFCID,
 SALESORDER.INVOICETOTAL as SO_TFI,
 SALESORDER.INVOICETOTAL - SALESORDER.FREIGHT - SALESORDER.TAX AS SO_NET,
+SALESORDER.ORDERDISCOUNT,
 SALESORDERDETAIL.QUANTITYSHIPPED as QTY,
 SALESORDERDETAIL.EXTENDEDPRICEINVOICED as PRODUCT_EXTENDEDPRICEINVOICED,
 CASE
@@ -105,6 +106,7 @@ soh.OrdDate,
 (select right(ltrim(rtrim(cu.User1)),8) as CFC_ID from [CFCAPP].dbo.[Customer] as cu where cu.custid=soh.custid) as CFCID,
 soh.CuryTotInvc as SO_TFI,
 soh.CuryTotInvc-TotFrtCost-TotTax as SO_NET,
+soh.CuryWholeOrdDisc ORDERDISCOUNT,
 sol.QtyShip as QTY,
 sol.CuryTotInvc as PRODUCT_EXTENDEDPRICEINVOICED,
 Case when sol.ItemGLClassID  like 'SS%' then 'Second Step' when sol.ItemGLClassID  like 'bp%' then 'BPU' when sol.ItemGLClassID  like 'cp%' then 'CPU'
@@ -192,9 +194,9 @@ f.PRODUCT_EXTENDEDPRICEINVOICED Extended_Price
   left join [address] saddr on f.shipaddr1 = saddr.addr1 and f.shipaddr2 = saddr.addr2
   left join [address] baddr on f.billaddr1 = baddr.addr1 and f.billaddr2 = baddr.addr2
 
-  truncate table cfc_fact;
+  truncate table so_fact;
 
-   insert into CFC_DW.dbo.CFC_fact(
+   insert into CFC_DW.dbo.so_fact(
 	cfc_key,
 	Ship_Location_Key,
 	Ship_Address_Key,
@@ -215,7 +217,10 @@ f.PRODUCT_EXTENDEDPRICEINVOICED Extended_Price
 	Order_Date_Key,
 	SALESORDERID,
 	Qty_Shiped,
-	Extended_Price
+	Extended_Price,
+	SO_TFI,
+	SO_NET,
+	ORDERDISCOUNT
 	)
 
 	select cfc_key,
@@ -238,7 +243,10 @@ f.PRODUCT_EXTENDEDPRICEINVOICED Extended_Price
 	Order_Date_Key,
 	SALESORDERID,
 	Qty_Shiped,
-	Extended_Price
+	Extended_Price,
+	SO_TFI,
+	SO_NET,
+	ORDERDISCOUNT
 
 	from #sl_fact_dw
 	
@@ -248,11 +256,11 @@ f.PRODUCT_EXTENDEDPRICEINVOICED Extended_Price
   end;
 
   go
-IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].vw_cfc_fact'))
-DROP view [dbo].vw_cfc_fact
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].vw_so_fact'))
+DROP view [dbo].vw_so_fact
 go
 
-create view dbo.vw_cfc_fact as 
+create view dbo.vw_so_fact as 
 select 
 sloc.Postcode Ship_Postcode,
 sadd.addr1 shipaddress,
@@ -273,9 +281,12 @@ bill_d.DateVal billdate,
 ord_d.DateVal orderdate,
 f.SALESORDERID,
 Qty_Shiped,
-Extended_Price
+Extended_Price,
+SO_TFI,
+	SO_NET,
+	ORDERDISCOUNT
 
-  from cfc_fact f
+  from so_fact f
   left join [Address] sadd on f.Ship_Address_Key = sadd.Address_Key
   left join [User] u on f.User_Key = u.User_Key
   left join Region r on f.Ship_Region_Key = r.Region_key
