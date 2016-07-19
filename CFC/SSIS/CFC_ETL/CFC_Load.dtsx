@@ -1,0 +1,832 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/18/2016 7:42:54 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="LAPTOP-6M8S1632"
+  DTS:CreatorName="LAPTOP-6M8S1632\leojo"
+  DTS:DTSID="{C4792920-1C5F-45D7-9B45-9D234635B2C3}"
+  DTS:EnableConfig="True"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.5583.0"
+  DTS:LocaleID="16393"
+  DTS:ObjectName="CFC_Load"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{629E3DC7-F8EC-4CFB-9FFB-8D7477B4EB93}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DWH_SERVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+      DTS:ObjectName="DWH_SERVER">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=apps01.dynu.net,1451;User ID=sa;Initial Catalog=cfc_dw;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"></DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Configurations>
+    <DTS:Configuration
+      DTS:ConfigurationString="G:\Projects\appstrats\CFC\SSIS\CFC_ETL\pkgconf.dtsConfig"
+      DTS:ConfigurationType="1"
+      DTS:CreationName=""
+      DTS:DTSID="{445AB2EF-5172-4550-BA62-B3D9D8322D45}"
+      DTS:ObjectName="pkgconf" />
+  </DTS:Configurations>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E746B0BE-A585-4851-93B0-DF2521A0E513}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="year(getdate())"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="end_year">
+      <DTS:VariableValue
+        DTS:DataType="3">2016</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4ADC20A5-050E-4D88-B696-4C31AD97B0B8}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="start_year">
+      <DTS:VariableValue
+        DTS:DataType="3">2007</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A988AB23-C504-40E4-831E-43CB3C5ABC3E}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="year_counter">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\CFC_Dimension"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="CFC_Dimension"
+      DTS:DTSID="{B00D94D4-50A3-4662-B772-CC8D28AB3FD0}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CFC_Dimension">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\CFC_Dimension\Account_CFC"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Load Account CFC"
+          DTS:DTSID="{E678F763-0BD6-4452-9A10-CC93F46A6332}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Account_CFC"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_pop_account_CFCAPP" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\CFC_Dimension\Address_CFC"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Load CFC Address data"
+          DTS:DTSID="{2C4FABC7-77DC-4961-A677-90323835E630}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Address_CFC"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="7">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_pop_address_CFCAPP" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\CFC_Dimension\Funding_CFC"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Load CFC Funding data"
+          DTS:DTSID="{26EE7603-EFC9-4E49-B076-99F8B221CBF2}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Funding_CFC"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="6">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_pop_Funding_CFCAPP" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\CFC_Dimension\Location_CFC"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Load CFC location data"
+          DTS:DTSID="{A868E4DC-56F6-4419-A760-2276F1F06A94}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Location_CFC"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="5">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_pop_location_CFCAPP" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\CFC_Dimension\OrderMethod_CFC"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Load CFC order Method data"
+          DTS:DTSID="{62017440-032A-4045-B3DD-EED131E16641}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="OrderMethod_CFC"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="4">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_pop_Order_Method_CFCAPP" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\CFC_Dimension\OrderType_CFC"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Load CFC OrderType data"
+          DTS:DTSID="{64478F34-426A-4327-871F-AD5EA762FB81}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="OrderType_CFC"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="8">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_pop_ordertype_CFCAPP" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\CFC_Dimension\Product_CFC"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Load CFC Product data"
+          DTS:DTSID="{BD86F798-6E78-4420-A30A-A14608453317}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Product_CFC"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="9">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_pop_product_CFCAPP" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\CFC_Dimension\Region_CFC"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Load cfc region data"
+          DTS:DTSID="{A6409F5C-FFE1-492C-8BC5-076CDD8F98A7}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Region_CFC"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_pop_region_CFCAPP" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\CFC_Dimension\Shipper_CFC"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Load CFC Shipper data"
+          DTS:DTSID="{76EC861B-2A4F-4AFD-A344-D15A99B17C2B}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Shipper_CFC"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_pop_Shipper_CFCAPP" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\CFC_Dimension\User_CFC"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Load CFC User data"
+          DTS:DTSID="{8AB2ECDC-AEA1-4B1D-81FF-EA913FDFC6B3}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="User_CFC"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_pop_User_CFCAPP" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load_Date"
+      DTS:AssignExpression="@year_counter = @year_counter + 1"
+      DTS:CreationName="STOCK:FORLOOP"
+      DTS:Description="Load date dimension for all year starting from 2007"
+      DTS:DTSID="{C99F84D2-715D-40CB-963F-C7ACDC3DBC16}"
+      DTS:EvalExpression="@year_counter &lt;=@end_year"
+      DTS:ExecutableType="STOCK:FORLOOP"
+      DTS:InitExpression="@year_counter = @start_year"
+      DTS:LocaleID="-1"
+      DTS:MaxConcurrent="1"
+      DTS:ObjectName="Load_Date">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Load_Date\Populate_Date_Dim"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Populate date dimension for each year"
+          DTS:DTSID="{0920E628-8F89-4E1A-9748-545F42434F72}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Populate_Date_Dim"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_populate_date_dim ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::year_counter"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Load_Date\Populate_FY_Dim"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Populate FY dimension values"
+          DTS:DTSID="{F4208F13-1291-423F-B0C6-E85B6371FD78}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Populate_FY_Dim"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_populate_FY_dim ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::year_counter"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Load_Date.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{B0CED33C-F6CF-4291-A355-2B52BFD9DE42}"
+          DTS:From="Package\Load_Date\Populate_Date_Dim"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Load_Date\Populate_FY_Dim" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Populate_Fact"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Load CFC and SalesFact"
+      DTS:DTSID="{B8278539-2AC6-4E88-B432-204991272320}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Populate_Fact"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+          SQLTask:SqlStatementSource="exec sp_populate_fact" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SalesLogix_Dimension"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{EE6150A0-FEF3-4503-AC21-DEC00B7751EA}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SalesLogix_Dimension">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SalesLogix_Dimension\Account_SL"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Populate Sales logix account dim data"
+          DTS:DTSID="{36374BDA-CD55-475A-9B3B-3D1B76A18801}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Account_SL"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="10">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_pop_account_SalesLogix" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SalesLogix_Dimension\Address_SL"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Load sales logix Address data"
+          DTS:DTSID="{9C5BD535-D9CB-4FB4-A4F3-FCAFBA18661E}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Address_SL"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="6">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_pop_address_SalesLogix" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SalesLogix_Dimension\Funding_SL"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Populate Sales Logix Funding"
+          DTS:DTSID="{C43AA05A-E624-4D52-92DE-950402D81073}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Funding_SL"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="9">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_pop_Funding_SalesLogix" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SalesLogix_Dimension\Location_SL"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Load sales logix Location data"
+          DTS:DTSID="{0F8E2994-DEFE-44A3-BF59-77F9C6ED12D3}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Location_SL"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_pop_location_SalesLogix" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SalesLogix_Dimension\MDR_SL"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Load MDR data"
+          DTS:DTSID="{3A203BEC-C13A-4487-8E71-98ACC82091EF}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="MDR_SL"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="8">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_pop_MDR_file_Type_SalesLogix" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SalesLogix_Dimension\OrderType_SL"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Sales Logix Order type data"
+          DTS:DTSID="{36D64D68-4316-474E-ADCD-C23DC80DEC56}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="OrderType_SL"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="4">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_pop_ordertype_SalesLogix" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SalesLogix_Dimension\Order_Method_SL"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Load Order Method data"
+          DTS:DTSID="{B484286B-E9A7-4A66-A019-806D40CDBF58}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Order_Method_SL"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="7">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_pop_Order_Method_SalesLogix" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SalesLogix_Dimension\Product_SL"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Sales Logix Product Dim data"
+          DTS:DTSID="{E2DE1E19-6EB8-4358-B36C-7C73069491A7}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Product_SL"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_pop_product_SalesLogix" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SalesLogix_Dimension\Region_SL"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Sales logix Region dimension data"
+          DTS:DTSID="{6BD0C840-1FEB-4962-A662-56978D87A8D1}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Region_SL"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_pop_region_SalesLogix" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SalesLogix_Dimension\Shipper_SL"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Load sales logix shipper data"
+          DTS:DTSID="{31F5427A-50A4-45C7-B81B-1A9CD1287E21}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Shipper_SL"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_pop_Shipper_SalesLogix" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SalesLogix_Dimension\User_SL"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Load User data"
+          DTS:DTSID="{8247B1F4-2EF9-49A6-A1A2-FF5BEAD86B65}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="User_SL"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="5">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_pop_User_SalesLogix" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{1816081A-D6A1-46EE-98D9-A6F9055DFF7A}"
+      DTS:From="Package\Load_Date"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SalesLogix_Dimension" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{9600D129-DB61-4D77-91FC-DB8E0A030353}"
+      DTS:From="Package\SalesLogix_Dimension"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\CFC_Dimension" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{2529B451-0657-42CE-9F29-91DE49D6B8CA}"
+      DTS:From="Package\CFC_Dimension"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Populate_Fact" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Load_Date\Populate_Date_Dim"
+          TopLeft="38.6285739392651,27.3882365982426" />
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\Load_Date\Populate_FY_Dim"
+          TopLeft="50.0571455624639,92.8470610456896" />
+        <EdgeLayout
+          Id="Package\Load_Date.PrecedenceConstraints[Constraint]"
+          TopLeft="127.542859750864,68.9882365982426">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23.858824447447"
+              Start="0,0"
+              End="0,16.358824447447">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.358824447447" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="488,150.4"
+          Size="488,193.6"
+          Id="Package\Load_Date"
+          TopLeft="251.428575710375,643.193465781588" />
+        <NodeLayout
+          Size="139.2,41.6"
+          Id="Package\SalesLogix_Dimension\Account_SL"
+          TopLeft="9.28571682803496,12.2941224195552" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\SalesLogix_Dimension\Order_Method_SL"
+          TopLeft="9.28571682803488,59.7058877903698" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\SalesLogix_Dimension\MDR_SL"
+          TopLeft="193.714291397407,58.482357996805" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\SalesLogix_Dimension\Funding_SL"
+          TopLeft="561.428583373829,64.1764756395743" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\SalesLogix_Dimension\User_SL"
+          TopLeft="378.571437402648,60.3058869152337" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\SalesLogix_Dimension\Address_SL"
+          TopLeft="10.7142882809347,114.882358142662" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\SalesLogix_Dimension\Location_SL"
+          TopLeft="193.571434252116,111.7647106334" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\SalesLogix_Dimension\Shipper_SL"
+          TopLeft="376.428580223298,114.352945809546" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\SalesLogix_Dimension\OrderType_SL"
+          TopLeft="505.000010984285,10.7647089925193" />
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\SalesLogix_Dimension\Product_SL"
+          TopLeft="328.571436551153,10.7647106334" />
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\SalesLogix_Dimension\Region_SL"
+          TopLeft="153.57143357092,9.23529884724474" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="812.8,165.6"
+          Size="812.8,208.8"
+          Id="Package\SalesLogix_Dimension"
+          TopLeft="221.632656835606,934.052294385933" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="495.428575710375,836.793465781588">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="132.604081125232,97.2588286043456"
+              Start="0,0"
+              End="132.604081125232,89.7588286043456">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.6294143021728" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44.6294143021728"
+                    Point2="0,48.6294143021728"
+                    Point3="4,48.6294143021728" />
+                  <mssgle:LineSegment
+                    End="128.604081125232,48.6294143021728" />
+                  <mssgle:CubicBezierSegment
+                    Point1="128.604081125232,48.6294143021728"
+                    Point2="132.604081125232,48.6294143021728"
+                    Point3="132.604081125232,52.6294143021728" />
+                  <mssgle:LineSegment
+                    End="132.604081125232,89.7588286043456" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="140.8,41.6"
+          Id="Package\CFC_Dimension\Account_CFC"
+          TopLeft="20.8000027247839,22.0353001234854" />
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\CFC_Dimension\Region_CFC"
+          TopLeft="168.657148099919,22.0352995765253" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\CFC_Dimension\OrderType_CFC"
+          TopLeft="513.357151505899,24.6496357967163" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\CFC_Dimension\OrderMethod_CFC"
+          TopLeft="14.0714287173993,75.4545082263284" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\CFC_Dimension\Funding_CFC"
+          TopLeft="366.134926776497,74.7501951569833" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\CFC_Dimension\Location_CFC"
+          TopLeft="19.6269843675653,125.290977968905" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\CFC_Dimension\User_CFC"
+          TopLeft="188.039685648315,77.3238761894518" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\CFC_Dimension\Shipper_CFC"
+          TopLeft="203.277781145914,124.464025916283" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\CFC_Dimension\Address_CFC"
+          TopLeft="543.674612339663,73.4077317280501" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\CFC_Dimension\Product_CFC"
+          TopLeft="337.642862799217,23.6039096597742" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="728.8,221.6"
+          Size="728.8,264.8"
+          Id="Package\CFC_Dimension"
+          TopLeft="219.965305496861,1182.18572116179" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="628.032656835606,1142.85229438593">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-43.6673513387454,39.3334267758532"
+              Start="0,0"
+              End="-43.6673513387454,31.8334267758532">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.6667133879266" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.6667133879266"
+                    Point2="0,19.6667133879266"
+                    Point3="-4,19.6667133879266" />
+                  <mssgle:LineSegment
+                    End="-39.6673513387454,19.6667133879266" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-39.6673513387454,19.6667133879266"
+                    Point2="-43.6673513387454,19.6667133879266"
+                    Point3="-43.6673513387454,23.6667133879266" />
+                  <mssgle:LineSegment
+                    End="-43.6673513387454,31.8334267758532" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Populate_Fact"
+          TopLeft="446.530619849269,1497.00841159792" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="584.365305496861,1446.98572116179">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-56.2346856475918,50.0226904361361"
+              Start="0,0"
+              End="-56.2346856475918,42.5226904361361">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.0113452180681" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.0113452180681"
+                    Point2="0,25.0113452180681"
+                    Point3="-4,25.0113452180681" />
+                  <mssgle:LineSegment
+                    End="-52.2346856475918,25.0113452180681" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-52.2346856475918,25.0113452180681"
+                    Point2="-56.2346856475918,25.0113452180681"
+                    Point3="-56.2346856475918,29.0113452180681" />
+                  <mssgle:LineSegment
+                    End="-56.2346856475918,42.5226904361361" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
