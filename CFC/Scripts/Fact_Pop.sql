@@ -153,7 +153,7 @@ Cancelled = 0
 
 
 
-select isnull((select max(cfc_key) from [CFC_DW].dbo.CFC_fact),0) + 
+select isnull((select max(cfc_key) from [CFC_DW].dbo.SO_fact),0) + 
 ROW_NUMBER() over (ORDER BY f.CFCID) cfc_key,
 isnull (sloc.Location_key,-1) Ship_Location_Key,
 isnull (saddr.address_key,-1) Ship_Address_Key,
@@ -174,8 +174,10 @@ isnull(ship_d.date_key,-1) Ship_Date_Key,
 isnull(ord_d.date_key,-1) Order_Date_Key,
 f.SALESORDERID,
 f.QTY Qty_Shiped,
-f.PRODUCT_EXTENDEDPRICEINVOICED Extended_Price
-
+f.PRODUCT_EXTENDEDPRICEINVOICED Extended_Price,
+SO_TFI,
+SO_NET,
+ORDERDISCOUNT
   into #sl_fact_dw
   from #sl_fact f
   left join [Fiscal_Year] fy on f.[Fiscal_Year] = fy.Fiscal_Year

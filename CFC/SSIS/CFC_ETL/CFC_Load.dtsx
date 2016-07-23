@@ -13,8 +13,8 @@
   DTS:ObjectName="CFC_Load"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="34"
-  DTS:VersionGUID="{629E3DC7-F8EC-4CFB-9FFB-8D7477B4EB93}">
+  DTS:VersionBuild="36"
+  DTS:VersionGUID="{3DDBBC72-E20E-48F8-9F78-89135AD013C4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -92,7 +92,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Account_CFC"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="9">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -109,7 +109,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Address_CFC"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -143,7 +143,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Location_CFC"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -160,7 +160,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="OrderMethod_CFC"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -177,7 +177,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="OrderType_CFC"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -194,7 +194,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Product_CFC"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="9">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -211,7 +211,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Region_CFC"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -228,7 +228,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Shipper_CFC"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -245,7 +245,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="User_CFC"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -365,7 +365,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Account_SL"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="10">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -399,7 +399,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Funding_SL"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="9">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -416,7 +416,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Location_SL"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="9">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -433,7 +433,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="MDR_SL"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="10">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -467,7 +467,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Order_Method_SL"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -484,7 +484,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Product_SL"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -501,7 +501,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Region_SL"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -518,7 +518,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Shipper_SL"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -535,7 +535,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="User_SL"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -585,6 +585,53 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="140.8,41.6"
+          Id="Package\CFC_Dimension\Account_CFC"
+          TopLeft="20.8000027247839,22.0353001234854" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\CFC_Dimension\Address_CFC"
+          TopLeft="543.674612339663,73.4077317280501" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\CFC_Dimension\Funding_CFC"
+          TopLeft="366.134926776497,74.7501951569833" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\CFC_Dimension\Location_CFC"
+          TopLeft="19.6269843675653,125.290977968905" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\CFC_Dimension\OrderMethod_CFC"
+          TopLeft="14.0714287173993,75.4545082263284" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\CFC_Dimension\OrderType_CFC"
+          TopLeft="513.357151505899,24.6496357967163" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\CFC_Dimension\Product_CFC"
+          TopLeft="337.642862799217,23.6039096597742" />
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\CFC_Dimension\Region_CFC"
+          TopLeft="168.657148099919,22.0352995765253" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\CFC_Dimension\Shipper_CFC"
+          TopLeft="203.277781145914,124.464025916283" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\CFC_Dimension\User_CFC"
+          TopLeft="188.039685648315,77.3238761894518" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="728.8,221.6"
+          Size="728.8,264.8"
+          Id="Package\CFC_Dimension"
+          TopLeft="219.965305496861,540.18572116179" />
+        <NodeLayout
           Size="171.2,41.6"
           Id="Package\Load_Date\Populate_Date_Dim"
           TopLeft="38.6285739392651,27.3882365982426" />
@@ -620,39 +667,35 @@
           PanelSize="488,150.4"
           Size="488,193.6"
           Id="Package\Load_Date"
-          TopLeft="251.428575710375,643.193465781588" />
+          TopLeft="251.428575710375,1.19346578158797" />
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Populate_Fact"
+          TopLeft="446.530619849269,855.00841159792" />
         <NodeLayout
           Size="139.2,41.6"
           Id="Package\SalesLogix_Dimension\Account_SL"
           TopLeft="9.28571682803496,12.2941224195552" />
         <NodeLayout
           Size="172.8,41.6"
-          Id="Package\SalesLogix_Dimension\Order_Method_SL"
-          TopLeft="9.28571682803488,59.7058877903698" />
-        <NodeLayout
-          Size="172.8,41.6"
-          Id="Package\SalesLogix_Dimension\MDR_SL"
-          TopLeft="193.714291397407,58.482357996805" />
+          Id="Package\SalesLogix_Dimension\Address_SL"
+          TopLeft="10.7142882809347,114.882358142662" />
         <NodeLayout
           Size="172.8,41.6"
           Id="Package\SalesLogix_Dimension\Funding_SL"
           TopLeft="561.428583373829,64.1764756395743" />
         <NodeLayout
           Size="172.8,41.6"
-          Id="Package\SalesLogix_Dimension\User_SL"
-          TopLeft="378.571437402648,60.3058869152337" />
-        <NodeLayout
-          Size="172.8,41.6"
-          Id="Package\SalesLogix_Dimension\Address_SL"
-          TopLeft="10.7142882809347,114.882358142662" />
-        <NodeLayout
-          Size="172.8,41.6"
           Id="Package\SalesLogix_Dimension\Location_SL"
           TopLeft="193.571434252116,111.7647106334" />
         <NodeLayout
           Size="172.8,41.6"
-          Id="Package\SalesLogix_Dimension\Shipper_SL"
-          TopLeft="376.428580223298,114.352945809546" />
+          Id="Package\SalesLogix_Dimension\MDR_SL"
+          TopLeft="193.714291397407,58.482357996805" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\SalesLogix_Dimension\Order_Method_SL"
+          TopLeft="9.28571682803488,59.7058877903698" />
         <NodeLayout
           Size="172.8,41.6"
           Id="Package\SalesLogix_Dimension\OrderType_SL"
@@ -665,16 +708,24 @@
           Size="163.2,41.6"
           Id="Package\SalesLogix_Dimension\Region_SL"
           TopLeft="153.57143357092,9.23529884724474" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\SalesLogix_Dimension\Shipper_SL"
+          TopLeft="376.428580223298,114.352945809546" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\SalesLogix_Dimension\User_SL"
+          TopLeft="378.571437402648,60.3058869152337" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
           PanelSize="812.8,165.6"
           Size="812.8,208.8"
           Id="Package\SalesLogix_Dimension"
-          TopLeft="221.632656835606,934.052294385933" />
+          TopLeft="221.632656835606,292.052294385933" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="495.428575710375,836.793465781588">
+          TopLeft="495.428575710375,194.793465781588">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -706,56 +757,9 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="140.8,41.6"
-          Id="Package\CFC_Dimension\Account_CFC"
-          TopLeft="20.8000027247839,22.0353001234854" />
-        <NodeLayout
-          Size="163.2,41.6"
-          Id="Package\CFC_Dimension\Region_CFC"
-          TopLeft="168.657148099919,22.0352995765253" />
-        <NodeLayout
-          Size="172.8,41.6"
-          Id="Package\CFC_Dimension\OrderType_CFC"
-          TopLeft="513.357151505899,24.6496357967163" />
-        <NodeLayout
-          Size="172.8,41.6"
-          Id="Package\CFC_Dimension\OrderMethod_CFC"
-          TopLeft="14.0714287173993,75.4545082263284" />
-        <NodeLayout
-          Size="172.8,41.6"
-          Id="Package\CFC_Dimension\Funding_CFC"
-          TopLeft="366.134926776497,74.7501951569833" />
-        <NodeLayout
-          Size="172.8,41.6"
-          Id="Package\CFC_Dimension\Location_CFC"
-          TopLeft="19.6269843675653,125.290977968905" />
-        <NodeLayout
-          Size="172.8,41.6"
-          Id="Package\CFC_Dimension\User_CFC"
-          TopLeft="188.039685648315,77.3238761894518" />
-        <NodeLayout
-          Size="172.8,41.6"
-          Id="Package\CFC_Dimension\Shipper_CFC"
-          TopLeft="203.277781145914,124.464025916283" />
-        <NodeLayout
-          Size="172.8,41.6"
-          Id="Package\CFC_Dimension\Address_CFC"
-          TopLeft="543.674612339663,73.4077317280501" />
-        <NodeLayout
-          Size="172.8,41.6"
-          Id="Package\CFC_Dimension\Product_CFC"
-          TopLeft="337.642862799217,23.6039096597742" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="728.8,221.6"
-          Size="728.8,264.8"
-          Id="Package\CFC_Dimension"
-          TopLeft="219.965305496861,1182.18572116179" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="628.032656835606,1142.85229438593">
+          TopLeft="628.032656835606,500.85229438593">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -787,13 +791,9 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="163.2,41.6"
-          Id="Package\Populate_Fact"
-          TopLeft="446.530619849269,1497.00841159792" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="584.365305496861,1446.98572116179">
+          TopLeft="584.365305496861,804.98572116179">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
