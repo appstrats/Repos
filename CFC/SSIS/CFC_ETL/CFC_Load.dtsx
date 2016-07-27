@@ -12,8 +12,8 @@
   DTS:ObjectName="CFC_Load"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="41"
-  DTS:VersionGUID="{38FD4808-87EB-4217-ADB5-094203A6E83E}">
+  DTS:VersionBuild="42"
+  DTS:VersionGUID="{832F9C13-2000-4D01-B29F-9997B5C6EDB0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -121,7 +121,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Account_CFC"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -138,7 +138,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Address_CFC"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -155,7 +155,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Funding_CFC"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -172,7 +172,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Location_CFC"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -206,7 +206,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="OrderType_CFC"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -223,7 +223,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Product_CFC"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="9">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -257,7 +257,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Shipper_CFC"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="9">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -359,23 +359,6 @@
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Populate_Fact"
-      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-      DTS:Description="Load CFC and SalesFact"
-      DTS:DTSID="{B8278539-2AC6-4E88-B432-204991272320}"
-      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Populate_Fact"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
-          SQLTask:SqlStatementSource="exec sp_populate_fact" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
       DTS:refId="Package\SalesLogix_Dimension"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
@@ -394,7 +377,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Account_SL"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -411,7 +394,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Address_SL"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -428,7 +411,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Funding_SL"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -445,7 +428,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Location_SL"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -462,7 +445,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="MDR_SL"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -479,7 +462,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="OrderType_SL"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -496,7 +479,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Order_Method_SL"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -513,7 +496,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Product_SL"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -530,7 +513,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Region_SL"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -574,6 +557,35 @@
         </DTS:Executable>
       </DTS:Executables>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{77C5516B-08DD-47C1-B4AA-05A0142BEAD9}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Populate_Fact"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Load CFC and SalesFact"
+          DTS:DTSID="{B8278539-2AC6-4E88-B432-204991272320}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Populate_Fact"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D39C14D8-CC5C-4803-AB19-D1BD4A81575F}"
+              SQLTask:SqlStatementSource="exec sp_populate_fact" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -595,11 +607,11 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{2529B451-0657-42CE-9F29-91DE49D6B8CA}"
+      DTS:DTSID="{35EA9625-4E79-40CB-AA21-09059CDA5BBE}"
       DTS:From="Package\CFC_Dimension"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
-      DTS:To="Package\Populate_Fact" />
+      DTS:To="Package\Sequence Container" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -697,10 +709,6 @@
           Size="488,193.6"
           Id="Package\Load_Date"
           TopLeft="251.428575710375,1.19346578158797" />
-        <NodeLayout
-          Size="163.2,41.6"
-          Id="Package\Populate_Fact"
-          TopLeft="446.530619849269,855.00841159792" />
         <NodeLayout
           Size="139.2,41.6"
           Id="Package\SalesLogix_Dimension\Account_SL"
@@ -820,32 +828,43 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Sequence Container\Populate_Fact"
+          TopLeft="20.5877604390024,5.73782389457153" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="204.8,102.4"
+          Size="204.8,145.6"
+          Id="Package\Sequence Container"
+          TopLeft="292.571429807313,843.905886805841" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="584.365305496861,804.98572116179">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-56.2346856475918,50.0226904361361"
+              EndConnector="-189.393875689548,38.9201656440513"
               Start="0,0"
-              End="-56.2346856475918,42.5226904361361">
+              End="-189.393875689548,31.4201656440513">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.0113452180681" />
+                    End="0,15.4600828220256" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,21.0113452180681"
-                    Point2="0,25.0113452180681"
-                    Point3="-4,25.0113452180681" />
+                    Point1="0,15.4600828220256"
+                    Point2="0,19.4600828220256"
+                    Point3="-4,19.4600828220256" />
                   <mssgle:LineSegment
-                    End="-52.2346856475918,25.0113452180681" />
+                    End="-185.393875689548,19.4600828220256" />
                   <mssgle:CubicBezierSegment
-                    Point1="-52.2346856475918,25.0113452180681"
-                    Point2="-56.2346856475918,25.0113452180681"
-                    Point3="-56.2346856475918,29.0113452180681" />
+                    Point1="-185.393875689548,19.4600828220256"
+                    Point2="-189.393875689548,19.4600828220256"
+                    Point3="-189.393875689548,23.4600828220256" />
                   <mssgle:LineSegment
-                    End="-56.2346856475918,42.5226904361361" />
+                    End="-189.393875689548,31.4201656440513" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
