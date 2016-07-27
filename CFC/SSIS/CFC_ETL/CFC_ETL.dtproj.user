@@ -4,6 +4,8 @@
     <Configuration>
       <Name>Development</Name>
       <Options>
+        <ServerName>apps01.dynu.net,1451</ServerName>
+        <PathOnServer>CFC</PathOnServer>
         <StartObjectID>CFC_Load.dtsx</StartObjectID>
         <Run64BitRuntime>true</Run64BitRuntime>
         <UserIDs />

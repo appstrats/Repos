@@ -35,6 +35,8 @@
           <SSIS:Package SSIS:Name="senao.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="SERCOMM.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Sercomm_label.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Taiwan_Label.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="UK.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="MFTG_Conn.conmgr" />
@@ -212,6 +214,40 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{62AF824C-2B5D-48BC-82C0-2B935F025CE5}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Taiwan_Label.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{4C8D2C31-8138-4E54-AD07-B2879E78DF06}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Taiwan_Label</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{5018F6DC-C7F7-4F91-9A4F-9A6B931BDE52}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="UK.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{0F12EEE7-498F-4085-B09A-1146ED5E8D2E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">13</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{E7FDCD1C-E253-4EF2-8FC4-AFB46159815A}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

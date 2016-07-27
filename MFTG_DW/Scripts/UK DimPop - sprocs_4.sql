@@ -193,7 +193,7 @@ go
 
 --Location
 --exec sp_Location_UK 3
-CREATE PROC sp_Location_UK (@pLoadID int) as
+Alter PROC sp_Location_UK (@pLoadID int) as
 begin
 set nocount on
 declare @startdate  datetime
@@ -202,9 +202,9 @@ declare @enddate  datetime
 select @startdate = StartDate, @enddate = EndDate  from etl_configuration.dbo.DataLoad_Log where loadid = @pLoadID
 if (@startdate is not null and @enddate is not null)
 begin
-insert into [MFTG_DW].dbo.Location_D(LocationKey,Location,Country)
+insert into [MFTG_DW].dbo.Location_D(LocationKey,LocationCode, Location,Country)
 select distinct isnull((select max([LocationKey]) from [MFTG_DW].dbo.[Location_D] where [LocationKey]>-1),0) +
- ROW_NUMBER() over (ORDER BY s.location_name), s.location_name, s.country 
+ ROW_NUMBER() over (ORDER BY s.location_name), s.location_code, s.location_name, s.country 
 from [MFGTESTC_UK].[dbo].[mfg_location] s
 left outer join [MFTG_DW].dbo.Location_D d on s.location_name = d.Location
 where d.Location is null

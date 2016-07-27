@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>MFTG_ETL</Name>
-    <LastWriteTime>2016-07-24T11:40:41.2007392Z</LastWriteTime>
+    <LastWriteTime>2016-07-24T13:47:59.5358148Z</LastWriteTime>
     <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -34,6 +34,16 @@
     <ProjectBuildItemInfo>
       <Name>Sercomm_label.dtsx</Name>
       <LastWriteTime>2016-07-24T11:40:33.4873093Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Taiwan_Label.dtsx</Name>
+      <LastWriteTime>2016-07-24T11:45:54.2933556Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>UK.dtsx</Name>
+      <LastWriteTime>2016-07-24T14:10:46.6651673Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
