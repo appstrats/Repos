@@ -12,8 +12,8 @@
   DTS:ObjectName="CFC_Load"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="43"
-  DTS:VersionGUID="{D8E8451F-05D5-4D86-A465-00D67138C001}">
+  DTS:VersionBuild="46"
+  DTS:VersionGUID="{3E9BE73F-F387-4A5C-8E53-0F746BDC57C6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
