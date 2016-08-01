@@ -98,7 +98,7 @@ T_fact as
  datepart(HH,sr.datestamp) T_hour,
   1 datasourcekey, -- datasourcekey
  sr.step_index,
- dbo.fn_getdatavalue(sr.step_index, sr.serial_number,3) psdata, 
+ dbo.fn_getdatavalue(sr.step_index, sr.serial_number,1) psdata, 
  sr.step_result_code,
  ml.location_name ,
  sr.pn_code,
