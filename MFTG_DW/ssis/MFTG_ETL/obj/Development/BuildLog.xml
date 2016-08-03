@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>MFTG_ETL</Name>
-    <LastWriteTime>2016-07-24T13:47:59.5358148Z</LastWriteTime>
+    <LastWriteTime>2016-08-03T13:24:57.1822082Z</LastWriteTime>
     <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -43,7 +43,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>UK.dtsx</Name>
-      <LastWriteTime>2016-07-24T14:10:46.6651673Z</LastWriteTime>
+      <LastWriteTime>2016-08-03T13:48:20.4071045Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

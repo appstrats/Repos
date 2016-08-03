@@ -95,7 +95,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_assembly_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -121,7 +121,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_firmversion_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -147,7 +147,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_IRV_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="9">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -173,7 +173,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Location_Code_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="11">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -199,7 +199,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_manufacturing_id_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="12">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -225,7 +225,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_pn_Code_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="10">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -251,7 +251,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_regulatorymodel_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="9">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -303,7 +303,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_safemodeversion_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="10">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -329,7 +329,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_serialnumber_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -355,7 +355,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_SKU_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -381,7 +381,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Stationtype_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="12">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -407,7 +407,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_station_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -433,7 +433,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_StepResultCode_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="11">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
