@@ -5,6 +5,8 @@
   DTS:CreationName="OLEDB">
   <DTS:PropertyExpression
     DTS:Name="ConnectionString">@[$Project::MFTG_Conn_ConnectionString]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="Password">@[$Project::MFTG_Conn_PWD]</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
       DTS:ConnectionString="Data Source=apps01.dynu.net,1451;User ID=sa;Initial Catalog=MFTG_DW;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
