@@ -12,8 +12,8 @@
   DTS:ObjectName="FREMONT"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="41"
-  DTS:VersionGUID="{0EFE4779-496F-4541-B440-0686BD8DA1B4}">
+  DTS:VersionBuild="44"
+  DTS:VersionGUID="{2A4DC0F7-BE79-4D27-B865-A115C6199FB1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
@@ -95,7 +95,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Populate Dim_Assembly"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -121,7 +121,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Populate Dim_Firmware"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -148,7 +148,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Populate Dim_Location"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -175,7 +175,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Populate Dim_Manufacturing_ID"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -202,7 +202,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Populate Dim_Partnum"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -229,7 +229,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Populate Dim_Regulatory_Model"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -255,7 +255,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Populate Dim_ROMV"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="10">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -281,7 +281,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Populate Dim_safemodever"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="11">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -307,7 +307,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Populate Dim_Serial Number"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="9">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -334,7 +334,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Populate Dim_SKU"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -360,7 +360,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Populate Dim_Station"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="10">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -414,7 +414,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Populate Dim_Stepresult_code"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="11">
+          DTS:ThreadHint="9">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
