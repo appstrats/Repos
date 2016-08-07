@@ -12,8 +12,8 @@
   DTS:ObjectName="Taiwan_Label"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{2E05FB4D-FBCC-4613-843E-B4D103B6817A}">
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{E4E3A7CB-6E94-460D-B30E-84C3A49CE532}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
@@ -41,7 +41,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+          SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
           SQLTask:SqlStatementSource="exec ETL_Configuration.dbo.sp_create_Load 'MFGTESTC_TAIWAN'"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -65,7 +65,7 @@
         DTS:Name="ExecValueVariable">Loadid</DTS:Property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+          SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
           SQLTask:SqlStatementSource="exec dbo.sp_populate_fact_taiwan_Label ?&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
@@ -92,16 +92,17 @@
           DTS:Description="populate assembly_taiwan_label"
           DTS:DTSID="{DAE1958A-6512-4E32-9568-58EBC8CDC48F}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:FailParentOnFailure="True"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_assembly_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_assembly_taiwan_label ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
@@ -118,16 +119,17 @@
           DTS:Description="populate firmversion_taiwan_label"
           DTS:DTSID="{C3A22655-19DE-4B21-9288-33ED2C8E1EB3}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:FailParentOnFailure="True"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_firmversion_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="12">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_firmversion_taiwan_label ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
@@ -144,16 +146,17 @@
           DTS:Description="populate IRV_taiwan_label"
           DTS:DTSID="{7CF6E3C8-FBA0-4DA3-A1AD-32A2942819DD}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:FailParentOnFailure="True"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_IRV_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="9">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_IRV_taiwan_label ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
@@ -170,16 +173,17 @@
           DTS:Description="populate Location_taiwan_label"
           DTS:DTSID="{919E111F-35A3-4F8E-9AA7-C412E3F126BE}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:FailParentOnFailure="True"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Location_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_Location_taiwan_label ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
@@ -196,16 +200,17 @@
           DTS:Description="populate mid_taiwan_label"
           DTS:DTSID="{2F904819-74BD-4E81-AF4C-24CBB987445B}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:FailParentOnFailure="True"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_mid_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_manufacturing_id_taiwan_label ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
@@ -222,16 +227,17 @@
           DTS:Description="populate Partnum_taiwan_label"
           DTS:DTSID="{6AFE842B-7576-41A5-8847-B58DBE5CDDE3}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:FailParentOnFailure="True"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Partnum_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_Partnum_taiwan_label ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
@@ -248,16 +254,17 @@
           DTS:Description="populate regulatorymodel_taiwan_label"
           DTS:DTSID="{A8EC55B2-FCA3-4D78-B319-AEBE665E6FC2}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:FailParentOnFailure="True"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_regulatorymodel_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="11">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_regulatorymodel_taiwan_label ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
@@ -274,16 +281,17 @@
           DTS:Description="populate romversion_taiwan_label"
           DTS:DTSID="{64D490D3-3F1A-4BEA-81D9-56D3B307F019}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:FailParentOnFailure="True"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_romversion_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="13">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_romversion_taiwan_label ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
@@ -300,16 +308,17 @@
           DTS:Description="populate safemodeversion_taiwan_label"
           DTS:DTSID="{C21DC30A-5867-4840-BCD4-F6FDC77B2BBF}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:FailParentOnFailure="True"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_safemodeversion_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="9">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_safemodeversion_taiwan_label ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
@@ -326,16 +335,17 @@
           DTS:Description="populate serialnumber_taiwan_label"
           DTS:DTSID="{6B05BE73-E9FD-478C-AAB3-F96365D3A062}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:FailParentOnFailure="True"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_serialnumber_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_serialnumber_taiwan_label ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
@@ -352,16 +362,17 @@
           DTS:Description="populate SKU_taiwan_label"
           DTS:DTSID="{85861294-ED12-4389-BD07-484328654919}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:FailParentOnFailure="True"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_SKU_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="11">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_SKU_taiwan_label ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
@@ -378,16 +389,17 @@
           DTS:Description="populate Stationtype_taiwan_label"
           DTS:DTSID="{24804E16-A1C2-452F-9885-819607E1D353}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:FailParentOnFailure="True"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Stationtype_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="13">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_Stationtype_taiwan_label ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
@@ -404,16 +416,17 @@
           DTS:Description="populate station_taiwan_label"
           DTS:DTSID="{F6988D3A-3704-4B59-A5CC-2D3CC25B0F11}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:FailParentOnFailure="True"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_station_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="12">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_station_taiwan_label ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
@@ -430,6 +443,7 @@
           DTS:Description="populate Stepresult_code_taiwan_label"
           DTS:DTSID="{AF2FDBF2-F5DF-4E2F-A5A0-45992E0E1DDE}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:FailParentOnFailure="True"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Stepresult_code_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
@@ -439,7 +453,7 @@
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_Stepresult_code_taiwan_label ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
@@ -550,8 +564,8 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="1396,280"
-          Size="1396,323.2"
+          PanelSize="1396,288.8"
+          Size="1396,332"
           Id="Package\Sequence Container"
           TopLeft="186.666666666667,122.412698412699" />
         <EdgeLayout

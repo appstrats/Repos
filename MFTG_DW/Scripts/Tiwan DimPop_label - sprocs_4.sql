@@ -98,8 +98,8 @@ go
 go
 
 
--- exec sp_pop_firmversion_taiwan_label 8
-create PROC sp_pop_firmversion_taiwan_label (@pLoadID int) as
+-- exec sp_pop_firmversion_taiwan_label 1
+Create PROC sp_pop_firmversion_taiwan_label (@pLoadID int) as
 begin
 set nocount on
 
@@ -113,6 +113,7 @@ begin
 with T_FirmW as
 (select distinct Data_Value FW from MFGTESTC_TAIWAN.dbo.process_step_data sd
 where rtrim(Data_Attribute) like 'FirmwareVersion' and Data_Value is not null and (sd.datestamp between @startdate and @enddate )
+and len(data_value) < 251
 )
 
 insert into [MFTG_DW].[dbo].FirmwareVersion_D (FirmwareVersionKey,FirmwareVersion)
