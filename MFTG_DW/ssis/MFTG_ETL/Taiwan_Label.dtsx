@@ -12,8 +12,8 @@
   DTS:ObjectName="Taiwan_Label"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{E4E3A7CB-6E94-460D-B30E-84C3A49CE532}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{9DB9A8D5-7F79-47B4-8ADF-B27FF93657F5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
@@ -82,6 +82,7 @@
       DTS:Description="Sequence Container"
       DTS:DTSID="{D51262AE-EA8E-4BB6-9573-F2FE4086E328}"
       DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:FailPackageOnFailure="True"
       DTS:LocaleID="-1"
       DTS:ObjectName="Sequence Container">
       <DTS:Variables />
@@ -96,7 +97,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_assembly_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="13">
+          DTS:ThreadHint="9">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -123,7 +124,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_firmversion_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="10">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -150,7 +151,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_IRV_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="11">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -177,7 +178,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Location_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="12">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -204,7 +205,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_mid_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="13">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -231,7 +232,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Partnum_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -258,7 +259,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_regulatorymodel_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -285,7 +286,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_romversion_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -312,7 +313,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_safemodeversion_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="9">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -339,7 +340,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_serialnumber_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="12">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -366,7 +367,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_SKU_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="10">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -393,7 +394,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Stationtype_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -420,7 +421,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_station_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>
@@ -447,7 +448,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Stepresult_code_taiwan_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="11">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:Property
             DTS:Name="ExecValueVariable">Loadid</DTS:Property>

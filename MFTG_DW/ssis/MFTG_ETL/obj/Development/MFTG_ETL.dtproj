@@ -214,10 +214,10 @@
                 <SSIS:Property SSIS:Name="Name">Taiwan_Label</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">13</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">14</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{E4E3A7CB-6E94-460D-B30E-84C3A49CE532}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{794DBA69-5655-4CC7-B173-CE0C0A52387D}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
