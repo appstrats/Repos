@@ -12,8 +12,8 @@
   DTS:ObjectName="UK"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{A8FE0554-61EB-40A6-9C71-49285DCCBE74}">
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{A7EB25B9-398E-49BC-BE38-94570140F25A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
@@ -24,7 +24,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Loadid">
       <DTS:VariableValue
-        DTS:DataType="20">3</DTS:VariableValue>
+        DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -41,7 +41,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+          SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
           SQLTask:SqlStatementSource="exec ETL_Configuration.dbo.sp_create_Load 'MFGTESTC_UK'"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -63,10 +63,10 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+          SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
           SQLTask:SqlStatementSource="exec sp_populate_fact_uk ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
-            SQLTask:ParameterName="@ploadid"
+            SQLTask:ParameterName="0"
             SQLTask:DtsVariableName="User::Loadid"
             SQLTask:ParameterDirection="Input"
             SQLTask:DataType="3"
@@ -93,14 +93,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Assembly UK"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec sp_pop_assembly_UK ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@ploadid"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="3"
@@ -117,14 +117,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="datecode uk"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec sp_pop_datecode_UK ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@ploadid"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="3"
@@ -141,14 +141,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Firmware UK"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec sp_pop_Firmware_UK ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@ploadid"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="3"
@@ -165,14 +165,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Location UK"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="9">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec sp_Location_UK ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@ploadid"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="3"
@@ -189,14 +189,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="ManufacturingID UK"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="12">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec sp_pop_Manufacturing_ID_UK ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@ploadid"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="3"
@@ -217,10 +217,10 @@
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec sp_pop_Partnum_UK ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@ploadid"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="3"
@@ -237,14 +237,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Regulatory Model UK"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="10">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec sp_pop_Regulatory_Model_UK ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@ploadid"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="3"
@@ -261,14 +261,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="ROMV UK"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="10">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec sp_pop_ROMV_UK ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@ploadid"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="3"
@@ -285,14 +285,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Safemodever UK"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="13">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec sp_pop_safemodever_UK ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@ploadid"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="3"
@@ -309,14 +309,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Serial Number UK"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="13">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec sp_pop_serialnum_UK ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@ploadid"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="3"
@@ -337,10 +337,10 @@
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec sp_pop_SKU_UK ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@ploadid"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="3"
@@ -357,14 +357,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Station UK"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="12">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec sp_pop_Station_UK ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@ploadid"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="3"
@@ -381,14 +381,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Stationtype UK"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec sp_pop_Stationtype_UK ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@ploadid"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="3"
@@ -405,14 +405,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Stepresult_code UK"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="9">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec sp_Stepresult_code_UK ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@ploadid"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="3"
@@ -459,40 +459,36 @@
           TopLeft="297.371432463977,225.694118007409" />
         <NodeLayout
           Size="139.2,41.6"
+          Id="Package\Populate UK Fact"
+          TopLeft="275.657147401693,573.035296331228" />
+        <NodeLayout
+          Size="139.2,41.6"
           Id="Package\Sequence Container\Assembly UK"
           TopLeft="8.22857332618874,2.07059105803819" />
         <NodeLayout
           Size="139.2,41.6"
-          Id="Package\Sequence Container\Serial Number UK"
-          TopLeft="152.228575778494,5.78823674409864" />
+          Id="Package\Sequence Container\datecode uk"
+          TopLeft="456.800009536743,103.905878054477" />
         <NodeLayout
           Size="139.2,41.6"
-          Id="Package\Sequence Container\ManufacturingID UK"
-          TopLeft="296.80000681196,5.22352942892428" />
-        <NodeLayout
-          Size="139.2,41.6"
-          Id="Package\Sequence Container\SKU UK"
-          TopLeft="440.800009264265,3.38823528553792" />
-        <NodeLayout
-          Size="139.2,41.6"
-          Id="Package\Sequence Container\Regulatory Model UK"
-          TopLeft="585.37144029773,3.38823528553789" />
-        <NodeLayout
-          Size="139.2,41.6"
-          Id="Package\Sequence Container\PartNumber UK"
-          TopLeft="10.5142876508285,54.1647065858941" />
+          Id="Package\Sequence Container\Firmware UK"
+          TopLeft="445.371437913545,54.2588213844696" />
         <NodeLayout
           Size="139.2,41.6"
           Id="Package\Sequence Container\Location UK"
           TopLeft="153.942861521974,56.6588228430304" />
         <NodeLayout
           Size="139.2,41.6"
-          Id="Package\Sequence Container\Stepresult_code UK"
-          TopLeft="299.085721136599,55.4823508133939" />
+          Id="Package\Sequence Container\ManufacturingID UK"
+          TopLeft="296.80000681196,5.22352942892428" />
         <NodeLayout
           Size="139.2,41.6"
-          Id="Package\Sequence Container\Firmware UK"
-          TopLeft="445.371437913545,54.2588213844696" />
+          Id="Package\Sequence Container\PartNumber UK"
+          TopLeft="10.5142876508285,54.1647065858941" />
+        <NodeLayout
+          Size="139.2,41.6"
+          Id="Package\Sequence Container\Regulatory Model UK"
+          TopLeft="585.37144029773,3.38823528553789" />
         <NodeLayout
           Size="139.2,41.6"
           Id="Package\Sequence Container\ROMV UK"
@@ -503,6 +499,14 @@
           TopLeft="9.94285906966857,102.588233826977" />
         <NodeLayout
           Size="139.2,41.6"
+          Id="Package\Sequence Container\Serial Number UK"
+          TopLeft="152.228575778494,5.78823674409864" />
+        <NodeLayout
+          Size="139.2,41.6"
+          Id="Package\Sequence Container\SKU UK"
+          TopLeft="440.800009264265,3.38823528553792" />
+        <NodeLayout
+          Size="139.2,41.6"
           Id="Package\Sequence Container\Station UK"
           TopLeft="155.657147265454,105.082350084114" />
         <NodeLayout
@@ -511,8 +515,8 @@
           TopLeft="303.657149785879,103.905878054477" />
         <NodeLayout
           Size="139.2,41.6"
-          Id="Package\Sequence Container\datecode uk"
-          TopLeft="456.800009536743,103.905878054477" />
+          Id="Package\Sequence Container\Stepresult_code UK"
+          TopLeft="299.085721136599,55.4823508133939" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
@@ -554,10 +558,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="139.2,41.6"
-          Id="Package\Populate UK Fact"
-          TopLeft="275.657147401693,573.035296331228" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="393.028571759438,548.894120486962">
