@@ -12,8 +12,8 @@
   DTS:ObjectName="Taiwan_Label"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{0FBF3547-7C3B-4DFB-96F2-7B489E22C533}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{5305CB60-A212-45F6-841D-7046DCA7FD65}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
@@ -61,8 +61,6 @@
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
-      <DTS:Property
-        DTS:Name="ExecValueVariable">Loadid</DTS:Property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
@@ -99,8 +97,6 @@
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="12">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
@@ -126,8 +122,6 @@
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="13">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
@@ -153,8 +147,6 @@
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="10">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
@@ -180,8 +172,6 @@
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="11">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
@@ -207,8 +197,6 @@
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="2">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
@@ -234,8 +222,6 @@
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="5">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
@@ -261,8 +247,6 @@
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="8">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
@@ -288,8 +272,6 @@
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="1">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
@@ -315,8 +297,6 @@
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="6">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
@@ -342,8 +322,6 @@
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="7">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
@@ -369,8 +347,6 @@
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="3">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
@@ -396,8 +372,6 @@
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="4">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
@@ -423,8 +397,6 @@
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="9">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
@@ -450,8 +422,6 @@
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="0">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
@@ -543,7 +513,7 @@
           Id="Package\Sequence Container\pop_safemodeversion_taiwan_label"
           TopLeft="1139.59523809524,62.3412698412692" />
         <NodeLayout
-          Size="228,41.6"
+          Size="227.2,41.6"
           Id="Package\Sequence Container\pop_serialnumber_taiwan_label"
           TopLeft="237.452380952381,52.1984126984121" />
         <NodeLayout

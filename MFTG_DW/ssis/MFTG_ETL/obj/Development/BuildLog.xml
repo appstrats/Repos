@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>MFTG_ETL</Name>
-    <LastWriteTime>2016-08-09T15:37:24.0150473Z</LastWriteTime>
+    <LastWriteTime>2016-08-09T16:00:06.7551367Z</LastWriteTime>
     <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -38,7 +38,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Taiwan_Label.dtsx</Name>
-      <LastWriteTime>2016-08-09T15:37:09.4820182Z</LastWriteTime>
+      <LastWriteTime>2016-08-09T15:59:37.7033372Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
