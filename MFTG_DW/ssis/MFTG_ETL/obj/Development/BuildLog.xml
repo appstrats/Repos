@@ -2,53 +2,53 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>MFTG_ETL</Name>
-    <LastWriteTime>2016-08-07T13:16:26.1210794Z</LastWriteTime>
+    <LastWriteTime>2016-08-09T15:37:24.0150473Z</LastWriteTime>
     <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>advantech_label.dtsx</Name>
-      <LastWriteTime>2016-08-03T15:03:57.7653002Z</LastWriteTime>
+      <LastWriteTime>2016-08-09T14:41:46.9516131Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Advantech.dtsx</Name>
-      <LastWriteTime>2016-08-03T15:03:32.9718123Z</LastWriteTime>
+      <LastWriteTime>2016-08-09T14:41:46.6785074Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>FREMONT.dtsx</Name>
-      <LastWriteTime>2016-08-03T14:17:35.1485076Z</LastWriteTime>
+      <LastWriteTime>2016-08-09T14:41:46.7185078Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>senao.dtsx</Name>
-      <LastWriteTime>2016-07-23T15:37:37.4940229Z</LastWriteTime>
+      <LastWriteTime>2016-08-09T14:41:47.4028468Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>SERCOMM.dtsx</Name>
-      <LastWriteTime>2016-07-24T11:34:56.639607Z</LastWriteTime>
+      <LastWriteTime>2016-08-09T14:41:46.8385559Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Sercomm_label.dtsx</Name>
-      <LastWriteTime>2016-07-24T11:40:33.4873093Z</LastWriteTime>
+      <LastWriteTime>2016-08-09T14:41:46.8826054Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Taiwan_Label.dtsx</Name>
-      <LastWriteTime>2016-08-08T13:43:07.2159307Z</LastWriteTime>
+      <LastWriteTime>2016-08-09T15:37:09.4820182Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>UK.dtsx</Name>
-      <LastWriteTime>2016-08-03T15:02:00.1793342Z</LastWriteTime>
+      <LastWriteTime>2016-08-09T14:41:46.9386074Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>MFTG_Master.dtsx</Name>
-      <LastWriteTime>2016-08-04T14:59:32.8188375Z</LastWriteTime>
+      <LastWriteTime>2016-08-09T14:41:46.7785568Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
