@@ -12,8 +12,8 @@
   DTS:ObjectName="senao"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{66203505-EC55-4CF4-A07A-DD61367E7958}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{E3D9ADFE-C67A-4B44-A02C-CFD501AD0B1E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
@@ -41,7 +41,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+          SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
           SQLTask:SqlStatementSource="exec ETL_Configuration.dbo.sp_create_Load 'SENAO_MFGTESTC_TAIWAN'"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -61,15 +61,12 @@
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
-      <DTS:Property
-        DTS:Name="ExecValueVariable">Loadid</DTS:Property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
-          SQLTask:IsStoredProc="True"
+          SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
           SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_populate_fact_senao ?&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
-            SQLTask:ParameterName="@pLoadID"
+            SQLTask:ParameterName="0"
             SQLTask:DtsVariableName="User::Loadid"
             SQLTask:ParameterDirection="Input"
             SQLTask:DataType="2"
@@ -96,16 +93,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_assembly_Senao"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="8">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_SENAO_Assembly_D ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -122,16 +117,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_firmware_Senao"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="6">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_SENAO_FirmwareVersion_D ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -148,16 +141,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_M_ID"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="5">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_SENAO_ManufacturingID_D ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -174,16 +165,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_partnum_Senao"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="7">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_SENAO_PartNumber_D ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -200,16 +189,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_ROMV_Senao"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="4">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_SENAO_ROMVersion_D ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -226,16 +213,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_safemodever_Senao"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="0">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_SENAO_SafemodeVersion_D ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -252,16 +237,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_serialnum_Senao"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="2">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_SENAO_SerialNumber_D ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -279,16 +262,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Stationtype_Senao"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="1">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_SENAO_StationType_D ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -305,16 +286,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Station_Senao"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="3">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_SENAO_Station_D ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"

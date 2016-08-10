@@ -12,8 +12,8 @@
   DTS:ObjectName="Sercomm_label"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{62AF824C-2B5D-48BC-82C0-2B935F025CE5}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{069333EB-0FE6-4B75-8B4F-C6D7A124512C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
@@ -41,7 +41,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+          SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
           SQLTask:SqlStatementSource="exec ETL_Configuration.dbo.sp_create_Load 'MFGTESTC_TAIWAN_SERCOMM'"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -61,14 +61,12 @@
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
-      <DTS:Property
-        DTS:Name="ExecValueVariable">Loadid</DTS:Property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+          SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
           SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_populate_fact_Sercomm_Label ?&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
-            SQLTask:ParameterName="@pLoadID"
+            SQLTask:ParameterName="0"
             SQLTask:DtsVariableName="User::Loadid"
             SQLTask:ParameterDirection="Input"
             SQLTask:DataType="2"
@@ -95,16 +93,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_assembly_Sercomm_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="12">
+          DTS:ThreadHint="2">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_assembly_sercomm_label ?&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -121,16 +117,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_firmversion_sercomm_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="13">
+          DTS:ThreadHint="0">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_firmversion_sercomm_label ?&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -149,14 +143,12 @@
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="1">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_IRV_sercomm_label ?&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -173,16 +165,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Location_sercomm_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="3">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_Location_sercomm_label ?&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -199,16 +189,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_manufacturing_id_sercomm_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="4">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_manufacturing_id_sercomm_label ?&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -225,16 +213,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Partnum_sercomm_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="8">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_Partnum_sercomm_label ?&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -251,16 +237,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_regulatorymodel_sercomm_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="5">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_regulatorymodel_sercomm_label ?&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -277,16 +261,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_romversion_sercomm_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="11">
+          DTS:ThreadHint="6">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_romversion_sercomm_label ?&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -305,14 +287,12 @@
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="7">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_safemodeversion_sercomm_label ?&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -329,16 +309,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_serialnumber_sercomm_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="9">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_serialnumber_sercomm_label ?&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -355,16 +333,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_SKU_sercomm_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="10">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_SKU_sercomm_label ?&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -381,16 +357,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Stationtype_sercomm_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="13">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_Stationtype_sercomm_label ?&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -407,16 +381,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_station_sercomm_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="9">
+          DTS:ThreadHint="12">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_station_sercomm_label ?&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -433,16 +405,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Stepresult_code_sercomm_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="10">
+          DTS:ThreadHint="11">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_Stepresult_code_sercomm_label ?&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -490,7 +460,7 @@
         <NodeLayout
           Size="168.8,41.6"
           Id="Package\Pop Fact_Sercomm_label"
-          TopLeft="563.5,470" />
+          TopLeft="558.602040732915,501.462185315195" />
         <NodeLayout
           Size="196,41.6"
           Id="Package\Sequence Container\pop_assembly_Sercomm_label"
@@ -504,11 +474,11 @@
           Id="Package\Sequence Container\pop_IRV_sercomm_label"
           TopLeft="425,76" />
         <NodeLayout
-          Size="196,41.6"
+          Size="217.6,41.6"
           Id="Package\Sequence Container\pop_Location_sercomm_label"
           TopLeft="222,134" />
         <NodeLayout
-          Size="196,41.6"
+          Size="208,41.6"
           Id="Package\Sequence Container\pop_manufacturing_id_sercomm_label"
           TopLeft="416,11.5" />
         <NodeLayout
@@ -550,36 +520,36 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="934.4,272"
-          Size="934.4,315.2"
+          PanelSize="934.4,297.6"
+          Size="934.4,340.8"
           Id="Package\Sequence Container"
           TopLeft="180,129.333333333333" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="666.666666666667,96.6666666666662">
+          TopLeft="666.766666666667,96.2666666666662">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-19.6666666666664,32.6666666666671"
+              EndConnector="-19.5666666666669,33.0666666666668"
               Start="0,0"
-              End="-19.6666666666664,25.1666666666671">
+              End="-19.5666666666669,25.5666666666668">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,12.3333333333335" />
+                    End="0,12.5333333333334" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,12.3333333333335"
-                    Point2="0,16.3333333333335"
-                    Point3="-4,16.3333333333335" />
+                    Point1="0,12.5333333333334"
+                    Point2="0,16.5333333333334"
+                    Point3="-4,16.5333333333334" />
                   <mssgle:LineSegment
-                    End="-15.6666666666664,16.3333333333335" />
+                    End="-15.5666666666669,16.5333333333334" />
                   <mssgle:CubicBezierSegment
-                    Point1="-15.6666666666664,16.3333333333335"
-                    Point2="-19.6666666666664,16.3333333333335"
-                    Point3="-19.6666666666664,20.3333333333335" />
+                    Point1="-15.5666666666669,16.5333333333334"
+                    Point2="-19.5666666666669,16.5333333333334"
+                    Point3="-19.5666666666669,20.5333333333334" />
                   <mssgle:LineSegment
-                    End="-19.6666666666664,25.1666666666671" />
+                    End="-19.5666666666669,25.5666666666668" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -590,18 +560,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="647.5,444.333333333333">
+          TopLeft="645.101020366457,470.133333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,25.6666666666667"
+              EndConnector="0,31.3288519818618"
               Start="0,0"
-              End="0,18.1666666666667">
+              End="0,23.8288519818618">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.1666666666667" />
+                    End="0,23.8288519818618" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

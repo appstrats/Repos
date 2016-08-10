@@ -12,8 +12,8 @@
   DTS:ObjectName="Advantech"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{180131C5-C5E1-49CC-AA75-C8BD83B46662}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{5B88B607-86F3-4B27-82B9-346FFA67D25A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
@@ -41,7 +41,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+          SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
           SQLTask:SqlStatementSource="exec ETL_Configuration.dbo.sp_create_Load 'MFGTESTC_ADVANTECH'"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -61,14 +61,12 @@
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
-      <DTS:Property
-        DTS:Name="ExecValueVariable">Loadid</DTS:Property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+          SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
           SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_populate_fact_ADVANTECH ?&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
-            SQLTask:ParameterName="@pLoadID"
+            SQLTask:ParameterName="0"
             SQLTask:DtsVariableName="User::Loadid"
             SQLTask:ParameterDirection="Input"
             SQLTask:DataType="2"
@@ -95,16 +93,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_assembly_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="13">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_assembly_advantech ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -121,16 +117,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_firmversion_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="11">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_firmversion_advantech ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -147,16 +141,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_IRV_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="5">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_IRV_advantech ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -173,16 +165,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Location_Code_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="10">
+          DTS:ThreadHint="4">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_Location_Code_advantech ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -199,16 +189,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_mid_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="11">
+          DTS:ThreadHint="3">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_manufacturing_id_advantech ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -225,16 +213,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_pn_Code_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="8">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_pn_Code_advantech ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -251,16 +237,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_regulatorymodel_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="2">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_regulatorymodel_advantech ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -277,16 +261,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_romversion_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="12">
+          DTS:ThreadHint="6">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_romversion_advantech ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -303,16 +285,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_safemodeversion_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="12">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_safemodeversion_advantech ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -329,16 +309,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_serialnumber_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="7">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_serialnumber_advantech ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -355,16 +333,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_SKU_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="9">
+          DTS:ThreadHint="0">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_SKU_advantech ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -381,16 +357,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Stationtype_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="9">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_Stationtype_advantech ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -407,16 +381,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_station_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="13">
+          DTS:ThreadHint="10">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_station_advantech ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
@@ -433,16 +405,14 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_StepResultCode_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="1">
           <DTS:Variables />
-          <DTS:Property
-            DTS:Name="ExecValueVariable">Loadid</DTS:Property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F677DB00-1E62-4B71-9148-4C0CD29567B3}"
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_StepResultCode_advantech ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
-                SQLTask:ParameterName="@pLoadID"
+                SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="2"
