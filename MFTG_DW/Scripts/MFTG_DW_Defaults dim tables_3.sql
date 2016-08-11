@@ -1,5 +1,7 @@
 --To insert the default row in dimenstions 
-
+use MFTG_DW
+go
+set nocount on
 if not exists(select * from [dbo].[Assembly_D] where [AssemblyKey] = -1)
 INSERT into [dbo].[Assembly_D] ([AssemblyNumber],[AssemblyKey]) values ('Unknown',-1);
 
@@ -140,8 +142,9 @@ insert into dbo.TransactionMinute_D(TransactionMinuteKey,TransactionMinute)value
 insert into dbo.TransactionMinute_D(TransactionMinuteKey,TransactionMinute)values(59,59);
 insert into dbo.TransactionMinute_D(TransactionMinuteKey,TransactionMinute)values(60,60);
 
-
+set nocount off
 GO
+exec sp_populate_trandate 2006
 exec sp_populate_trandate 2007
 exec sp_populate_trandate 2008
 exec sp_populate_trandate 2009

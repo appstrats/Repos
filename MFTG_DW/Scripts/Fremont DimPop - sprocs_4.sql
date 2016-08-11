@@ -24,7 +24,7 @@ left outer join [MFTG_DW].dbo.[Assembly_D] d on s.udv  = d.[AssemblyNumber]
 where d.[AssemblyNumber] is null
 end
 end
-
+go
 --exec sp_pop_serialnum_FREMONT 1
 
 --As
@@ -182,7 +182,7 @@ go
 
 --Location
 --exec sp_Location_FREMONT 1
-alter PROC sp_Location_FREMONT (@pLoadID int) as
+Create PROC sp_Location_FREMONT (@pLoadID int) as
 begin
 set nocount on
 declare @startdate  datetime

@@ -1,8 +1,9 @@
 --exec sp_create_Load 'MFGTESTC_TAIWAN'
-declare @loadid as int
-exec @loadid = sp_create_Load 'MFGTESTC_FREMONT'
-print @loadid
-
+--declare @loadid as int
+--exec @loadid = sp_create_Load 'MFGTESTC_FREMONT'
+--print @loadid
+use ETL_Configuration
+go
 alter PROC sp_create_Load (@pDatasource varchar(50)) as
 begin
 set nocount on

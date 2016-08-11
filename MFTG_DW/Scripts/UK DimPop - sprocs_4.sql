@@ -193,7 +193,7 @@ go
 
 --Location
 --exec sp_Location_UK 3
-Alter PROC sp_Location_UK (@pLoadID int) as
+Create PROC sp_Location_UK (@pLoadID int) as
 begin
 set nocount on
 declare @startdate  datetime

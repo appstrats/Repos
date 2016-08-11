@@ -335,7 +335,7 @@ go
 
 --Step result Code
 --exec sp_pop_Stepresult_code_sercomm_label 4
-alter PROC sp_pop_Stepresult_code_sercomm_label (@pLoadID int) as
+Create PROC sp_pop_Stepresult_code_sercomm_label (@pLoadID int) as
 begin
 set nocount on
 declare @startdate  datetime
