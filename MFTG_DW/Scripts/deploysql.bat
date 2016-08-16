@@ -1,3 +1,4 @@
+sqlcmd -S apps01.dynu.net,1451 -U sa -P idrive1 -d master -i "G:\Projects\appstrats\MFTG_DW\Scripts\ETL_Configuration_Schema_1.sql" -l 60  >> "G:\Projects\mftg\error_log.txt
 sqlcmd -S apps01.dynu.net,1451 -U sa -P idrive1 -d master -i "G:\Projects\appstrats\MFTG_DW\Scripts\MFTG_DW_Schema_1.sql" -l 60  >> "G:\Projects\mftg\error_log.txt
 sqlcmd -S apps01.dynu.net,1451 -U sa -P idrive1 -d MFTG_DW -i "G:\Projects\appstrats\MFTG_DW\Scripts\MFTG_DW_population_objects_2.sql" -l 60  >> "G:\Projects\mftg\error_log.txt
 sqlcmd -S apps01.dynu.net,1451 -U sa -P idrive1 -d ETL_Configuration -i "G:\Projects\appstrats\MFTG_DW\Scripts\ETL POP_Loadid.sql" -l 60  >> "G:\Projects\mftg\error_log.txt
