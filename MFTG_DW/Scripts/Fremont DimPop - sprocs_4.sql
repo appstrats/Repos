@@ -372,3 +372,28 @@ end
 end
 go
 
+--exec sp_pop_RFID_FREMONT 3
+create PROC sp_pop_RFID_FREMONT (@pLoadID int) as
+begin
+set nocount on
+declare @startdate  datetime
+declare @enddate  datetime
+
+select @startdate = StartDate, @enddate = EndDate  from etl_configuration.dbo.DataLoad_Log where loadid = @pLoadID
+if (@startdate is not null and @enddate is not null)
+begin
+with T_RFID as
+(select distinct  data_value RFID from MFGTESTC_FREMONT.dbo.process_step_data sd
+where data_attribute like '%RFID%'   and 
+data_value not like '01-SSC-4321%' and data_value not like '01-SSC-1234%'  and (sd.datestamp between @startdate and @enddate )
+)
+
+insert into [MFTG_DW].[dbo].[RFID_D]([RFIDKey],[RFID],[RFIDDescription])
+select distinct isnull((select max([RFIDKey]) from [MFTG_DW].dbo.[RFID_D] where [RFIDKey]>-1),0) +
+ROW_NUMBER() over (ORDER BY s.RFID), s.RFID,s.RFID
+from T_RFID s
+left outer join [MFTG_DW].dbo.[RFID_D] d on s.RFID = d.[RFID]
+where  d.[RFID] is null
+end
+end;
+go

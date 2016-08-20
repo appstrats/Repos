@@ -177,6 +177,24 @@ CREATE UNIQUE  INDEX [SKU_UQ] ON [dbo].[SKU_D] (
 )
 GO
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RFID_D]') AND type in (N'U'))
+    DROP TABLE [dbo].[RFID_D]
+GO
+CREATE TABLE [dbo].[RFID_D] (
+[RFIDKey] int  NOT NULL  
+, [RFID] char(50)  NOT NULL  
+, [RFIDDescription] varchar(50)  NULL  
+)
+GO
+
+ALTER TABLE [dbo].[RFID_D] ADD CONSTRAINT [RFID_D_PK] PRIMARY KEY CLUSTERED (
+[RFIDKey]
+)
+GO
+CREATE UNIQUE  INDEX [RFID_UQ] ON [dbo].[RFID_D] (
+[RFID]
+)
+GO
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[TransactionMinute_D]') AND type in (N'U'))
     DROP TABLE [dbo].[TransactionMinute_D]
 GO
@@ -225,6 +243,7 @@ CREATE TABLE [dbo].[MFTGSummary_F] (
 , [StationKey] int  NOT NULL  
 , [DateCodeKey] int  NOT NULL  
 , [MIDGroupKey] int  NOT NULL  
+, [RFIDKey] int NOT NULL
 )
 GO
 
@@ -649,6 +668,12 @@ ALTER TABLE [dbo].[MFTGSummary_F] WITH CHECK ADD CONSTRAINT [SafemodeVersion_D_M
 )
 REFERENCES [dbo].[SafemodeVersion_D] (
 [SafemodeVersionKey]
+)
+ALTER TABLE [dbo].[MFTGSummary_F] WITH CHECK ADD CONSTRAINT [RFID_D_MFTGSummary_F_FK1] FOREIGN KEY (
+[RFIDKey]
+)
+REFERENCES [dbo].[RFID_D] (
+[RFIDKey]
 )
 GO
 
