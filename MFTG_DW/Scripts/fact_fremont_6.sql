@@ -1,5 +1,5 @@
 --exec sp_populate_fact 1
-create PROC sp_populate_fact (@pLoadID int) as
+Create PROC sp_populate_fact (@pLoadID int) as
 begin
 set nocount on
 
@@ -71,6 +71,9 @@ and step_index in
 T_RM as
 (select  step_index, serial_number, data_value RM from MFGTESTC_FREMONT.dbo.process_step_data sd
 where data_attribute like 'label field RM'and (sd.datestamp between @startdate and @enddate)),
+T_RFID as
+(select  step_index, serial_number, data_value RFID from MFGTESTC_FREMONT.dbo.process_step_data sd
+where data_attribute like '%RFID%'and (sd.datestamp between @startdate and @enddate)),
 T_FirmW as
 (select  step_index, serial_number, data_value FW from MFGTESTC_FREMONT.dbo.process_step_data sd 
 where data_attribute like 'FirmwareVersion'and (sd.datestamp between @startdate and @enddate)),
@@ -109,13 +112,14 @@ T_fact as
  sr.datestamp processdate,
  convert (varchar ,sr.station_type_code) STC,
  --sr.Station_type_code STC,
- sr.Station_id STA
- 
+ sr.Station_id STA,
+ rfid.RFID
   from MFGTESTC_FREMONT.dbo.process_step_result sr 
   left outer join T_SMV smv on sr.step_index = smv.step_index and sr.serial_number = smv.serial_number
   left outer join T_ROMv romv on sr.step_index = romv.step_index and sr.serial_number = romv.serial_number
   left outer join T_FirmW fwv on sr.step_index = fwv.step_index and sr.serial_number = fwv.serial_number
   left outer join T_RM rm on sr.step_index = rm.step_index and sr.serial_number = rm.serial_number
+  left outer join T_RFID rfid on sr.step_index = rfid.step_index and sr.serial_number = rfid.serial_number
   left outer join T_SKU sku on sr.step_index = sku.step_index and sr.serial_number = sku.serial_number
    left outer join T_Label_Assem ass on sr.step_index = ass.step_index and sr.serial_number = ass.serial_number
   left outer join T_RMA rma on sr.step_index = rma.step_index and sr.serial_number = rma.serial_number
@@ -152,8 +156,8 @@ or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.seri
   T_fact.processdate,
   isnull(stc.StationTypeKey,-1) StationTypeKey,
   isnull(sta.StationKey,-1) StationKey,
-  -1 DateCodeKey
- 
+  -1 DateCodeKey,
+  isnull(rfid.RFIDKey,-1) RFIDKey
 
   into #MFTGSummary_F
   from T_fact 
@@ -163,6 +167,7 @@ or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.seri
   left outer join FirmwareVersion_D fwv on T_fact.FW = fwv.FirmwareVersion
   left outer join RegulatoryModel_D rd on T_fact.RM = rd.RegulatoryModel 
   left outer join SKU_D sku on T_fact.SKU = sku.SKUDescription
+  left outer join RFID_D rfid on T_fact.RFID = rfid.RFID
   left outer join StepResultCode_D src on T_fact.step_result_code = src.StepResultValue 
   left outer join Location_D l on T_fact.location_name = l.location 
   left outer join PartNumber_D pn on T_fact.pn_code = pn.PartNumberCode
@@ -197,7 +202,8 @@ or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.seri
 	[StationTypeKey],
 	[StationKey],
 	[DateCodeKey],
-	[MIDGroupKey]
+	[MIDGroupKey],
+	[RFIDKey]
 	)
 	select [MFTGSummaryKey],
 	[MFTGSummaryCount],
@@ -224,7 +230,8 @@ or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.seri
 	[StationTypeKey],
 	[StationKey],
 	[DateCodeKey],
-	checksum(g.gmid) [MIDGroupKey]
+	checksum(g.gmid) [MIDGroupKey],
+	[RFIDKey]
 	from #MFTGSummary_F tf
 	left outer join #grp g on tf.SerialNumberKey = g.SerialNumberKey ;
 

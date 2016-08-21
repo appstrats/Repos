@@ -1,7 +1,7 @@
 use MFTG_DW
 GO
 --exec sp_populate_fact_senao 5
-CREATE PROC sp_populate_fact_senao (@pLoadID int) as
+Create PROC sp_populate_fact_senao (@pLoadID int) as
 begin
 set nocount on
 
@@ -66,6 +66,9 @@ where rtrim(data_attribute )like 'Safemode_Version' and (datestamp between @star
 select step_index, serial_number, data_value RV into #T_ROMv from SENAO_MFGTESTC_TAIWAN.dbo.process_step_data 
 where rtrim(data_attribute )like 'ROM_Version'  and (datestamp between @startdate and @enddate) 
 
+select step_index, serial_number, data_value RFID into #T_RFID from SENAO_MFGTESTC_TAIWAN.dbo.process_step_data 
+where rtrim(data_attribute )like '%RFID%'  and (datestamp between @startdate and @enddate) 
+
 select step_index, serial_number, data_value FW into #T_FirmW from SENAO_MFGTESTC_TAIWAN.dbo.process_step_data 
 where rtrim(data_attribute )like 'Firmware_Version'  and (datestamp between @startdate and @enddate) 
 
@@ -90,12 +93,13 @@ select sr.serial_number,
  sr.datestamp processdate,
  convert (varchar ,sr.station_type_code) STC,
  sr.Station_id STA,
- format(sr.datestamp,'yyyyMMdd') DC
- 
+ format(sr.datestamp,'yyyyMMdd') DC,
+ rfid.RFID
  into #T_fact
   from SENAO_MFGTESTC_TAIWAN.dbo.process_step_result sr 
   left outer join #T_SMV smv on sr.step_index = smv.step_index and sr.serial_number = smv.serial_number
   left outer join #T_ROMv romv on sr.step_index = romv.step_index and sr.serial_number = romv.serial_number
+  left outer join #T_RFID rfid on sr.step_index = rfid.step_index and sr.serial_number = rfid.serial_number
   left outer join #T_FirmW fwv on sr.step_index = fwv.step_index and sr.serial_number = fwv.serial_number
   left outer join #T_Label_Assem ass on sr.step_index = ass.step_index and sr.serial_number = ass.serial_number
  -- left outer join #T_PartNum pn on sr.serial_number = pn.serial_number and convert(varchar,sr.datestamp ,112) = pn.process_date
@@ -129,13 +133,15 @@ select sr.serial_number,
   T_fact.processdate,
    isnull(stc.StationTypeKey,-1) StationTypeKey,
    isnull(sta.StationKey,-1) StationKey,
-   isnull(dc.DateCodeKey,-1) DateCodeKey
+   isnull(dc.DateCodeKey,-1) DateCodeKey,
+   isnull(rfid.RFIDKey,-1) RFIDKey
  
   into #MFTGSummary_F
   from #T_fact T_fact 
   left outer join SerialNumber_D sn on T_fact.serial_number = sn.SerialNumber
   left outer join SafemodeVersion_D smv on T_fact.SMV = smv.SafemodeVersion
   left outer join ROMVersion_D rv on T_fact.RV = rv.ROMVersion 
+  left outer join RFID_D rfid on T_fact.RFID = rfid.RFID
   left outer join FirmwareVersion_D fwv on T_fact.FW = fwv.FirmwareVersion
   left outer join Assembly_D a on T_fact.assem = a.AssemblyNumber
   left outer join Station_D sta on T_fact.STA = sta.Station
@@ -168,7 +174,8 @@ select sr.serial_number,
 	[StationTypeKey],
 	[StationKey],
 	[DateCodeKey],
-	[MIDGroupKey]
+	[MIDGroupKey],
+	[RFIDKey]
 	)
 	select [MFTGSummaryKey],
 	[MFTGSummaryCount],
@@ -195,7 +202,8 @@ select sr.serial_number,
 	StationTypeKey,
 	StationKey,
 	[DateCodeKey],
-	checksum(g.gmid) [MIDGroupKey]
+	checksum(g.gmid) [MIDGroupKey],
+	[RFIDKey]
 	from #MFTGSummary_F tf
 	left outer join #grp g on tf.SerialNumberKey = g.SerialNumberKey ;
 

@@ -129,12 +129,12 @@ WITH SCHEMABINDING
 AS
     SELECT TransactionHourKey,SerialNumberKey , MFTGSummaryKey , MFTGSummaryCount , SafemodeVersionKey , ROMVersionKey ,
 	FirmwareVersionKey,RegulatoryModelKey,TransactionDateKey,TransactionMinuteKey,DataSourceKey,SKUKey,StepIndex,ProcessStepData,
-	StepResultCodeKey,LocationKey,PartNumberKey,AssemblyKey,WorkOrderKey,IsRMAKey,IRVKey,StationTypeKey,StationKey,DateCodeKey,MIDGroupKey
+	StepResultCodeKey,LocationKey,PartNumberKey,AssemblyKey,WorkOrderKey,IsRMAKey,IRVKey,StationTypeKey,StationKey,DateCodeKey,MIDGroupKey,RFIDKey
 FROM (
  SELECT  TransactionHourKey,SerialNumberKey ,MFTGSummaryKey,MFTGSummaryCount,SafemodeVersionKey,
  ROMVersionKey,FirmwareVersionKey,	 RegulatoryModelKey,TransactionDateKey,TransactionMinuteKey,DataSourceKey,
  SKUKey,StepIndex,ProcessStepData,StepResultCodeKey,LocationKey,
-	  PartNumberKey,AssemblyKey,WorkOrderKey,IsRMAKey,IRVKey,StationTypeKey,StationKey,DateCodeKey,MIDGroupKey,
+	  PartNumberKey,AssemblyKey,WorkOrderKey,IsRMAKey,IRVKey,StationTypeKey,StationKey,DateCodeKey,MIDGroupKey,RFIDKey,
   ROW_NUMBER() OVER (PARTITION BY SerialNumberKey ORDER BY TransactionDateKey DESC) Fact_Row_Num
  FROM dbo.MFTGSummary_F )
 tmp WHERE Fact_Row_Num = 1

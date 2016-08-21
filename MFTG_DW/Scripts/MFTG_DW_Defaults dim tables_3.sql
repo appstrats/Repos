@@ -42,6 +42,8 @@ insert into dbo.SerialNumber_D(SerialNumberKey,SerialNumber,AuthCode)values(-1,'
 
 insert into dbo.SKU_D(SKUKey,SKU,SKUDescription)values(-1,'Unknown','Unknown');
 
+insert into dbo.RFID_D(RFIDKey,RFID,RFIDDescription)values(-1,'Unknown','Unknown');
+
 insert into dbo.StepResultCode_D(StepResultCodeKey,StepResultValue,Description)values(-1,-1,'Unknown');
 
 insert into dbo.Station_D(StationKey,Station)values(-1,'Unknown');
