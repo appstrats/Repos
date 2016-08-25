@@ -12,8 +12,8 @@
   DTS:ObjectName="Sercomm_label"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{069333EB-0FE6-4B75-8B4F-C6D7A124512C}">
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{307B58E3-EC00-400D-9628-1804B1341B49}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
@@ -93,7 +93,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_assembly_Sercomm_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -141,7 +141,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_IRV_sercomm_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -165,7 +165,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Location_sercomm_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -213,7 +213,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Partnum_sercomm_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -237,7 +237,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_regulatorymodel_sercomm_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -261,7 +261,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_romversion_sercomm_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -309,7 +309,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_serialnumber_sercomm_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="12">
+          DTS:ThreadHint="14">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -333,7 +333,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_SKU_sercomm_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="9">
+          DTS:ThreadHint="11">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -357,7 +357,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Stationtype_sercomm_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="11">
+          DTS:ThreadHint="12">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -381,7 +381,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_station_sercomm_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="10">
+          DTS:ThreadHint="13">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -405,12 +405,36 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Stepresult_code_sercomm_label"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="13">
+          DTS:ThreadHint="10">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
               SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_Stepresult_code_sercomm_label ?&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::Loadid"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="2"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\RFID_sercomm_label"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="populate RFID sercomm_label"
+          DTS:DTSID="{bd78ac2e-a682-4bd9-8f2e-b8034974883d}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="RFID_sercomm_label"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="9">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_RFID_sercomm_label ?&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
@@ -456,11 +480,11 @@
         <NodeLayout
           Size="147.2,41.6"
           Id="Package\Create Load id"
-          TopLeft="593.166666666667,54.6666666666662" />
+          TopLeft="564.59523760867,98.6078432766758" />
         <NodeLayout
           Size="168.8,41.6"
           Id="Package\Pop Fact_Sercomm_label"
-          TopLeft="558.602040732915,501.462185315195" />
+          TopLeft="558.602040732915,551.521009069826" />
         <NodeLayout
           Size="196,41.6"
           Id="Package\Sequence Container\pop_assembly_Sercomm_label"
@@ -510,46 +534,38 @@
           Id="Package\Sequence Container\pop_station_sercomm_label"
           TopLeft="13,135" />
         <NodeLayout
-          Size="196,41.6"
+          Size="232,41.6"
           Id="Package\Sequence Container\pop_Stationtype_sercomm_label"
           TopLeft="226,198" />
         <NodeLayout
           Size="196,41.6"
           Id="Package\Sequence Container\pop_Stepresult_code_sercomm_label"
           TopLeft="13,201" />
+        <NodeLayout
+          Size="232,41.6"
+          Id="Package\Sequence Container\RFID_sercomm_label"
+          TopLeft="478.571436619272,196.764704398053" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="934.4,297.6"
-          Size="934.4,340.8"
+          PanelSize="934.4,309.6"
+          Size="934.4,352.8"
           Id="Package\Sequence Container"
-          TopLeft="180,129.333333333333" />
+          TopLeft="171.428571282601,164.509804414905" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="666.766666666667,96.2666666666662">
+          TopLeft="638.411904445635,140.207843276676">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-19.5666666666669,33.0666666666668"
+              EndConnector="0,24.3019611382292"
               Start="0,0"
-              End="-19.5666666666669,25.5666666666668">
+              End="0,16.8019611382292">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,12.5333333333334" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,12.5333333333334"
-                    Point2="0,16.5333333333334"
-                    Point3="-4,16.5333333333334" />
-                  <mssgle:LineSegment
-                    End="-15.5666666666669,16.5333333333334" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-15.5666666666669,16.5333333333334"
-                    Point2="-19.5666666666669,16.5333333333334"
-                    Point3="-19.5666666666669,20.5333333333334" />
-                  <mssgle:LineSegment
-                    End="-19.5666666666669,25.5666666666668" />
+                    End="0,16.8019611382292" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -560,18 +576,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="645.101020366457,470.133333333333">
+          TopLeft="640.815306007758,517.309804414905">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,31.3288519818618"
+              EndConnector="0,34.2112046549207"
               Start="0,0"
-              End="0,23.8288519818618">
+              End="0,26.7112046549207">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.8288519818618" />
+                    End="0,26.7112046549207" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

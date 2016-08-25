@@ -12,8 +12,8 @@
   DTS:ObjectName="Advantech"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{5B88B607-86F3-4B27-82B9-346FFA67D25A}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{BC17377A-78D0-433E-A797-1C9E991773FE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
@@ -85,6 +85,30 @@
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
+          DTS:refId="Package\Sequence Container\pop RFID advantech"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="populate RFID advantech"
+          DTS:DTSID="{d38aa87b-5050-40f3-9c00-4eea58ba4942}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="pop RFID advantech"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="14">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_RFID_advantech ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::Loadid"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="2"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Sequence Container\pop_assembly_advantech"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:Description="populate assembly table_ advantech"
@@ -93,7 +117,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_assembly_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="13">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -117,7 +141,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_firmversion_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="11">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -141,7 +165,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_IRV_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -165,7 +189,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Location_Code_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -189,7 +213,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_mid_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -213,7 +237,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_pn_Code_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="9">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -237,7 +261,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_regulatorymodel_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -261,7 +285,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_romversion_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -285,7 +309,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_safemodeversion_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="12">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -309,7 +333,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_serialnumber_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -333,7 +357,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_SKU_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="13">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -357,7 +381,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Stationtype_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="9">
+          DTS:ThreadHint="10">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -381,7 +405,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_station_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="10">
+          DTS:ThreadHint="11">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -405,7 +429,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_StepResultCode_advantech"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="12">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -456,11 +480,11 @@
         <NodeLayout
           Size="147.2,41.6"
           Id="Package\Create Load id"
-          TopLeft="510.238095238096,1" />
+          TopLeft="510.238095238096,55.4117653708145" />
         <NodeLayout
           Size="175.2,41.6"
           Id="Package\Pop Fact_Advantech"
-          TopLeft="469.071428571429,421.33333333333" />
+          TopLeft="469.071428571429,475.745098704144" />
         <NodeLayout
           Size="200,41.6"
           Id="Package\Sequence Container\pop_assembly_advantech"
@@ -517,27 +541,37 @@
           Size="230.4,41.6"
           Id="Package\Sequence Container\pop_StepResultCode_advantech"
           TopLeft="642.714285714286,119.857142857143" />
+        <NodeLayout
+          Size="225.6,41.6"
+          Id="Package\Sequence Container\pop RFID advantech"
+          TopLeft="506.000008213277,164.84537668412" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="1015.2,227.2"
-          Size="1015.2,270.4"
+          PanelSize="1015.2,285.6"
+          Size="1015.2,328.8"
           Id="Package\Sequence Container"
-          TopLeft="81.071428571429,83.928571428572" />
+          TopLeft="76.0714284862796,108.399160007057" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="586.154761904762,43">
+          TopLeft="510.238095238096,76.2117653708145">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,40.9285714285716"
+              EndConnector="73.4333332481837,32.1873946362424"
               Start="0,0"
-              End="0,33.4285714285716">
+              End="73.4333332481837,24.6873946362424">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.4285714285716" />
+                    End="69.4333332481837,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="69.4333332481837,0"
+                    Point2="73.4333332481837,0"
+                    Point3="73.4333332481837,4" />
+                  <mssgle:LineSegment
+                    End="73.4333332481837,24.6873946362424" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -548,30 +582,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="588.571428571429,353.92857142857">
+          TopLeft="583.67142848628,437.199160007057">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-32,67.4047619047581"
+              EndConnector="-26.9999999148506,38.5459386970876"
               Start="0,0"
-              End="-32,59.9047619047581">
+              End="-26.9999999148506,31.0459386970876">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.7023809523789" />
+                    End="0,15.2729693485438" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,29.7023809523789"
-                    Point2="0,33.7023809523789"
-                    Point3="-4,33.7023809523789" />
+                    Point1="0,15.2729693485438"
+                    Point2="0,19.2729693485438"
+                    Point3="-4,19.2729693485438" />
                   <mssgle:LineSegment
-                    End="-28,33.7023809523789" />
+                    End="-22.9999999148506,19.2729693485438" />
                   <mssgle:CubicBezierSegment
-                    Point1="-28,33.7023809523789"
-                    Point2="-32,33.7023809523789"
-                    Point3="-32,37.7023809523789" />
+                    Point1="-22.9999999148506,19.2729693485438"
+                    Point2="-26.9999999148506,19.2729693485438"
+                    Point3="-26.9999999148506,23.2729693485438" />
                   <mssgle:LineSegment
-                    End="-32,59.9047619047581" />
+                    End="-26.9999999148506,31.0459386970876" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
