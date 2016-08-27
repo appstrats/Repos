@@ -67,7 +67,7 @@ select step_index, serial_number, data_value RV into #T_ROMv from SENAO_MFGTESTC
 where rtrim(data_attribute )like 'ROM_Version'  and (datestamp between @startdate and @enddate) 
 
 select step_index, serial_number, data_value RFID into #T_RFID from SENAO_MFGTESTC_TAIWAN.dbo.process_step_data 
-where rtrim(data_attribute )like '%RFID%'  and (datestamp between @startdate and @enddate) 
+where rtrim(data_attribute )like 'label field RFID'  and (datestamp between @startdate and @enddate) 
 
 select step_index, serial_number, data_value FW into #T_FirmW from SENAO_MFGTESTC_TAIWAN.dbo.process_step_data 
 where rtrim(data_attribute )like 'Firmware_Version'  and (datestamp between @startdate and @enddate) 

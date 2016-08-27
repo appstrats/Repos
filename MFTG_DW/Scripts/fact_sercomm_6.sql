@@ -54,7 +54,7 @@ select distinct Step_index, last_value(data_value) over (partition by step_index
 where rtrim(data_attribute )like 'ROMVersion'  and (sd.datastamp between @startdate and @enddate)
 
 select distinct Step_index, last_value(data_value) over (partition by step_index order by datastamp asc) RFID into #T_RFID from MES2_SERCOMM.dbo.process_step_data sd
-where rtrim(data_attribute )like '%RFID%'  and (sd.datastamp between @startdate and @enddate)
+where rtrim(data_attribute )like 'label field RFID'  and (sd.datastamp between @startdate and @enddate)
 
 select distinct Step_index, last_value(data_value) over (partition by step_index order by datastamp asc) FW into #T_FirmW from MES2_SERCOMM.dbo.process_step_data sd
 where rtrim(Data_Attribute) like 'FirmwareVersion' and (sd.datastamp between @startdate and @enddate) 

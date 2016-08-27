@@ -73,7 +73,7 @@ T_RM as
 where data_attribute like 'label field RM'and (sd.datestamp between @startdate and @enddate)),
 T_RFID as
 (select  step_index, data_value RFID from MFGTESTC_ADVANTECH.dbo.process_step_data sd
-where data_attribute like '%RFID%'and (sd.datestamp between @startdate and @enddate)),
+where data_attribute like 'label field RFID'and (sd.datestamp between @startdate and @enddate)),
 T_FirmW as
 (select Step_Index,Data_Value FW from MFGTESTC_ADVANTECH.dbo.process_step_data sd
 where rtrim(Data_Attribute) like 'FirmwareVersion' and Data_Value is not null and (sd.datestamp between @startdate and @enddate)),
