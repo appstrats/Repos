@@ -4,7 +4,7 @@
 --print @loadid
 use ETL_Configuration
 go
-alter PROC sp_create_Load (@pDatasource varchar(50)) as
+create PROC sp_create_Load (@pDatasource varchar(50)) as
 begin
 set nocount on
 declare @startdate  datetime
