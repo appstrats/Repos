@@ -14,7 +14,7 @@ select @startdate = StartDate, @enddate = EndDate  from etl_configuration.dbo.Da
 if (@startdate is not null and @enddate is not null)
 begin
 
-update etl_configuration.[dbo].[DataLoad_Log] set status =0 where loadid = @pLoadID;
+update etl_configuration.[dbo].[DataLoad_Log] set status =0, loadstart=getdate() where loadid = @pLoadID;
 select Serial_Number into #snr from 
 (select distinct sr.Serial_Number from MES2_SERCOMM.dbo.process_step_result sr
 union 
@@ -85,7 +85,7 @@ select ts.Mac_Id SRNUM,
  datepart(MI,sr.datastamp) T_min,
  datepart(HH,sr.datastamp) T_hour,
  sr.step_index,
- dbo.fn_getdatavalue(sr.step_index, snta.Mac_Id,4) psdata, 
+ dbo.fn_getdatavalue(sr.step_index, ts.Mac_Id,4) psdata, 
  --'' psdata, 
  sr.PN_Code PartNumber,
  sr.Location_Code LC,
@@ -208,6 +208,6 @@ select ts.Mac_Id SRNUM,
 	left outer join #grp g on tf.SerialNumberKey = g.SerialNumberKey ;
 
    
-   update etl_configuration.[dbo].[DataLoad_Log] set status =1 where loadid = @pLoadID;
+   update etl_configuration.[dbo].[DataLoad_Log] set status =1, loadend=getdate() where loadid = @pLoadID;
   end
   end;
