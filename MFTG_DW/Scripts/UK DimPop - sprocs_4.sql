@@ -214,7 +214,7 @@ go
 
 
 --Step result Code
---exec sp_Stepresult_code_UK 3
+--exec sp_Stepresult_code_UK 8
 Create PROC sp_Stepresult_code_UK (@pLoadID int) as
 begin
 set nocount on
@@ -228,7 +228,7 @@ insert into [MFTG_DW].[dbo].[StepResultCode_D]([StepResultCodeKey],[StepResultVa
 select distinct isnull((select max([StepResultCodeKey]) from [MFTG_DW].dbo.[StepResultCode_D] where [StepResultCodeKey]>-1),0) +
 ROW_NUMBER() over (ORDER BY s.[step_result_code]), s.[step_result_code],s.[description] 
 from [MFGTESTC_UK].[dbo].[step_result_code] s
-left outer join [MFTG_DW].dbo.[StepResultCode_D] d on s.[description] = d.[Description]
+left outer join [MFTG_DW].dbo.[StepResultCode_D] d on s.[step_result_code] = d.[StepResultValue]
 where d.[StepResultValue] is null
 end
 end;
