@@ -1,52 +1,51 @@
-select 'TransactionHourKey',count(TransactionHourKey)  from dbo.MFTGSummary_F where [TransactionHourKey] = -1
-union all
-select 'SerialNumberKey',count(SerialNumberKey) from dbo.MFTGSummary_F where SerialNumberKey = -1
-union all
-select 'MFTGSummaryKey',count(MFTGSummaryKey) from dbo.MFTGSummary_F where MFTGSummaryKey = -1
-union all
-select 'MFTGSummaryCount',count(MFTGSummaryCount) from dbo.MFTGSummary_F where MFTGSummaryCount = -1
-union all
-select 'SafemodeVersionKey',count(SafemodeVersionKey) from dbo.MFTGSummary_F where SafemodeVersionKey = -1
-union all
-select 'ROMVersionKey',count(ROMVersionKey) from dbo.MFTGSummary_F where ROMVersionKey = -1
-union all
-select 'FirmwareVersionKey',count(FirmwareVersionKey) from dbo.MFTGSummary_F where FirmwareVersionKey = -1
-union all
-select 'RegulatoryModelKey',count(RegulatoryModelKey) from dbo.MFTGSummary_F where RegulatoryModelKey = -1
-union all
-select 'TransactionDateKey',count(TransactionDateKey) from dbo.MFTGSummary_F where TransactionDateKey = -1
-union all
-select 'TransactionMinuteKey',count(TransactionMinuteKey) from dbo.MFTGSummary_F where TransactionMinuteKey = -1
-union all
-select 'DataSourceKey',count(DataSourceKey) from dbo.MFTGSummary_F where DataSourceKey = -1
-union all
-select 'SKUKey',count(SKUKey) from dbo.MFTGSummary_F where SKUKey= -1
-union all
-select 'StepIndex',count(StepIndex) from dbo.MFTGSummary_F where StepIndex = -1
-union all
---select 'ProcessStepData',count(ProcessStepData) from dbo.MFTGSummary_F where ProcessStepData  = -1
---union all
-select 'StepResultCodeKey',count(StepResultCodeKey) from dbo.MFTGSummary_F where StepResultCodeKey = -1
-union all
-select 'LocationKey',count(LocationKey) from dbo.MFTGSummary_F where LocationKey = -1
-union all
-select 'PartNumberKey',count(PartNumberKey) from dbo.MFTGSummary_F where PartNumberKey = -1
-union all
-select 'AssemblyKey',count(AssemblyKey) from dbo.MFTGSummary_F where AssemblyKey = -1
-union all
-select 'WorkOrderKey',count(WorkOrderKey) from dbo.MFTGSummary_F where WorkOrderKey = -1
-union all
-select 'IsRMAKey',count(IsRMAKey) from dbo.MFTGSummary_F where IsRMAKey= -1
-union all
-select 'IRVKey',count(IRVKey) from dbo.MFTGSummary_F where IRVKey = -1
-union all
---select 'ProcessDate',count(ProcessDate) from dbo.MFTGSummary_F where ProcessDate  = -1
---union all
-select 'StationTypeKey',count(StationTypeKey) from dbo.MFTGSummary_F where StationTypeKey = -1
-union all
-select 'StationKey',count(StationKey) from dbo.MFTGSummary_F where StationKey = -1
-union all
-select 'DateCodeKey',count(DateCodeKey) from dbo.MFTGSummary_F where DateCodeKey = -1
-union all
-select 'MIDGroupKey',count(MIDGroupKey) from dbo.MFTGSummary_F where MIDGroupKey = -1
-
+select 'TransactionHourKey',datasourcekey,sum(case when [TransactionHourKey] = -1 then 1 else 0 end), count(*) totalcount from dbo.MFTGSummary_F group by datasourcekey 
+union all  
+select 'SerialNumberKey',datasourcekey,sum(case when SerialNumberKey = -1 then 1 else 0 end), count(*) totalcount  from dbo.MFTGSummary_F group by datasourcekey 
+union all  
+select 'MFTGSummaryKey',datasourcekey,sum(case when  MFTGSummaryKey = -1 then 1 else 0 end) , count(*) totalcount  from dbo.MFTGSummary_F group by datasourcekey 
+union all  
+select 'MFTGSummaryCount',datasourcekey,sum(case when  MFTGSummaryCount = -1 then 1 else 0 end) , count(*) totalcount  from dbo.MFTGSummary_F  group by datasourcekey 
+union all  
+select 'SafemodeVersionKey',datasourcekey,sum(case when SafemodeVersionKey = -1 then 1 else 0 end) , count(*) totalcount  from dbo.MFTGSummary_F group by datasourcekey 
+union all  
+select 'ROMVersionKey',datasourcekey,sum(case when ROMVersionKey = -1 then 1 else 0 end) , count(*) totalcount  from dbo.MFTGSummary_F  group by datasourcekey 
+union all  
+select 'FirmwareVersionKey',datasourcekey,sum(case when FirmwareVersionKey = -1 then 1 else 0 end) , count(*) totalcount  from dbo.MFTGSummary_F  group by datasourcekey 
+union all  
+select 'RegulatoryModelKey',datasourcekey,sum(case when  RegulatoryModelKey = -1 then 1 else 0 end) , count(*) totalcount  from dbo.MFTGSummary_F  group by datasourcekey 
+union all  
+select 'TransactionDateKey',datasourcekey,sum(case when  TransactionDateKey = -1 then 1 else 0 end) , count(*) totalcount  from dbo.MFTGSummary_F  group by datasourcekey 
+union all  
+select 'TransactionMinuteKey',datasourcekey,sum(case when  TransactionMinuteKey = -1 then 1 else 0 end) , count(*) totalcount  from dbo.MFTGSummary_F  group by datasourcekey 
+union all  
+select 'DataSourceKey',datasourcekey,sum(case when DataSourceKey = -1 then 1 else 0 end) , count(*) totalcount  from dbo.MFTGSummary_F  group by datasourcekey 
+union all  
+select 'SKUKey',datasourcekey,sum(case when SKUKey= -1 then 1 else 0 end) , count(*) totalcount  from dbo.MFTGSummary_F  group by datasourcekey 
+union all  
+select 'StepIndex',datasourcekey,sum(case when StepIndex = -1 then 1 else 0 end), count(*) totalcount  from dbo.MFTGSummary_F  group by datasourcekey 
+union all  
+select 'ProcessStepData',datasourcekey,sum(case when ProcessStepData  is null then 1 else 0 end) , count(*) totalcount  from dbo.MFTGSummary_F  group by datasourcekey 
+union all  
+select 'StepResultCodeKey',datasourcekey,sum(case when StepResultCodeKey = -1 then 1 else 0 end) , count(*) totalcount  from dbo.MFTGSummary_F  group by datasourcekey 
+union all  
+select 'LocationKey',datasourcekey,sum(case when LocationKey = -1 then 1 else 0 end) , count(*) totalcount  from dbo.MFTGSummary_F  group by datasourcekey 
+union all  
+select 'PartNumberKey',datasourcekey,sum(case when PartNumberKey = -1 then 1 else 0 end) , count(*) totalcount  from dbo.MFTGSummary_F  group by datasourcekey 
+union all  
+select 'AssemblyKey',datasourcekey,sum(case when AssemblyKey = -1 then 1 else 0 end) , count(*) totalcount  from dbo.MFTGSummary_F  group by datasourcekey 
+union all  
+select 'WorkOrderKey',datasourcekey,sum(case when WorkOrderKey = -1 then 1 else 0 end) , count(*) totalcount  from dbo.MFTGSummary_F  group by datasourcekey 
+union all  
+select 'IsRMAKey',datasourcekey,sum(case when IsRMAKey= -1  then 1 else 0 end) , count(*) totalcount  from dbo.MFTGSummary_F group by datasourcekey 
+union all  
+select 'IRVKey',datasourcekey,sum(case when IRVKey = -1 then 1 else 0 end) , count(*) totalcount  from dbo.MFTGSummary_F  group by datasourcekey 
+union all  
+select 'ProcessDate',datasourcekey,sum(case when ProcessDate  = -1 then 1 else 0 end) , count(*) totalcount  from dbo.MFTGSummary_F  group by datasourcekey 
+union all  
+select 'StationTypeKey',datasourcekey,sum(case when StationTypeKey = -1 then 1 else 0 end) , count(*) totalcount  from dbo.MFTGSummary_F  group by datasourcekey 
+union all  
+select 'StationKey',datasourcekey,sum(case when StationKey = -1 then 1 else 0 end) , count(*) totalcount  from dbo.MFTGSummary_F  group by datasourcekey 
+union all  
+select 'DateCodeKey',datasourcekey,sum(case when DateCodeKey = -1 then 1 else 0 end) , count(*) totalcount  from dbo.MFTGSummary_F  group by datasourcekey 
+union all  
+select 'MIDGroupKey',datasourcekey,sum(case when MIDGroupKey = -1 then 1 else 0 end) , count(*) totalcount  from dbo.MFTGSummary_F  group by datasourcekey 

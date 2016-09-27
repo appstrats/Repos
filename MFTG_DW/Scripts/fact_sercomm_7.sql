@@ -15,7 +15,7 @@ select @startdate = StartDate, @enddate = EndDate  from etl_configuration.dbo.Da
 if (@startdate is not null and @enddate is not null)
 begin
 
-update etl_configuration.[dbo].[DataLoad_Log] set status =0 where loadid = @pLoadID;
+update etl_configuration.[dbo].[DataLoad_Log] set status =0, loadstart = getdate() where loadid = @pLoadID;
 select distinct r.sn2,r.sn1 into #snr from MFGTESTC_TAIWAN_SERCOMM.dbo.sn_relation r;
 
 with all_mid (sn, sn_1, lvl) as
@@ -239,6 +239,6 @@ or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.seri
 	left outer join #grp g on tf.SerialNumberKey = g.SerialNumberKey ;
 
    
-   update etl_configuration.[dbo].[DataLoad_Log] set status =1 where loadid = @pLoadID;
+   update etl_configuration.[dbo].[DataLoad_Log] set status =1, loadend = getdate() where loadid = @pLoadID;
   end
   end;

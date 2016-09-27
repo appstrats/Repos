@@ -16,9 +16,9 @@ begin
 
 update etl_configuration.[dbo].[DataLoad_Log] set status =0, loadstart=getdate() where loadid = @pLoadID;
 select Serial_Number into #snr from 
-(select distinct sr.Serial_Number from MES2_SERCOMM.dbo.process_step_result sr
+(select distinct sr.Serial_Number from MES2_SERCOMM.dbo.process_step_result sr where sr.datastamp <=@enddate
 union 
-select distinct snta.Serial_Number from MES2_SERCOMM.dbo.sn_travel_assembly snta ) a
+select distinct snta.Serial_Number from MES2_SERCOMM.dbo.sn_travel_assembly snta where snta.Out_Process_Time <=@enddate) a
 
 SELECT distinct snta.Mac_id ,r.Serial_Number into #snr1 FROM #snr r 
 inner join MES2_SERCOMM.dbo.sn_travel_assembly snta on r.Serial_Number = snta.Serial_Number
@@ -70,7 +70,7 @@ where rtrim(Data_Attribute )like 'RegCode'and (sd.datastamp between @startdate a
 select distinct Serial_Number, last_value(Mac_Id) over (partition by Serial_Number order by snta.Out_Process_Time asc) Mac_Id into #T_ASS from MES2_SERCOMM.dbo.sn_travel_assembly snta
    where len(snta.Mac_Id) = 12 and
  (snta.Mac_Id like '0006B1%' or snta.Mac_Id like '0017C5%' or  snta.Mac_Id like 'FFFFFF%'
-or snta.Mac_Id like 'C0EAE4%' or snta.Mac_Id like '18B169%' or snta.Mac_Id like '004010%') and snta.Mac_Id <> 'N/A';
+or snta.Mac_Id like 'C0EAE4%' or snta.Mac_Id like '18B169%' or snta.Mac_Id like '004010%') and snta.Mac_Id <> 'N/A' and snta.Out_Process_Time <=@enddate;
 
  with psr as
 (select format(datastamp,'yyyyMMdd') datastampf, step_index, datastamp, station_type_code, Station_id, Serial_Number,[PN_Code],[Step_Result_Code],[Location_Code]
