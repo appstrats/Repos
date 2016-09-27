@@ -40,7 +40,7 @@
           <SSIS:Package SSIS:Name="MFTG_Master.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
-          <SSIS:ConnectionManager SSIS:Name="apps01.dynu.net,1451.cfc_dw.sa.conmgr" />
+          <SSIS:ConnectionManager SSIS:Name="10.50.129.131,1451.cfc_dw.dwuser.conmgr" />
         </SSIS:ConnectionManagers>
         <SSIS:DeploymentInfo>
           <SSIS:ProjectConnectionParameters>
@@ -85,7 +85,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">apps01.dynu.net,1451</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">10.50.129.131,1451</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
