@@ -15,6 +15,8 @@ begin
 update etl_configuration.[dbo].[DataLoad_Log] set status =0, loadstart = getdate() where loadid = @pLoadID;
 select distinct r.sn2,r.sn1 into #snr from MFGTESTC_FREMONT.dbo.sn_relation r;
 
+insert into etl_configuration.dbo.DataLoad_Log(LoadDescription, LoadID, EndDate) values ('step 1 completion', @pLoadID, getdate());
+
 with all_mid (sn, sn_1, lvl) as
 (select distinct serial_number , r.sn1 , 0 lvl
 from MFGTESTC_FREMONT.dbo.process_step_result sr
@@ -30,12 +32,18 @@ inner join all_mid on all_mid.sn_1 = l.sn2  and all_mid.lvl < 5
 )
 select * into #t from all_mid
 
+insert into etl_configuration.dbo.DataLoad_Log(LoadDescription, LoadID, EndDate) values ('step 2 completion', @pLoadID, getdate())
+
 select a.sn,a.sn_1, min(a.lvl) l_lvl into #t_l from #t a 
 group by a.sn, a.sn_1
+
+insert into etl_configuration.dbo.DataLoad_Log(LoadDescription, LoadID, EndDate) values ('step 3 completion', @pLoadID, getdate())
 
 select sn, max(l_lvl) l_lvl into #t_f from #t_l group by sn
 
 select #t_l.sn serial_number, #t_l.sn_1 sn1 into #sn_mid from #t_l inner join #t_f on #t_l.sn = #t_f.sn and #t_l.l_lvl= #t_f.l_lvl 
+
+insert into etl_configuration.dbo.DataLoad_Log(LoadDescription, LoadID, EndDate) values ('step 4 completion', @pLoadID, getdate())
 
 select sn.SerialNumberKey, isnull(mid.[MIDKey],-1) MIDKey into  #sl_mid
 from #sn_mid bt
@@ -44,12 +52,15 @@ on bt.sn1 = mid.MID
 left outer join SerialNumber_D sn 
 on bt.serial_number = sn.SerialNumber
 
+insert into etl_configuration.dbo.DataLoad_Log(LoadDescription, LoadID, EndDate) values ('step 5 completion', @pLoadID, getdate())
+
 select sr.SerialNumberKey, (select  convert(varchar,d.MIDKey) + ','  from  
 #sl_mid d 
  where sr.SerialNumberKey = d.SerialNumberKey order by d.MIDKey asc for xml path('')) gmid  into #grp
   from #sl_mid sr  
 group by sr.SerialNumberKey
 
+insert into etl_configuration.dbo.DataLoad_Log(LoadDescription, LoadID, EndDate) values ('step 6 completion', @pLoadID, getdate())
 
 insert into BridgeMIDGroup ([MIDGroupKey],[MIDKey],[WeightFactor],[SerialNumberKey])
 select checksum(g.gmid) groupkey, f.MIDKey, 1.0/ (len(g.gmid) - len(replace(g.gmid,',',''))) wf, f.SerialNumberKey
@@ -59,6 +70,7 @@ inner join #grp g on f.SerialNumberKey = g.SerialNumberKey
 left outer join  [dbo].[BridgeMIDGroup] t on checksum(g.gmid) = t.[MIDGroupKey]
 where t.[MIDGroupKey] is null;
 
+insert into etl_configuration.dbo.DataLoad_Log(LoadDescription, LoadID, EndDate) values ('step 7 completion', @pLoadID, getdate());
 
 with T_Label_Assem as
  (select  step_index, serial_number, data_value udv from MFGTESTC_FREMONT.dbo.process_step_data sd
@@ -130,6 +142,7 @@ T_fact as
  (sr.serial_number like '0006B1%' or sr.serial_number like '0017C5%' or  sr.serial_number like 'FFFFFF%'
 or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.serial_number like '004010%'))
   
+  insert into etl_configuration.dbo.DataLoad_Log(LoadDescription, LoadID, EndDate) values ('step 8 completion', @pLoadID, getdate())
 
   select isnull((select max(MFTGSummaryKey) from [MFTG_DW].dbo.MFTGSummary_F),0) + 
   ROW_NUMBER() over (ORDER BY T_fact.step_index) [MFTGSummaryKey],
