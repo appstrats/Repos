@@ -100,9 +100,8 @@ T_RMA as
 where data_attribute like 'label part number' and data_value like 'RMA%' and (sd.datestamp between @startdate and @enddate)
 union 
 select  step_index, serial_number, 'yes' RMA from MFGTESTC_FREMONT.dbo.process_step_data sd
-where data_attribute like 'label field assembly' and (data_value like '%R' or data_value like '%D' and (sd.datestamp between @startdate and @enddate))),
-T_fact as
-(select  sr.serial_number, 
+where data_attribute like 'label field assembly' and (data_value like '%R' or data_value like '%D' and (sd.datestamp between @startdate and @enddate)))
+select  sr.serial_number, 
  smv.SMV,
  sku.SKU,
  romv.RV,
@@ -126,6 +125,7 @@ T_fact as
  --sr.Station_type_code STC,
  sr.Station_id STA,
  rfid.RFID
+ into #T_fact 
   from MFGTESTC_FREMONT.dbo.process_step_result sr 
   left outer join T_SMV smv on sr.step_index = smv.step_index and sr.serial_number = smv.serial_number
   left outer join T_ROMv romv on sr.step_index = romv.step_index and sr.serial_number = romv.serial_number
@@ -140,7 +140,7 @@ T_fact as
   left outer join MFGTESTC_FREMONT.dbo.mfg_location ml on sr.location_code = ml.location_code 
   where (sr.datestamp between @startdate and @enddate) and len(sr.serial_number) = 12 and
  (sr.serial_number like '0006B1%' or sr.serial_number like '0017C5%' or  sr.serial_number like 'FFFFFF%'
-or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.serial_number like '004010%'))
+or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.serial_number like '004010%')
   
   insert into etl_configuration.dbo.Step_log(stepdesc, load_id, starttime) values ('step 8 completion', @pLoadID, getdate());
 
@@ -173,7 +173,7 @@ or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.seri
   isnull(rfid.RFIDKey,-1) RFIDKey
 
   into #MFTGSummary_F
-  from T_fact 
+  from #T_fact 
   left outer join SerialNumber_D sn on T_fact.serial_number = sn.SerialNumber
   left outer join SafemodeVersion_D smv on T_fact.SMV = smv.SafemodeVersion
   left outer join ROMVersion_D rv on T_fact.RV = rv.ROMVersion 
@@ -188,6 +188,7 @@ or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.seri
   left outer join Station_D sta on T_fact.STA = sta.Station
   left outer join StationType_D stc on T_fact.STC = stc.StationType
   
+  insert into etl_configuration.dbo.Step_log(stepdesc, load_id, starttime) values ('step 9 completion', @pLoadID, getdate());
 
    insert into MFTG_DW.dbo.MFTGSummary_F(
 	[MFTGSummaryKey],
