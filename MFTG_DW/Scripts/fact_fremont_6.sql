@@ -173,7 +173,7 @@ or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.seri
   isnull(rfid.RFIDKey,-1) RFIDKey
 
   into #MFTGSummary_F
-  from #T_fact 
+  from #T_fact T_fact
   left outer join SerialNumber_D sn on T_fact.serial_number = sn.SerialNumber
   left outer join SafemodeVersion_D smv on T_fact.SMV = smv.SafemodeVersion
   left outer join ROMVersion_D rv on T_fact.RV = rv.ROMVersion 
