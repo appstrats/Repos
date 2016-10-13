@@ -36,6 +36,27 @@ ALTER TABLE [dbo].[DataLoad_Log] ADD CONSTRAINT [DataLoad_Log_PK] PRIMARY KEY CL
 )
 GO
 GO
+GO
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Step_log]') AND type in (N'U'))
+    DROP TABLE [dbo].[Step_log]
+
+GO
+
+CREATE TABLE [dbo].[Step_log](
+	[log_id] [int] IDENTITY(1,1) NOT NULL,
+	[load_id] [int] NULL,
+	[starttime] [datetime] NULL,
+	[stepdesc] [varchar](250) NULL,
+ CONSTRAINT [PK_Step_log] PRIMARY KEY CLUSTERED 
+(
+	[log_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
 GO
 
