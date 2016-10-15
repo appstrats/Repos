@@ -60,19 +60,19 @@ inner join #grp g on f.SerialNumberKey = g.SerialNumberKey
 left outer join  [dbo].[BridgeMIDGroup] t on checksum(g.gmid) = t.[MIDGroupKey]
 where t.[MIDGroupKey] is null;
 
-select step_index, serial_number, data_value SMV into #T_SMV from SENAO_MFGTESTC_TAIWAN.dbo.process_step_data 
+select step_index,  data_value SMV into #T_SMV from SENAO_MFGTESTC_TAIWAN.dbo.process_step_data 
 where rtrim(data_attribute )like 'Safemode_Version' and (datestamp between @startdate and @enddate) 
 
-select step_index, serial_number, data_value RV into #T_ROMv from SENAO_MFGTESTC_TAIWAN.dbo.process_step_data 
+select step_index, data_value RV into #T_ROMv from SENAO_MFGTESTC_TAIWAN.dbo.process_step_data 
 where rtrim(data_attribute )like 'ROM_Version'  and (datestamp between @startdate and @enddate) 
 
-select step_index, serial_number, data_value RFID into #T_RFID from SENAO_MFGTESTC_TAIWAN.dbo.process_step_data 
+select step_index, data_value RFID into #T_RFID from SENAO_MFGTESTC_TAIWAN.dbo.process_step_data 
 where rtrim(data_attribute )like 'label field RFID'  and (datestamp between @startdate and @enddate) 
 
-select step_index, serial_number, data_value FW into #T_FirmW from SENAO_MFGTESTC_TAIWAN.dbo.process_step_data 
+select step_index, data_value FW into #T_FirmW from SENAO_MFGTESTC_TAIWAN.dbo.process_step_data 
 where rtrim(data_attribute )like 'Firmware_Version'  and (datestamp between @startdate and @enddate) 
 
- select step_index, serial_number, data_value udv into #T_Label_Assem from SENAO_MFGTESTC_TAIWAN.dbo.process_step_data 
+ select step_index, data_value udv into #T_Label_Assem from SENAO_MFGTESTC_TAIWAN.dbo.process_step_data 
 where rtrim(data_attribute)like 'label_field_Assembly'  and (datestamp between @startdate and @enddate)
 
 --select distinct part_number, serial_number,process_date into #T_PartNum from SENAO_MFGTESTC_TAIWAN.dbo.process_results 
@@ -97,11 +97,11 @@ select sr.serial_number,
  rfid.RFID
  into #T_fact
   from SENAO_MFGTESTC_TAIWAN.dbo.process_step_result sr 
-  left outer join #T_SMV smv on sr.step_index = smv.step_index and sr.serial_number = smv.serial_number
-  left outer join #T_ROMv romv on sr.step_index = romv.step_index and sr.serial_number = romv.serial_number
-  left outer join #T_RFID rfid on sr.step_index = rfid.step_index and sr.serial_number = rfid.serial_number
-  left outer join #T_FirmW fwv on sr.step_index = fwv.step_index and sr.serial_number = fwv.serial_number
-  left outer join #T_Label_Assem ass on sr.step_index = ass.step_index and sr.serial_number = ass.serial_number
+  left outer join #T_SMV smv on sr.step_index = smv.step_index --and sr.serial_number = smv.serial_number
+  left outer join #T_ROMv romv on sr.step_index = romv.step_index --and sr.serial_number = romv.serial_number
+  left outer join #T_RFID rfid on sr.step_index = rfid.step_index --and sr.serial_number = rfid.serial_number
+  left outer join #T_FirmW fwv on sr.step_index = fwv.step_index --and sr.serial_number = fwv.serial_number
+  left outer join #T_Label_Assem ass on sr.step_index = ass.step_index --and sr.serial_number = ass.serial_number
  -- left outer join #T_PartNum pn on sr.serial_number = pn.serial_number and convert(varchar,sr.datestamp ,112) = pn.process_date
     
   where (sr.datestamp between @startdate and @enddate)  and len(sr.serial_number) = 12  and 
