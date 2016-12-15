@@ -8,6 +8,7 @@ set nocount on
 
 declare @startdate  datetime
 declare @enddate	datetime
+declare @intFactCount int
 
 select @startdate = StartDate, @enddate = EndDate  from etl_configuration.dbo.DataLoad_Log where loadid = @pLoadID
 
@@ -46,6 +47,8 @@ from #sl_mid f
 inner join #grp g on f.SerialNumberKey = g.SerialNumberKey
 left outer join  [dbo].[BridgeMIDGroup] t on checksum(g.gmid) = t.[MIDGroupKey]
 where t.[MIDGroupKey] is null;
+
+select @intFactCount  = count(*) from MES2_SERCOMM.dbo.process_step_result where datastamp between @startdate and @enddate;
 
 select distinct Step_index, last_value(data_value) over (partition by step_index order by datastamp asc) SMV into #T_SMV from MES2_SERCOMM.dbo.process_step_data sd
 where rtrim(data_attribute )like 'SafeModeVersion' and (sd.datastamp between @startdate and @enddate) 
@@ -104,7 +107,10 @@ select ts.Mac_Id SRNUM,
   left outer join #T_RFID rfid on sr.step_index = rfid.step_index 
   left outer join #T_RegM rm on sr.step_index = rm.step_index 
   left outer join #T_FirmW fwv on sr.step_index = fwv.step_index
-  left outer join #T_Label_Assem ass on sr.step_index = ass.step_index 
+  left outer join #T_Label_Assem ass on sr.step_index = ass.step_index ;
+
+    if (@intFactCount <> (select count(*) from #T_fact))
+	return
   
   select isnull((select max(MFTGSummaryKey) from [MFTG_DW].dbo.MFTGSummary_F),0) + 
   ROW_NUMBER() over (ORDER BY T_fact.step_index) [MFTGSummaryKey],

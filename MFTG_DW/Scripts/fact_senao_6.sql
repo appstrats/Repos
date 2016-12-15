@@ -7,6 +7,7 @@ set nocount on
 
 declare @startdate  datetime
 declare @enddate	datetime
+declare @intFactCount int
 
 select @startdate = StartDate, @enddate = EndDate  from etl_configuration.dbo.DataLoad_Log where loadid = @pLoadID
 
@@ -60,6 +61,10 @@ inner join #grp g on f.SerialNumberKey = g.SerialNumberKey
 left outer join  [dbo].[BridgeMIDGroup] t on checksum(g.gmid) = t.[MIDGroupKey]
 where t.[MIDGroupKey] is null;
 
+select @intFactCount  = count(*) from SENAO_MFGTESTC_TAIWAN.dbo.process_step_result sr where (sr.datestamp between @startdate and @enddate)  and len(sr.serial_number) = 12  and 
+  (sr.serial_number like '0006B1%' or sr.serial_number like '0017C5%' or  sr.serial_number like 'FFFFFF%'
+  or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.serial_number like '004010%');
+
 select step_index,  data_value SMV into #T_SMV from SENAO_MFGTESTC_TAIWAN.dbo.process_step_data 
 where rtrim(data_attribute )like 'Safemode_Version' and (datestamp between @startdate and @enddate) 
 
@@ -107,6 +112,9 @@ select sr.serial_number,
   where (sr.datestamp between @startdate and @enddate)  and len(sr.serial_number) = 12  and 
   (sr.serial_number like '0006B1%' or sr.serial_number like '0017C5%' or  sr.serial_number like 'FFFFFF%'
   or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.serial_number like '004010%')
+
+    if (@intFactCount <> (select count(*) from #T_fact))
+	return
 
   select isnull((select max(MFTGSummaryKey) from [MFTG_DW].dbo.MFTGSummary_F),0) + 
   ROW_NUMBER() over (ORDER BY T_fact.step_index) [MFTGSummaryKey],

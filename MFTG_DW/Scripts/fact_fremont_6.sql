@@ -5,6 +5,7 @@ set nocount on
 
 declare @startdate  datetime
 declare @enddate	datetime
+declare @intFactCount int
 
 select @startdate = StartDate, @enddate = EndDate  from etl_configuration.dbo.DataLoad_Log where loadid = @pLoadID
 
@@ -71,6 +72,10 @@ left outer join  [dbo].[BridgeMIDGroup] t on checksum(g.gmid) = t.[MIDGroupKey]
 where t.[MIDGroupKey] is null;
 
 insert into etl_configuration.dbo.Step_log(stepdesc, load_id, starttime) values ('step 7 completion', @pLoadID, getdate());
+
+select @intFactCount  = count(*) from   MFGTESTC_FREMONT.dbo.process_step_result sr where (sr.datestamp between @startdate and @enddate) and len(sr.serial_number) = 12 and
+ (sr.serial_number like '0006B1%' or sr.serial_number like '0017C5%' or  sr.serial_number like 'FFFFFF%'
+or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.serial_number like '004010%');
 
 with T_Label_Assem as
  (select  step_index,  data_value udv from MFGTESTC_FREMONT.dbo.process_step_data sd
@@ -141,7 +146,10 @@ select  sr.serial_number,
   where (sr.datestamp between @startdate and @enddate) and len(sr.serial_number) = 12 and
  (sr.serial_number like '0006B1%' or sr.serial_number like '0017C5%' or  sr.serial_number like 'FFFFFF%'
 or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.serial_number like '004010%')
-  
+
+  if (@intFactCount <> (select count(*) from #T_fact))
+	return
+
   insert into etl_configuration.dbo.Step_log(stepdesc, load_id, starttime) values ('step 8 completion', @pLoadID, getdate());
 
   select isnull((select max(MFTGSummaryKey) from [MFTG_DW].dbo.MFTGSummary_F),0) + 

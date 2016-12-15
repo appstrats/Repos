@@ -1,10 +1,11 @@
---exec sp_populate_fact_ADVANTECH 7
-Create PROC sp_populate_fact_ADVANTECH (@pLoadID int) as
+--exec sp_populate_fact_ADVANTECH 1
+create PROC sp_populate_fact_ADVANTECH (@pLoadID int) as
 begin
 set nocount on
 
 declare @startdate  datetime
 declare @enddate	datetime
+declare @intFactCount int
 
 select @startdate = StartDate, @enddate = EndDate  from etl_configuration.dbo.DataLoad_Log where loadid = @pLoadID
 
@@ -59,6 +60,11 @@ inner join #grp g on f.SerialNumberKey = g.SerialNumberKey
 left outer join  [dbo].[BridgeMIDGroup] t on checksum(g.gmid) = t.[MIDGroupKey]
 where t.[MIDGroupKey] is null;
 
+
+select @intFactCount  = count(*) from SHOPFLOOR_ADVANTECH.dbo.process_step_result sr
+where (sr.datestamp between @startdate and @enddate) and len(sr.serial_number) = 12 and
+ (sr.serial_number like '0006B1%' or sr.serial_number like '0017C5%' or  sr.serial_number like 'FFFFFF%'
+or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.serial_number like '004010%');
 
 with T_Label_Assem as
  (select  step_index, serial_number, data_value udv from SHOPFLOOR_ADVANTECH.dbo.process_step_data sd
@@ -177,6 +183,8 @@ or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.seri
   left outer join Station_D sta on T_fact.STA = sta.Station
   left outer join StationType_D stc on T_fact.STC = stc.StationType
   
+  if (@intFactCount <> (select count(*) from #MFTGSummary_F))
+	return
 
    insert into MFTG_DW.dbo.MFTGSummary_F(
 	[MFTGSummaryKey],
