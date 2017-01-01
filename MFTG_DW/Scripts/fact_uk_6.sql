@@ -112,7 +112,8 @@ T_fact as
  dbo.fn_getdatavalue(sr.step_index, sr.serial_number,3) psdata, 
  sr.step_result_code,
  ml.location_name ,
- sr.pn_code,
+ pn.part_number,
+ pn.[description] pn_desc,
  ass.udv assem,
  -1 Workorder, -- Workorder
  case when (rma.RMA is not null) then 1 else 2 end IsRMA,
@@ -132,6 +133,7 @@ T_fact as
   left outer join T_SKU sku on sr.step_index = sku.step_index 
   left outer join T_Label_Assem ass on sr.step_index = ass.step_index 
   left outer join T_RMA rma on sr.step_index = rma.step_index 
+  left outer join MFGTESTC_UK.dbo.part_number pn on sr.pn_code = pn.pn_code
   left outer join MFGTESTC_UK.dbo.sn_relation r on sr.serial_number = r.sn2 and sr.station_id = r.station_id 
   left outer join MFGTESTC_UK.dbo.mfg_location ml on sr.location_code = ml.location_code 
   where (sr.datestamp between @startdate and @enddate) and len(sr.serial_number) = 12 and
@@ -178,7 +180,7 @@ or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.seri
   left outer join RFID_D rfid on T_fact.RFID = rfid.RFID
   left outer join StepResultCode_D src on T_fact.step_result_code = src.StepResultValue 
   left outer join Location_D l on T_fact.location_name = l.location 
-  left outer join PartNumber_D pn on T_fact.pn_code = pn.PartNumberCode
+  left outer join PartNumber_D pn on T_fact.part_number = pn.PartNumber and T_fact.pn_desc = pn.[Description]
   left outer join Assembly_D a on T_fact.assem = a.AssemblyNumber
   left outer join Station_D sta on T_fact.STA = sta.Station
   left outer join StationType_D stc on T_fact.STC = stc.StationType

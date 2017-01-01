@@ -1,10 +1,14 @@
+--SENAO_MFGTESTC_TAIWAN
 use MFTG_DW
-exec sp_pop_SENAO_Assembly_D 2
-exec sp_pop_SENAO_SerialNumber_D 2
-exec sp_pop_SENAO_ManufacturingID_D 2
-exec sp_pop_SENAO_PartNumber_D 2
-exec sp_pop_SENAO_FirmwareVersion_D 2
-exec sp_pop_SENAO_ROMVersion_D 2
-exec sp_pop_SENAO_SafemodeVersion_D 2
-exec sp_pop_SENAO_Station_D 2
-exec sp_pop_SENAO_StationType_D 2
+exec sp_pop_SENAO_Assembly_D 3
+exec sp_pop_SENAO_SerialNumber_D 3
+exec sp_pop_SENAO_ManufacturingID_D 3
+exec sp_pop_SENAO_PartNumber_D 3
+exec sp_pop_SENAO_FirmwareVersion_D 3
+exec sp_pop_SENAO_ROMVersion_D 3
+exec sp_pop_SENAO_SafemodeVersion_D 3
+exec sp_pop_SENAO_Station_D 3
+exec sp_pop_SENAO_StationType_D 3
+
+
+

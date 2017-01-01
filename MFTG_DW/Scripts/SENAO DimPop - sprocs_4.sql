@@ -116,14 +116,14 @@ if (@startdate is not null and @enddate is not null)
 begin
 
 with T_PART as 
-(select distinct part_number PN ,part_description from SENAO_MFGTESTC_TAIWAN.dbo.process_results s 
+(select  distinct part_number PN ,part_description from SENAO_MFGTESTC_TAIWAN.dbo.process_results s 
 where (s.process_date between @startdate and @enddate ))
 
-insert into [MFTG_DW].[dbo].PartNumber_D(PartNumberKey,PartNumberCode,PartNumber,Revision,[Description])
+insert into [MFTG_DW].[dbo].PartNumber_D(PartNumberKey,PartNumberCode,PartNumber,[Description])
 select distinct isnull((select max([PartNumberKey]) from [MFTG_DW].dbo.[PartNumber_D] where [PartNumberKey]>-1),0)+
-ROW_NUMBER() over (ORDER BY s.PN),-1 pn_Code, s.PN, 'u', s.part_description
+ROW_NUMBER() over (ORDER BY s.PN),s.PN, s.PN, s.part_description
 from T_PART s
-left outer join [MFTG_DW].dbo.PartNumber_D d on s.PN = d.PartNumber
+left outer join [MFTG_DW].dbo.PartNumber_D d on s.PN = d.PartNumber and s.part_description = d.[description]
 where d.PartNumber is null 
 end
 end;

@@ -1,3 +1,4 @@
+-- MES2_SERCOMM
 exec sp_pop_assembly_Sercomm  5
 exec sp_pop_serialnumber_Sercomm  5
 exec sp_pop_manufacturing_id_Sercomm  5

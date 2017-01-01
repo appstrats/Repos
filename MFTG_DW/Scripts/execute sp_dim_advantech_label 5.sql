@@ -1,3 +1,4 @@
+--SHOPFLOOR_ADVANTECH
 exec sp_pop_assembly_advantech 7
 exec sp_pop_serialnumber_advantech 7
 exec sp_pop_manufacturing_id_advantech 7
@@ -12,4 +13,20 @@ exec sp_pop_SKU_advantech 7
 exec sp_pop_pn_Code_advantech 7
 exec sp_pop_StepResultCode_advantech 7
 exec sp_pop_Stationtype_advantech 7
+
+--MFGTESTC_ADVANTECH
+exec sp_pop_assembly_advantech_label 1
+exec sp_pop_serialnumber_advantech_label 1
+exec sp_pop_manufacturing_id_advantech_label 1
+exec sp_pop_firmversion_advantech_label 1
+exec sp_pop_romversion_advantech_label 1
+exec sp_pop_safemodeversion_advantech_label 1
+exec sp_pop_IRV_advantech_label 1
+exec sp_pop_regulatorymodel_advantech_label 1
+exec sp_pop_station_advantech_label 1
+exec sp_pop_Location_advantech_label 1
+exec sp_pop_SKU_advantech_label 1
+exec sp_pop_Partnum_advantech_label 1
+
       
+select name from sysobjects where name like '%advantech%label%'

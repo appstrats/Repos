@@ -347,14 +347,17 @@ declare @enddate  datetime
 select @startdate = StartDate, @enddate = EndDate  from etl_configuration.dbo.DataLoad_Log where loadid = @pLoadID
 if (@startdate is not null and @enddate is not null)
 begin
-with T_PNC as
-(select distinct (PN_Code) PNC  from SHOPFLOOR_ADVANTECH.dbo.process_step_result sr where (sr.datestamp between @startdate and @enddate)) 
+-- No data found in PSR all are 9999
+print 0;
+--with T_PNC as
+--(select distinct (PN_Code) PNC  from SHOPFLOOR_ADVANTECH.dbo.process_step_result sr where (sr.datestamp between @startdate and @enddate)) 
 
-insert into [MFTG_DW].[dbo].PartNumber_D(PartNumberKey,PartNumberCode,PartNumber,Revision,[Description])
-select  isnull((select max(PartNumberKey) from [MFTG_DW].[dbo].PartNumber_D where PartNumberKey>-1),0) + ROW_NUMBER() over (ORDER BY s.PNC), s.PNC, s.PNC,-1,-1
-from T_PNC s
-left outer join [MFTG_DW].dbo.PartNumber_D d on s.PNC  = d.PartNumberCode
-where d.PartNumberCode is null
+--insert into [MFTG_DW].[dbo].PartNumber_D(PartNumberKey,PartNumberCode,PartNumber,[Description])
+--select  isnull((select max(PartNumberKey) from [MFTG_DW].[dbo].PartNumber_D where PartNumberKey>-1),0) + ROW_NUMBER() over (ORDER BY s.PNC), 
+--s.PNC, s.PNC,'Unknown','Unknown'
+--from T_PNC s
+--left outer join [MFTG_DW].dbo.PartNumber_D d on s.PNC  = d.PartNumberCode
+--where d.PartNumberCode is null
 end
 end;
 go

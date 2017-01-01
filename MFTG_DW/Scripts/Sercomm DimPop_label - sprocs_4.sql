@@ -314,7 +314,7 @@ go
 
 --Part number 
 --exec sp_pop_Partnum_sercomm_label 4
-create PROC sp_pop_Partnum_sercomm_label (@pLoadID int) as
+Create PROC sp_pop_Partnum_sercomm_label (@pLoadID int) as
 begin
 set nocount on
 declare @startdate  datetime
@@ -323,11 +323,11 @@ declare @enddate  datetime
 select @startdate = StartDate, @enddate = EndDate  from etl_configuration.dbo.DataLoad_Log where loadid = @pLoadID
 if (@startdate is not null and @enddate is not null)
 begin
-insert into [MFTG_DW] .[dbo].PartNumber_D(PartNumberKey,PartNumberCode,PartNumber,Revision,[Description])
+insert into [MFTG_DW] .[dbo].PartNumber_D(PartNumberKey,PartNumberCode,PartNumber,[Description])
 select distinct isnull((select max([PartNumberKey]) from [MFTG_DW].dbo.[PartNumber_D] where [PartNumberKey]>-1),0)+
- ROW_NUMBER() over (ORDER BY s.pn_Code),s.pn_Code,s.part_number, s.revision, s.description
+ ROW_NUMBER() over (ORDER BY s.part_number),s.part_number,s.part_number, s.[description]
 from MFGTESTC_TAIWAN_SERCOMM.dbo.part_number s
-left outer join [MFTG_DW].dbo.PartNumber_D d on s.part_number = d.PartNumber
+left outer join [MFTG_DW].dbo.PartNumber_D d on s.part_number = d.PartNumber and s.[description] = d.[description]
 where d.PartNumber is null
 end
 end

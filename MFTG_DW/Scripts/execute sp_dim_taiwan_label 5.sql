@@ -1,3 +1,5 @@
+use MFTG_DW
+-- MFGTESTC_TAIWAN
 exec sp_pop_assembly_taiwan_label 8
 exec sp_pop_serialnumber_taiwan_label 8
 exec sp_pop_manufacturing_id_taiwan_label 8

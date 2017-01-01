@@ -1,5 +1,7 @@
+use mftg_dw
+go
 --exec sp_populate_fact_ADVANTECH 1
-create PROC sp_populate_fact_ADVANTECH (@pLoadID int) as
+Create PROC sp_populate_fact_ADVANTECH (@pLoadID int) as
 begin
 set nocount on
 
@@ -110,7 +112,7 @@ T_fact as
  dbo.fn_getdatavalue(sr.step_index, sr.serial_number,10) psdata, 
  sr.step_result_code,
  convert (varchar ,sr.location_code) LC,
- sr.pn_code,
+ -1 pn_code,
  ass.udv assem,
  -1 Workorder, -- Workorder
  case when (rma.RMA is not null) then 1 else 2 end IsRMA,
@@ -130,7 +132,6 @@ T_fact as
   left outer join T_SKU sku on sr.step_index = sku.step_index and sr.serial_number = sku.serial_number
    left outer join T_Label_Assem ass on sr.step_index = ass.step_index and sr.serial_number = ass.serial_number
   left outer join T_RMA rma on sr.step_index = rma.step_index and sr.serial_number = rma.serial_number
-  left outer join PartNumber_D pn on sr.pn_code = pn.PartNumberCode 
   left outer join SHOPFLOOR_ADVANTECH.dbo.sn_relation r on sr.serial_number = r.sn2 --and sr.station_id = r.station_id 
   left outer join [Location_D] l on sr.Location_Code= l.LocationCode
   where (sr.datestamp between @startdate and @enddate) and len(sr.serial_number) = 12 and

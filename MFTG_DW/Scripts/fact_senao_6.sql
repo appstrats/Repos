@@ -80,8 +80,8 @@ where rtrim(data_attribute )like 'Firmware_Version'  and (datestamp between @sta
  select step_index, data_value udv into #T_Label_Assem from SENAO_MFGTESTC_TAIWAN.dbo.process_step_data 
 where rtrim(data_attribute)like 'label_field_Assembly'  and (datestamp between @startdate and @enddate)
 
---select distinct part_number, serial_number,process_date into #T_PartNum from SENAO_MFGTESTC_TAIWAN.dbo.process_results 
---where (process_date between @startdate and @enddate) 
+select distinct part_number, part_description, serial_number,process_date into #T_PartNum from SENAO_MFGTESTC_TAIWAN.dbo.process_results 
+where (process_date between @startdate and @enddate) 
 
 select sr.serial_number, 
  smv.SMV,
@@ -92,8 +92,8 @@ select sr.serial_number,
  datepart(HH,sr.datestamp) T_hour,
  sr.step_index,
  dbo.fn_getdatavalue(sr.step_index, sr.serial_number,2) psdata, 
- -- '' psdata, 
--- pn.part_number PartNumber, 
+ pn.part_number PartNumber, 
+ pn.part_description pn_desc,
  ass.udv assem,
  sr.datestamp processdate,
  convert (varchar ,sr.station_type_code) STC,
@@ -107,7 +107,7 @@ select sr.serial_number,
   left outer join #T_RFID rfid on sr.step_index = rfid.step_index --and sr.serial_number = rfid.serial_number
   left outer join #T_FirmW fwv on sr.step_index = fwv.step_index --and sr.serial_number = fwv.serial_number
   left outer join #T_Label_Assem ass on sr.step_index = ass.step_index --and sr.serial_number = ass.serial_number
- -- left outer join #T_PartNum pn on sr.serial_number = pn.serial_number and convert(varchar,sr.datestamp ,112) = pn.process_date
+  left outer join #T_PartNum pn on sr.serial_number = pn.serial_number and convert(varchar,sr.datestamp ,112) = pn.process_date
     
   where (sr.datestamp between @startdate and @enddate)  and len(sr.serial_number) = 12  and 
   (sr.serial_number like '0006B1%' or sr.serial_number like '0017C5%' or  sr.serial_number like 'FFFFFF%'
@@ -133,7 +133,7 @@ select sr.serial_number,
   T_fact.psdata ProcessStepData,
   -1 [StepResultCodeKey],
   -1 [LocationKey],
-  -1 [PartNumberKey],
+  isnull(pn.PartNumberKey, -1) PartNumberKey,
   isnull(a.AssemblyKey, -1) AssemblyKey,
   -1 [WorkOrderKey],
   -1 [IsRMAKey],
@@ -154,7 +154,8 @@ select sr.serial_number,
   left outer join Assembly_D a on T_fact.assem = a.AssemblyNumber
   left outer join Station_D sta on T_fact.STA = sta.Station
   left outer join StationType_D stc on T_fact.STC = stc.StationType
-  left outer join DateCode_D dc on T_fact.DC = dc.DateCode;
+  left outer join DateCode_D dc on T_fact.DC = dc.DateCode
+  left outer join PartNumber_D pn on T_fact.part_number = pn.PartNumber and T_fact.pn_desc = pn.[Description];
 
    insert into MFTG_DW.dbo.MFTGSummary_F(
 	[MFTGSummaryKey],

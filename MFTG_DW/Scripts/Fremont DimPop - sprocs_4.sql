@@ -169,11 +169,11 @@ declare @enddate  datetime
 select @startdate = StartDate, @enddate = EndDate  from etl_configuration.dbo.DataLoad_Log where loadid = @pLoadID
 if (@startdate is not null and @enddate is not null)
 begin
-insert into [MFTG_DW] .[dbo].PartNumber_D(PartNumberKey,PartNumberCode,PartNumber,Revision,[Description])
+insert into [MFTG_DW] .[dbo].PartNumber_D(PartNumberKey,PartNumberCode,PartNumber,[Description])
 select distinct isnull((select max([PartNumberKey]) from [MFTG_DW].dbo.[PartNumber_D] where [PartNumberKey]>-1),0)+
- ROW_NUMBER() over (ORDER BY s.pn_Code),s.pn_Code,s.part_number, s.revision, s.description
+ ROW_NUMBER() over (ORDER BY s.part_number),s.part_number,s.part_number,  s.[description]
 from MFGTESTC_FREMONT.dbo.part_number s
-left outer join [MFTG_DW].dbo.PartNumber_D d on s.part_number = d.PartNumber
+left outer join [MFTG_DW].dbo.PartNumber_D d on s.part_number = d.PartNumber and s.[description] = d.[description]
 where d.PartNumber is null
 end
 end
@@ -322,7 +322,7 @@ end
 go
 
 
---exec sp_pop_Stationtype_FREMONT 1
+--exec sp_pop_Stationtype_FREMONT 2
 Create PROC sp_pop_Stationtype_FREMONT (@pLoadID int) as
 begin
 set nocount on
@@ -333,7 +333,7 @@ select @startdate = StartDate, @enddate = EndDate  from etl_configuration.dbo.Da
 if (@startdate is not null and @enddate is not null)
 begin
 with T_STC as
-(select distinct(station_type_code) STC  from MFGTESTC_FREMONT.dbo.process_step_result sr  where (sr.datestamp between @startdate and @enddate))
+(select distinct(cast(station_type_code as varchar(50))) STC  from MFGTESTC_FREMONT.dbo.process_step_result sr  where (sr.datestamp between @startdate and @enddate))
 
 insert into [MFTG_DW].[dbo].StationType_D(StationTypeKey,StationType)
 select  isnull((select max(StationTypeKey) from [MFTG_DW].[dbo].StationType_D where 
