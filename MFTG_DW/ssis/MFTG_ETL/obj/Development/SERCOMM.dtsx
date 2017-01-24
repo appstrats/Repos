@@ -12,8 +12,8 @@
   DTS:ObjectName="SERCOMM"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{7DC6074F-9B76-4657-9094-DE9D1547013B}">
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{4E193993-B61C-4202-8F4E-6D35C8F1667D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables>
@@ -111,18 +111,18 @@
         <DTS:Executable
           DTS:refId="Package\Sequence Container\pop_firmversion_Sercomm"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-          DTS:Description="populate assembly table_ sercomm"
+          DTS:Description="populate firmversion table_ sercomm"
           DTS:DTSID="{60C8F844-B006-4792-89AB-63320869A88C}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_firmversion_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
-              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_assembly_Sercomm ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_firmversion_Sercomm ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
@@ -135,18 +135,18 @@
         <DTS:Executable
           DTS:refId="Package\Sequence Container\pop_IRV_Sercomm"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-          DTS:Description="populate assembly table_ sercomm"
+          DTS:Description="populate IRV table_ sercomm"
           DTS:DTSID="{CC1E6FBD-6CE8-4636-B8FA-340AF286D118}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_IRV_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
-              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_assembly_Sercomm ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_IRV_Sercomm ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
@@ -159,18 +159,18 @@
         <DTS:Executable
           DTS:refId="Package\Sequence Container\pop_Location_Code_Sercomm"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-          DTS:Description="populate assembly table_ sercomm"
+          DTS:Description="populate location table_ sercomm"
           DTS:DTSID="{03E3DCC0-AE19-4F2D-8AA9-7D591852A77A}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Location_Code_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
-              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_assembly_Sercomm ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_Location_Code_Sercomm ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
@@ -183,18 +183,18 @@
         <DTS:Executable
           DTS:refId="Package\Sequence Container\pop_manufacturing_id_Sercomm"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-          DTS:Description="populate assembly table_ sercomm"
+          DTS:Description="populate manufacturing table_ sercomm"
           DTS:DTSID="{BE9D5A4A-9E97-4C0B-A1D7-C4ABEC0271E5}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_manufacturing_id_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="12">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
-              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_assembly_Sercomm ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_manufacturing_id_Sercomm ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
@@ -213,7 +213,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_pn_Code_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="13">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -231,18 +231,18 @@
         <DTS:Executable
           DTS:refId="Package\Sequence Container\pop_regulatorymodel_Sercomm"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-          DTS:Description="populate assembly table_ sercomm"
+          DTS:Description="populate regulatory table_ sercomm"
           DTS:DTSID="{FA292D30-DC93-49A0-923E-AF61B390C03C}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_regulatorymodel_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="11">
+          DTS:ThreadHint="10">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
-              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_assembly_Sercomm ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_regulatorymodel_Sercomm ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
@@ -255,18 +255,18 @@
         <DTS:Executable
           DTS:refId="Package\Sequence Container\pop_romversion_Sercomm"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-          DTS:Description="populate assembly table_ sercomm"
+          DTS:Description="populate romversion table_ sercomm"
           DTS:DTSID="{B788897B-8A71-4318-9231-4CDB066B180E}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_romversion_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="14">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
-              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_assembly_Sercomm ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_romversion_Sercomm ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
@@ -279,18 +279,18 @@
         <DTS:Executable
           DTS:refId="Package\Sequence Container\pop_safemodeversion_Sercomm"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-          DTS:Description="populate assembly table_ sercomm"
+          DTS:Description="populate safemodeversion table_ sercomm"
           DTS:DTSID="{A6C4C43A-2F2C-4F66-A2E4-FCC09DBC4AF8}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_safemodeversion_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="11">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
-              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_assembly_Sercomm ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_safemodeversion_Sercomm ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
@@ -309,7 +309,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_serialnumber_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="14">
+          DTS:ThreadHint="9">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -327,18 +327,18 @@
         <DTS:Executable
           DTS:refId="Package\Sequence Container\pop_SKU_Sercomm"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-          DTS:Description="populate assembly table_ sercomm"
+          DTS:Description="populate SKU table_ sercomm"
           DTS:DTSID="{92EB40D4-C5F7-46FB-B8D2-01F7B43AC4F3}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_SKU_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="10">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
-              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_assembly_Sercomm ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_SKU_Sercomm ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
@@ -357,7 +357,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_Stationtype_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="13">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -375,18 +375,18 @@
         <DTS:Executable
           DTS:refId="Package\Sequence Container\pop_station_Sercomm"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-          DTS:Description="populate assembly table_ sercomm"
+          DTS:Description="populate station table_ sercomm"
           DTS:DTSID="{BF24BC4E-4C5F-43C4-82AA-48F310923D6B}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_station_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="12">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
-              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_assembly_Sercomm ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_station_Sercomm ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
@@ -399,18 +399,18 @@
         <DTS:Executable
           DTS:refId="Package\Sequence Container\pop_StepResultCode_Sercomm"
           DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
-          DTS:Description="populate assembly table_ sercomm"
+          DTS:Description="populate stepresult table_ sercomm"
           DTS:DTSID="{B96760A6-3317-4986-85B9-DC04051FDBFD}"
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
           DTS:ObjectName="pop_StepResultCode_Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="9">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{86D25A0D-7FEE-4C48-85F4-17FEC67ABA3A}"
-              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_assembly_Sercomm ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="exec MFTG_DW.dbo.sp_pop_StepResultCode_Sercomm ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Loadid"
@@ -429,7 +429,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="RFID Sercomm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -482,6 +482,10 @@
           Id="Package\Create Load id"
           TopLeft="426.428569307132,27.3299655478413" />
         <NodeLayout
+          Size="169.6,41.6"
+          Id="Package\Pop Fact_Sercomm"
+          TopLeft="434.052161040027,428.38262602789" />
+        <NodeLayout
           Size="196,41.6"
           Id="Package\Sequence Container\pop_assembly_Sercomm"
           TopLeft="10.2380952705331,8.2222222222224" />
@@ -496,7 +500,7 @@
         <NodeLayout
           Size="220.8,41.6"
           Id="Package\Sequence Container\pop_Location_Code_Sercomm"
-          TopLeft="942.9047619372,22.0000000000001" />
+          TopLeft="929.843537224972,10.6386553028464" />
         <NodeLayout
           Size="233.6,41.6"
           Id="Package\Sequence Container\pop_manufacturing_id_Sercomm"
@@ -544,8 +548,8 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="1168.8,200"
-          Size="1168.8,243.2"
+          PanelSize="1168.8,249.6"
+          Size="1168.8,292.8"
           Id="Package\Sequence Container"
           TopLeft="0.836734146140316,121.664420740113" />
         <EdgeLayout
@@ -554,26 +558,26 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="85.208164839008,52.7344551922717"
+              EndConnector="85.2081648390083,52.7344551922717"
               Start="0,0"
-              End="85.208164839008,45.2344551922717">
+              End="85.2081648390083,45.2344551922717">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.3672275961359" />
+                    End="0,22.3672275961358" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,22.3672275961359"
-                    Point2="0,26.3672275961359"
-                    Point3="4,26.3672275961359" />
+                    Point1="0,22.3672275961358"
+                    Point2="0,26.3672275961358"
+                    Point3="4,26.3672275961358" />
                   <mssgle:LineSegment
-                    End="81.208164839008,26.3672275961359" />
+                    End="81.2081648390083,26.3672275961358" />
                   <mssgle:CubicBezierSegment
-                    Point1="81.208164839008,26.3672275961359"
-                    Point2="85.208164839008,26.3672275961359"
-                    Point3="85.208164839008,30.3672275961359" />
+                    Point1="81.2081648390083,26.3672275961358"
+                    Point2="85.2081648390083,26.3672275961358"
+                    Point3="85.2081648390083,30.3672275961358" />
                   <mssgle:LineSegment
-                    End="85.208164839008,45.2344551922717" />
+                    End="85.2081648390083,45.2344551922717" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -582,36 +586,26 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="169.6,41.6"
-          Id="Package\Pop Fact_Sercomm"
-          TopLeft="434.868487584541,392.550692752251" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="585.23673414614,364.864420740113">
+          TopLeft="585.23673414614,414.464420740113">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-65.5682465615995,27.6862720121378"
+              EndConnector="18.4154268938864,34.7182052877765"
               Start="0,0"
-              End="-65.5682465615995,20.1862720121378">
+              End="10.9154268938864,34.7182052877765">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,9.8431360060689" />
+                    End="0,30.7182052877765" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,9.8431360060689"
-                    Point2="0,13.8431360060689"
-                    Point3="-4,13.8431360060689" />
+                    Point1="0,30.7182052877765"
+                    Point2="0,34.7182052877765"
+                    Point3="4,34.7182052877765" />
                   <mssgle:LineSegment
-                    End="-61.5682465615995,13.8431360060689" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-61.5682465615995,13.8431360060689"
-                    Point2="-65.5682465615995,13.8431360060689"
-                    Point3="-65.5682465615995,17.8431360060689" />
-                  <mssgle:LineSegment
-                    End="-65.5682465615995,20.1862720121378" />
+                    End="10.9154268938864,34.7182052877765" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

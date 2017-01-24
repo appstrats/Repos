@@ -184,7 +184,7 @@ or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.seri
   left outer join Station_D sta on T_fact.STA = sta.Station
   left outer join StationType_D stc on T_fact.STC = stc.StationType
   
-  if (@intFactCount <> (select count(*) from #MFTGSummary_F))
+  if (@intFactCount <> @@rowcount)
 	return
 
    insert into MFTG_DW.dbo.MFTGSummary_F(

@@ -327,7 +327,7 @@ IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[IRV_D
 GO
 CREATE TABLE [dbo].[IRV_D] (
 [IRVKey] int  NOT NULL  
-, [IRV] varchar(20)  NOT NULL  
+, [IRV] varchar(100)  NOT NULL  
 )
 GO
 
@@ -401,7 +401,7 @@ IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PartN
 GO
 CREATE TABLE [dbo].[PartNumber_D] (
 [PartNumberKey] int  NOT NULL  
-, [PartNumberCode] int  NOT NULL  
+, [PartNumberCode] varchar(50)  NOT NULL  
 , [PartNumber] varchar(250)  NULL  
 , [Revision] varchar(250)  NULL  
 , [Description] varchar(100)  NULL  

@@ -83,7 +83,7 @@ where rtrim(data_attribute)like 'label_field_Assembly'  and (datestamp between @
 select distinct part_number, part_description, serial_number,process_date into #T_PartNum from SENAO_MFGTESTC_TAIWAN.dbo.process_results 
 where (process_date between @startdate and @enddate) 
 
-select sr.serial_number, 
+select distinct sr.serial_number, 
  smv.SMV,
  romv.RV,
  fwv.FW,
@@ -113,7 +113,7 @@ select sr.serial_number,
   (sr.serial_number like '0006B1%' or sr.serial_number like '0017C5%' or  sr.serial_number like 'FFFFFF%'
   or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.serial_number like '004010%')
 
-    if (@intFactCount <> (select count(*) from #T_fact))
+    if (@intFactCount <> @@rowcount)
 	return
 
   select isnull((select max(MFTGSummaryKey) from [MFTG_DW].dbo.MFTGSummary_F),0) + 

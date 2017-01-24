@@ -108,7 +108,7 @@ select ts.Mac_Id SRNUM,
   left outer join #T_FirmW fwv on sr.step_index = fwv.step_index
   left outer join #T_Label_Assem ass on sr.step_index = ass.step_index ;
 
-    if (@intFactCount <> (select count(*) from #T_fact))
+    if (@intFactCount <> @@rowcount)
 	return
   
   select isnull((select max(MFTGSummaryKey) from [MFTG_DW].dbo.MFTGSummary_F),0) + 

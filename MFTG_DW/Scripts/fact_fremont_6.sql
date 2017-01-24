@@ -150,7 +150,7 @@ select  sr.serial_number,
  (sr.serial_number like '0006B1%' or sr.serial_number like '0017C5%' or  sr.serial_number like 'FFFFFF%'
 or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.serial_number like '004010%')
 
-  if (@intFactCount <> (select count(*) from #T_fact))
+  if (@intFactCount <> @@rowcount)
 	return
 
   insert into etl_configuration.dbo.Step_log(stepdesc, load_id, starttime) values ('step 8 completion', @pLoadID, getdate());

@@ -241,8 +241,8 @@ go
 
 go
 --Station TYPE
--- exec sp_pop_Stationtype_Senao 2
-Create PROC sp_pop_SENAO_StationType_D (@pLoadID int) as
+-- exec sp_pop_SENAO_StationType_D 2
+create PROC sp_pop_SENAO_StationType_D (@pLoadID int) as
 begin
 set nocount on
 
@@ -254,14 +254,14 @@ if (@startdate is not null and @enddate is not null)
 begin
 
 with T_STC as
-(select distinct(station_type_code) STC  from SENAO_MFGTESTC_TAIWAN.dbo.process_step_result sr 
+(select distinct(convert(varchar(50),station_type_code)) STC  from SENAO_MFGTESTC_TAIWAN.dbo.process_step_result sr 
 where (sr.datestamp between @startdate and @enddate ))
 
 insert into [MFTG_DW].[dbo].StationType_D(StationTypeKey,StationType)
 select  isnull((select max(StationTypeKey) from [MFTG_DW].[dbo].StationType_D 
 where StationTypeKey>-1),0) + ROW_NUMBER() over (ORDER BY s.STC ), s.STC
 from T_STC s
-left outer join [MFTG_DW].dbo.StationType_D d on s.STC  = d.StationTypeKey
+left outer join [MFTG_DW].dbo.StationType_D d on s.STC  = d.StationType
 where d.StationType is null
 end
 end;
