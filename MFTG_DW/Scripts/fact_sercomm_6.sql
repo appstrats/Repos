@@ -73,7 +73,7 @@ where rtrim(Data_Attribute )like 'RegCode'and (sd.datastamp between @startdate a
 select distinct Serial_Number, last_value(Mac_Id) over (partition by Serial_Number order by snta.Out_Process_Time asc) Mac_Id into #T_ASS from MES2_SERCOMM.dbo.sn_travel_assembly snta
    where len(snta.Mac_Id) = 12 and
  (snta.Mac_Id like '0006B1%' or snta.Mac_Id like '0017C5%' or  snta.Mac_Id like 'FFFFFF%'
-or snta.Mac_Id like 'C0EAE4%' or snta.Mac_Id like '18B169%' or snta.Mac_Id like '004010%') and snta.Mac_Id <> 'N/A' and snta.Out_Process_Time <=@enddate;
+or snta.Mac_Id like 'C0EAE4%' or snta.Mac_Id like '18B169%' or snta.Mac_Id like '004010%') and snta.Mac_Id <> 'N/A' and (snta.Out_Process_Time between @startdate and @enddate );
 
  with psr as
 (select format(datastamp,'yyyyMMdd') datastampf, step_index, datastamp, station_type_code, Station_id, Serial_Number,[PN_Code],[Step_Result_Code],[Location_Code]
@@ -108,7 +108,7 @@ select ts.Mac_Id SRNUM,
   left outer join #T_FirmW fwv on sr.step_index = fwv.step_index
   left outer join #T_Label_Assem ass on sr.step_index = ass.step_index ;
 
-    if (@intFactCount <> @@rowcount)
+    if (@@rowcount > @intFactCount )
 	return
   
   select isnull((select max(MFTGSummaryKey) from [MFTG_DW].dbo.MFTGSummary_F),0) + 
@@ -128,7 +128,7 @@ select ts.Mac_Id SRNUM,
   T_fact.psdata ProcessStepData,
    isnull(srcd.[StepResultCodeKey], -1) [StepResultCodeKey],
    isnull(l.[LocationKey], -1) [LocationKey],
-   isnull(pnc.[PartNumberKey], -1) [PartNumberKey],   
+   -1 [PartNumberKey],   
   isnull(a.AssemblyKey, -1) AssemblyKey,
   -1 [WorkOrderKey],
   -1 [IsRMAKey],
@@ -148,7 +148,7 @@ select ts.Mac_Id SRNUM,
   left outer join FirmwareVersion_D fwv on T_fact.FW = fwv.FirmwareVersion
   left outer join Assembly_D a on T_fact.assem = a.AssemblyNumber
   left outer join [Location_D] l on T_fact.LC= l.LocationCode
-  left outer join [PartNumber_D] pnc on T_fact.PartNumber = pnc.PartNumberCode
+  --left outer join [PartNumber_D] pnc on T_fact.PartNumber = pnc.PartNumberCode
   left outer join [StepResultCode_D] srcd on T_fact.SRC= srcd.[StepResultValue]
   left outer join Station_D sta on T_fact.STA = sta.Station
   left outer join StationType_D stc on T_fact.STC = stc.StationType;
