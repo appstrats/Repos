@@ -96,9 +96,9 @@ T_RMA as
 where data_attribute like 'label part number' and data_value like 'RMA%' and (sd.datestamp between @startdate and @enddate)
 union 
 select  step_index, 'yes' RMA from MFGTESTC_UK.dbo.process_step_data sd
-where data_attribute like 'label field assembly' and (data_value like '%R' or data_value like '%D' and (sd.datestamp between @startdate and @enddate))),
-T_fact as
-(select  sr.serial_number, 
+where data_attribute like 'label field assembly' and (data_value like '%R' or data_value like '%D' and (sd.datestamp between @startdate and @enddate)))
+
+select  sr.serial_number, 
  smv.SMV,
  sku.SKU,
  romv.RV,
@@ -112,8 +112,9 @@ T_fact as
  dbo.fn_getdatavalue(sr.step_index, sr.serial_number,3) psdata, 
  sr.step_result_code,
  ml.location_name ,
- pn.part_number,
- pn.[description] pn_desc,
+ sr.pn_code,
+ cast(null as varchar(100)) part_number,
+ cast(null as varchar(250)) pn_desc,
  ass.udv assem,
  -1 Workorder, -- Workorder
  case when (rma.RMA is not null) then 1 else 2 end IsRMA,
@@ -123,7 +124,7 @@ T_fact as
  --sr.Station_type_code STC,
  sr.Station_id STA,
  rfid.RFID
- 
+into #T_fact 
   from MFGTESTC_UK.dbo.process_step_result sr 
   left outer join T_SMV smv on sr.step_index = smv.step_index  
   left outer join T_ROMv romv on sr.step_index = romv.step_index  
@@ -133,13 +134,17 @@ T_fact as
   left outer join T_SKU sku on sr.step_index = sku.step_index 
   left outer join T_Label_Assem ass on sr.step_index = ass.step_index 
   left outer join T_RMA rma on sr.step_index = rma.step_index 
-  left outer join MFGTESTC_UK.dbo.part_number pn on sr.pn_code = pn.pn_code
   left outer join MFGTESTC_UK.dbo.sn_relation r on sr.serial_number = r.sn2 and sr.station_id = r.station_id 
   left outer join MFGTESTC_UK.dbo.mfg_location ml on sr.location_code = ml.location_code 
   where (sr.datestamp between @startdate and @enddate) and len(sr.serial_number) = 12 and
  (sr.serial_number like '0006B1%' or sr.serial_number like '0017C5%' or  sr.serial_number like 'FFFFFF%'
-or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.serial_number like '004010%'))
+or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.serial_number like '004010%')
+
+    if (@intFactCount <> @@rowcount)
+	return
   
+  update f set f.part_number = pn.part_number, f.pn_desc = pn.[description] from #T_fact f 
+  left outer join MFGTESTC_UK.dbo.part_number pn on f.pn_code = pn.pn_code  
 
   select isnull((select max(MFTGSummaryKey) from [MFTG_DW].dbo.MFTGSummary_F),0) + 
   ROW_NUMBER() over (ORDER BY T_fact.step_index) [MFTGSummaryKey],
@@ -170,7 +175,7 @@ or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.seri
  isnull(rfid.RFIDKey,-1) RFIDKey
 
   into #MFTGSummary_F
-  from T_fact 
+  from #T_fact T_fact 
   left outer join SerialNumber_D sn on T_fact.serial_number = sn.SerialNumber
   left outer join SafemodeVersion_D smv on T_fact.SMV = smv.SafemodeVersion
   left outer join ROMVersion_D rv on T_fact.RV = rv.ROMVersion 
@@ -185,8 +190,7 @@ or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.seri
   left outer join Station_D sta on T_fact.STA = sta.Station
   left outer join StationType_D stc on T_fact.STC = stc.StationType
   
-    if (@intFactCount <> @@rowcount)
-	return
+
 
    insert into MFTG_DW.dbo.MFTGSummary_F(
 	[MFTGSummaryKey],

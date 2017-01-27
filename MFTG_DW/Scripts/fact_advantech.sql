@@ -68,6 +68,7 @@ where (sr.datestamp between @startdate and @enddate) and len(sr.serial_number) =
  (sr.serial_number like '0006B1%' or sr.serial_number like '0017C5%' or  sr.serial_number like 'FFFFFF%'
 or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.serial_number like '004010%');
 
+
 with T_Label_Assem as
  (select  step_index, serial_number, data_value udv from SHOPFLOOR_ADVANTECH.dbo.process_step_data sd
 where data_attribute like 'label field Assembly' and (sd.datestamp between @startdate and @enddate) ),
@@ -112,7 +113,7 @@ T_fact as
  dbo.fn_getdatavalue(sr.step_index, sr.serial_number,10) psdata, 
  sr.step_result_code,
  convert (varchar ,sr.location_code) LC,
- -1 pn_code,
+ null pn_code,
  ass.udv assem,
  -1 Workorder, -- Workorder
  case when (rma.RMA is not null) then 1 else 2 end IsRMA,
@@ -132,7 +133,7 @@ T_fact as
   left outer join T_SKU sku on sr.step_index = sku.step_index and sr.serial_number = sku.serial_number
    left outer join T_Label_Assem ass on sr.step_index = ass.step_index and sr.serial_number = ass.serial_number
   left outer join T_RMA rma on sr.step_index = rma.step_index and sr.serial_number = rma.serial_number
-  left outer join SHOPFLOOR_ADVANTECH.dbo.sn_relation r on sr.serial_number = r.sn2 --and sr.station_id = r.station_id 
+--  left outer join SHOPFLOOR_ADVANTECH.dbo.sn_relation r on sr.serial_number = r.sn2 --and sr.station_id = r.station_id 
   left outer join [Location_D] l on sr.Location_Code= l.LocationCode
   where (sr.datestamp between @startdate and @enddate) and len(sr.serial_number) = 12 and
  (sr.serial_number like '0006B1%' or sr.serial_number like '0017C5%' or  sr.serial_number like 'FFFFFF%'
@@ -156,7 +157,7 @@ or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.seri
   T_fact.psdata ProcessStepData,
   isnull(src.StepResultCodeKey, -1) StepResultCodeKey,
   isnull(l.LocationKey, -1) LocationKey,
-  isnull(pn.PartNumberKey, -1) PartNumberKey,
+  -1 PartNumberKey,
   isnull(a.AssemblyKey, -1) AssemblyKey,
   T_fact.Workorder WorkOrderKey,
   T_fact.IsRMA IsRMAKey,
@@ -166,8 +167,6 @@ or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.seri
   isnull(sta.StationKey,-1) StationKey,
   -1 DateCodeKey,
   isnull(rfid.RFIDKey,-1) RFIDKey
- 
-
   into #MFTGSummary_F
   from T_fact 
   left outer join SerialNumber_D sn on T_fact.serial_number = sn.SerialNumber
@@ -179,7 +178,7 @@ or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.seri
   left outer join SKU_D sku on T_fact.SKU = sku.SKUDescription
   left outer join StepResultCode_D src on T_fact.step_result_code = src.StepResultValue 
   left outer join Location_D l on T_fact.LC = l.location 
-  left outer join PartNumber_D pn on T_fact.pn_code = pn.PartNumberCode
+  --left outer join PartNumber_D pn on T_fact.pn_code = pn.PartNumberCode
   left outer join Assembly_D a on T_fact.assem = a.AssemblyNumber
   left outer join Station_D sta on T_fact.STA = sta.Station
   left outer join StationType_D stc on T_fact.STC = stc.StationType
