@@ -124,7 +124,7 @@ select distinct isnull((select max([PartNumberKey]) from [MFTG_DW].dbo.[PartNumb
 ROW_NUMBER() over (ORDER BY s.PN),s.PN, s.PN, s.part_description
 from T_PART s
 left outer join [MFTG_DW].dbo.PartNumber_D d on s.PN = d.PartNumber and s.part_description = d.[description]
-where d.PartNumber is null 
+where d.PartNumber is null and d.[description] is null
 end
 end;
 go
