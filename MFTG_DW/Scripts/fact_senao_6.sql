@@ -77,8 +77,9 @@ where rtrim(data_attribute )like 'label field RFID'  and (datestamp between @sta
 select step_index, data_value FW into #T_FirmW from SENAO_MFGTESTC_TAIWAN.dbo.process_step_data 
 where rtrim(data_attribute )like 'Firmware_Version'  and (datestamp between @startdate and @enddate) 
 
- select step_index, data_value udv into #T_Label_Assem from SENAO_MFGTESTC_TAIWAN.dbo.process_step_data 
+ select step_index, min(data_value) udv into #T_Label_Assem from SENAO_MFGTESTC_TAIWAN.dbo.process_step_data 
 where rtrim(data_attribute)like 'label_field_Assembly'  and (datestamp between @startdate and @enddate)
+group by step_index
 
 select distinct part_number, part_description, serial_number into #T_PartNum from SENAO_MFGTESTC_TAIWAN.dbo.process_results 
 where (process_date between @startdate and @enddate) 
