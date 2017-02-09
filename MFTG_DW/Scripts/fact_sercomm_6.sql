@@ -48,7 +48,12 @@ inner join #grp g on f.SerialNumberKey = g.SerialNumberKey
 left outer join  [dbo].[BridgeMIDGroup] t on checksum(g.gmid) = t.[MIDGroupKey]
 where t.[MIDGroupKey] is null;
 
-select @intFactCount  = count(*) from MES2_SERCOMM.dbo.process_step_result where datastamp between @startdate and @enddate;
+select distinct Serial_Number, last_value(Mac_Id) over (partition by Serial_Number order by snta.Out_Process_Time asc) Mac_Id into #T_ASS from MES2_SERCOMM.dbo.sn_travel_assembly snta
+   where len(snta.Mac_Id) = 12 and
+ (snta.Mac_Id like '0006B1%' or snta.Mac_Id like '0017C5%' or  snta.Mac_Id like 'FFFFFF%'
+or snta.Mac_Id like 'C0EAE4%' or snta.Mac_Id like '18B169%' or snta.Mac_Id like '004010%') and snta.Mac_Id <> 'N/A' and (snta.Out_Process_Time between @startdate and @enddate );
+
+select @intFactCount  = count(*) from MES2_SERCOMM.dbo.process_step_result inner join #T_ASS ts on sr.Serial_Number = ts.Serial_Number  where datastamp between @startdate and @enddate;
 
 select distinct Step_index, last_value(data_value) over (partition by step_index order by datastamp asc) SMV into #T_SMV from MES2_SERCOMM.dbo.process_step_data sd
 where rtrim(data_attribute )like 'SafeModeVersion' and (sd.datastamp between @startdate and @enddate) 
@@ -70,10 +75,7 @@ where rtrim(data_attribute)like 'label field Assembly'  and  (sd.DataStamp betwe
 select distinct step_index, last_value(data_value) over (partition by step_index order by datastamp asc) RM into #T_RegM from MES2_SERCOMM.dbo.process_step_data sd
 where rtrim(Data_Attribute )like 'RegCode'and (sd.datastamp between @startdate and @enddate)
 
-select distinct Serial_Number, last_value(Mac_Id) over (partition by Serial_Number order by snta.Out_Process_Time asc) Mac_Id into #T_ASS from MES2_SERCOMM.dbo.sn_travel_assembly snta
-   where len(snta.Mac_Id) = 12 and
- (snta.Mac_Id like '0006B1%' or snta.Mac_Id like '0017C5%' or  snta.Mac_Id like 'FFFFFF%'
-or snta.Mac_Id like 'C0EAE4%' or snta.Mac_Id like '18B169%' or snta.Mac_Id like '004010%') and snta.Mac_Id <> 'N/A' and (snta.Out_Process_Time between @startdate and @enddate );
+
 
  with psr as
 (select format(datastamp,'yyyyMMdd') datastampf, step_index, datastamp, station_type_code, Station_id, Serial_Number,[PN_Code],[Step_Result_Code],[Location_Code]
