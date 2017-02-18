@@ -4,7 +4,7 @@ go
 Create PROC sp_populate_fact (@pLoadID int) as
 begin
 set nocount on
-
+set XACT_ABORT on
 declare @startdate  datetime
 declare @enddate	datetime
 declare @intFactCount int
@@ -263,4 +263,5 @@ or sr.serial_number like 'C0EAE4%' or sr.serial_number like '18B169%' or sr.seri
    
    update etl_configuration.[dbo].[DataLoad_Log] set status =1, loadend = getdate() where loadid = @pLoadID;
   end
+  set XACT_ABORT off
   end;

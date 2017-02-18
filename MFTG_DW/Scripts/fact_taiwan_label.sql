@@ -4,7 +4,7 @@ go
 Create PROC sp_populate_fact_taiwan_Label (@pLoadID int) as
 begin
 set nocount on
-
+set XACT_ABORT on
 declare @startdate  datetime
 declare @enddate	datetime
 declare @intFactCount int
@@ -248,4 +248,5 @@ update sr set sr.part_number = pn.part_number, sr.pn_desc = pn.[Description] fro
    
    update etl_configuration.[dbo].[DataLoad_Log] set status =1, loadend =getdate() where loadid = @pLoadID;
   end
+  set XACT_ABORT off
   end;

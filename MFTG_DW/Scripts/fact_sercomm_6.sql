@@ -5,7 +5,7 @@ go
 Create PROC sp_populate_fact_SERCOMM (@pLoadID int) as
 begin
 set nocount on
-
+set XACT_ABORT on
 declare @startdate  datetime
 declare @enddate	datetime
 declare @intFactCount int
@@ -217,4 +217,5 @@ select ts.Mac_Id SRNUM,
    
    update etl_configuration.[dbo].[DataLoad_Log] set status =1, loadend=getdate() where loadid = @pLoadID;
   end
+  set XACT_ABORT off
   end;
