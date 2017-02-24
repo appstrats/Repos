@@ -498,6 +498,24 @@ CREATE TABLE [dbo].[SafemodeVersion_D] (
 )
 GO
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[FinancialDate_D_2]') AND type in (N'U'))
+    DROP TABLE [dbo].[FinancialDate_D_2]
+GO
+Create table [dbo].[FinancialDate_D_2] (
+[CalendarDateKey] int not null,
+ [CalendarDate] date not null,
+ [CalendarDateDesc] varchar(25) not null,
+ [CalendarMonth] int not null,
+ [CalendarMonthDesc] varchar(25) not null,
+ [CalendarQuarter] int not null,
+ [CalendarQuarterDesc] varchar(25) not null,
+ [CalendarYear] int not null,
+ [FinancialQuarter] int not null,
+ [FinancialQuarterDesc] varchar(25) not null,
+ [FinancialYear] int not null
+  )
+GO
+
 ALTER TABLE [dbo].[SafemodeVersion_D] ADD CONSTRAINT [SafemodeVersion_D_PK] PRIMARY KEY CLUSTERED (
 [SafemodeVersionKey]
 )

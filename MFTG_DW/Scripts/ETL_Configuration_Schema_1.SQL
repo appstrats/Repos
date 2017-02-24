@@ -31,6 +31,18 @@ CREATE TABLE [dbo].[DataLoad_Log] (
 )
 GO
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[FYMonths]') AND type in (N'U'))
+    DROP TABLE [dbo].[FYMonths]
+GO
+Create table [dbo].[FYMonths](
+[FinancialYear] int not null,
+[FinancialMonth] int not null,
+[FinancialQuarter] int not null,
+[FinancialQuarterDesc] varchar(10) not null,
+[startdate] date not null,
+[enddate] date not null
+)
+GO
 ALTER TABLE [dbo].[DataLoad_Log] ADD CONSTRAINT [DataLoad_Log_PK] PRIMARY KEY CLUSTERED (
 [LoadID]
 )

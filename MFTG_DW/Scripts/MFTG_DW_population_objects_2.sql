@@ -140,3 +140,92 @@ FROM (
 tmp WHERE Fact_Row_Num = 1
 
 go
+Create PROC sp_populate_findate (@pyear char(4)) as
+begin
+set nocount on
+declare @yyyy  char(4)
+declare @dtcur date
+declare @lastdate date
+declare @datedetail table ([CalendarDateKey] [int] NOT NULL,
+ [CalendarDate] [date] NULL,
+ [CalendarDateDesc] [varchar](50) NULL,
+ [CalendarMonth] [int] NULL,
+ [CalendarMonthDesc] [varchar](50) NULL,
+ [CalendarQuarter] [varchar](50) NULL,
+ [CalendarQuarterDesc] [varchar](50) NULL,
+ [CalendarYear] [int]  null ,
+ [FinancialQuarter] [varchar](50) NULL,
+ [FinancialQuarterDesc] [varchar](50) NULL,
+ [FinancialYear] [int] );
+  
+-- Check if metadata exist, if not exit
+if not exists(select * from ETL_Configuration.[dbo].[FYMonths] where [FinancialYear]= @pyear)
+begin
+ print 'Financial Year month start and end dates not found in configuration'
+ return;
+end
+-- Check if entries for all 12 months exist
+if ((select count(distinct FinancialMonth) from ETL_Configuration.[dbo].[FYMonths] where [FinancialYear]= @pyear) <> 12)
+begin
+ print 'Financial Year month start and end dates not found for all months'
+ return;
+end
+
+-- Check if dates are adjacent
+if ((select count(*) 
+ from ETL_Configuration.[dbo].[FYMonths] f1 inner join ETL_Configuration.[dbo].[FYMonths] f2 on f1.FinancialYear = f2.FinancialYear 
+ and dateadd(DD,1,f1.enddate)=f2.startdate and f1.[FinancialYear]= @pyear) <> 11)
+begin
+ print 'Financial Year month end dates and start dates not adjacent';
+ return;
+end
+
+
+if not exists(select * from [MFTG_DW].[dbo].[FinancialDate_D_2] where [FinancialYear]= @pyear)
+begin
+select @dtcur= startdate from ETL_Configuration.[dbo].[FYMonths] where [FinancialYear]= @pyear and FinancialMonth = 1;
+select @lastdate= enddate from ETL_Configuration.[dbo].[FYMonths] where [FinancialYear]= @pyear and FinancialMonth = 12;
+while (@dtcur <= @lastdate)
+begin
+insert into @datedetail ([CalendarDateKey], [CalendarDate],[CalendarDateDesc], [CalendarMonth], [CalendarMonthDesc],[CalendarQuarter],
+[CalendarQuarterDesc],[CalendarYear])
+select format(@dtcur,'yyyyMMdd'),@dtcur ,format(@dtcur,'MMM dd, yyyy'),DATEPART(MM,@dtcur),Datename(MM,@dtcur), Datename(QQ,@dtcur),  Datename(QQ,@dtcur), DATEPART(YYYY,@dtcur);
+
+set @dtcur = DATEADD(D,1, @dtcur)
+
+end
+
+update d set d.[FinancialQuarter] = m.FinancialQuarter,d.[FinancialQuarterDesc] =m.FinancialQuarterDesc,d.[FinancialYear] = m.FinancialYear 
+from @datedetail d inner join ETL_Configuration.[dbo].[FYMonths] m on d.[CalendarDate] between m.startdate and m.enddate
+
+insert into [MFTG_DW].dbo.[FinancialDate_D_2] (
+[CalendarDateKey] ,
+ [CalendarDate] ,
+ [CalendarDateDesc] ,
+ [CalendarMonth] ,
+ [CalendarMonthDesc],
+ [CalendarQuarter] ,
+ [CalendarQuarterDesc],
+ [CalendarYear],
+ [FinancialQuarter] ,
+ [FinancialQuarterDesc],
+ [FinancialYear]
+  )
+select 
+[CalendarDateKey] ,
+ [CalendarDate] ,
+ [CalendarDateDesc] ,
+ [CalendarMonth] ,
+ [CalendarMonthDesc],
+ [CalendarQuarter] ,
+ [CalendarQuarterDesc],
+ [CalendarYear],
+ [FinancialQuarter] ,
+ [FinancialQuarterDesc],
+ [FinancialYear]
+ 
+  from @datedetail
+end
+set nocount off
+end
+go
