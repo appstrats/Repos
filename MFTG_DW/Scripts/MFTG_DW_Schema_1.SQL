@@ -510,6 +510,8 @@ Create table [dbo].[FinancialDate_D_2] (
  [CalendarQuarter] int not null,
  [CalendarQuarterDesc] varchar(25) not null,
  [CalendarYear] int not null,
+ [FinancialMonth] int not null,
+ [FinancialMonthDesc] varchar(25) not null,
  [FinancialQuarter] int not null,
  [FinancialQuarterDesc] varchar(25) not null,
  [FinancialYear] int not null

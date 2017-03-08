@@ -189,7 +189,7 @@ while (@dtcur <= @lastdate)
 begin
 insert into @datedetail ([CalendarDateKey], [CalendarDate],[CalendarDateDesc], [CalendarMonth], [CalendarMonthDesc],[CalendarQuarter],
 [CalendarQuarterDesc],[CalendarYear])
-select format(@dtcur,'yyyyMMdd'),@dtcur ,format(@dtcur,'MMM dd, yyyy'),DATEPART(MM,@dtcur),Datename(MM,@dtcur), Datename(QQ,@dtcur),  Datename(QQ,@dtcur), DATEPART(YYYY,@dtcur);
+select format(@dtcur,'yyyyMMdd'),@dtcur ,format(@dtcur,'MMM dd, yyyy'),DATEPART(MM,@dtcur),Datename(MM,@dtcur), Datename(QQ,@dtcur),  Datename(QQ,@dtcur), DATEPART(YYYY,@dtcur)-1;
 
 set @dtcur = DATEADD(D,1, @dtcur)
 
@@ -207,6 +207,8 @@ insert into [MFTG_DW].dbo.[FinancialDate_D_2] (
  [CalendarQuarter] ,
  [CalendarQuarterDesc],
  [CalendarYear],
+ [FinancialMonth] ,
+ [FinancialMonthDesc],
  [FinancialQuarter] ,
  [FinancialQuarterDesc],
  [FinancialYear]
@@ -220,6 +222,8 @@ select 
  [CalendarQuarter] ,
  [CalendarQuarterDesc],
  [CalendarYear],
+ [CalendarMonth] ,
+ [CalendarMonthDesc],
  [FinancialQuarter] ,
  [FinancialQuarterDesc],
  [FinancialYear]
