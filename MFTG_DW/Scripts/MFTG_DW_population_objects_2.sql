@@ -154,7 +154,9 @@ declare @datedetail table ([CalendarDateKey] [int] NOT NULL,
  [CalendarQuarter] [varchar](50) NULL,
  [CalendarQuarterDesc] [varchar](50) NULL,
  [CalendarYear] [int]  null ,
- [FinancialQuarter] [varchar](50) NULL,
+[FinancialMonth] [int] NULL,
+ [FinancialMonthDesc] [varchar](50) NULL, 
+[FinancialQuarter] [varchar](50) NULL,
  [FinancialQuarterDesc] [varchar](50) NULL,
  [FinancialYear] [int] );
   
@@ -195,7 +197,9 @@ set @dtcur = DATEADD(D,1, @dtcur)
 
 end
 
-update d set d.[FinancialQuarter] = m.FinancialQuarter,d.[FinancialQuarterDesc] =m.FinancialQuarterDesc,d.[FinancialYear] = m.FinancialYear 
+update d set d.[FinancialQuarter] = m.FinancialQuarter,d.[FinancialQuarterDesc] =m.FinancialQuarterDesc,d.[FinancialYear] = m.FinancialYear, d.FinancialMonth = m.FinancialMonth,
+d.[FinancialMonthDesc] = m.FinancialMonthDesc
+ 
 from @datedetail d inner join ETL_Configuration.[dbo].[FYMonths] m on d.[CalendarDate] between m.startdate and m.enddate
 
 insert into [MFTG_DW].dbo.[FinancialDate_D_2] (
@@ -222,8 +226,8 @@ select 
  [CalendarQuarter] ,
  [CalendarQuarterDesc],
  [CalendarYear],
- [CalendarMonth] ,
- [CalendarMonthDesc],
+ [FinancialMonth] ,
+ [FinancialMonthDesc],
  [FinancialQuarter] ,
  [FinancialQuarterDesc],
  [FinancialYear]
