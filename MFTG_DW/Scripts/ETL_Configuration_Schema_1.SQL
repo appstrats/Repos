@@ -37,6 +37,7 @@ GO
 Create table [dbo].[FYMonths](
 [FinancialYear] int not null,
 [FinancialMonth] int not null,
+[FinancialMonthDesc] varchar(10) not null,
 [FinancialQuarter] int not null,
 [FinancialQuarterDesc] varchar(10) not null,
 [startdate] date not null,
