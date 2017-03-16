@@ -140,7 +140,7 @@ FROM (
 tmp WHERE Fact_Row_Num = 1
 
 go
-alter PROC sp_populate_findate (@pyear char(4), @IsFinYear bit=1) as
+Create PROC sp_populate_findate (@pyear char(4), @IsFinYear bit=1) as
 begin
 set nocount on
 declare @yyyy  char(4)
@@ -197,18 +197,22 @@ set @dtcur = DATEADD(D,1, @dtcur)
 
 end;
 
-if(@IsFinYear=1)
-begin
-update d set d.[FinancialQuarter] = m.FinancialQuarter,d.[FinancialQuarterDesc] =m.FinancialQuarterDesc,d.[FinancialYear] = m.FinancialYear, d.FinancialMonth = m.FinancialMonth,
-d.[FinancialMonthDesc] = m.FinancialMonthDesc, d.[CalendarYear] = DATEPART(YYYY,d.[CalendarDate])-1
-from @datedetail d inner join ETL_Configuration.[dbo].[FYMonths] m on d.[CalendarDate] between m.startdate and m.enddate
-end
-else
-begin
 update d set d.[FinancialQuarter] = m.FinancialQuarter,d.[FinancialQuarterDesc] =m.FinancialQuarterDesc,d.[FinancialYear] = m.FinancialYear, d.FinancialMonth = m.FinancialMonth,
 d.[FinancialMonthDesc] = m.FinancialMonthDesc, d.[CalendarYear] = DATEPART(YYYY,d.[CalendarDate])
 from @datedetail d inner join ETL_Configuration.[dbo].[FYMonths] m on d.[CalendarDate] between m.startdate and m.enddate
-end
+
+--if(@IsFinYear=1)
+--begin
+--update d set d.[FinancialQuarter] = m.FinancialQuarter,d.[FinancialQuarterDesc] =m.FinancialQuarterDesc,d.[FinancialYear] = m.FinancialYear, d.FinancialMonth = m.FinancialMonth,
+--d.[FinancialMonthDesc] = m.FinancialMonthDesc, d.[CalendarYear] = DATEPART(YYYY,d.[CalendarDate])
+--from @datedetail d inner join ETL_Configuration.[dbo].[FYMonths] m on d.[CalendarDate] between m.startdate and m.enddate
+--end
+--else
+--begin
+--update d set d.[FinancialQuarter] = m.FinancialQuarter,d.[FinancialQuarterDesc] =m.FinancialQuarterDesc,d.[FinancialYear] = m.FinancialYear, d.FinancialMonth = m.FinancialMonth,
+--d.[FinancialMonthDesc] = m.FinancialMonthDesc, d.[CalendarYear] = DATEPART(YYYY,d.[CalendarDate])
+--from @datedetail d inner join ETL_Configuration.[dbo].[FYMonths] m on d.[CalendarDate] between m.startdate and m.enddate
+--end
 insert into [MFTG_DW].dbo.[FinancialDate_D_2] (
 [CalendarDateKey] ,
  [CalendarDate] ,
